@@ -1,1 +1,5 @@
-/.vs/CapstoneProject/v16/.suo
+/.vs/
+*/bin/*
+packages/
+*/obj/
+
