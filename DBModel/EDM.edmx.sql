@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/19/2020 10:12:14
+-- Date Created: 03/20/2020 09:46:12
 -- Generated from EDMX file: E:\Capstone\CapstoneRepo\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
@@ -150,7 +150,6 @@ CREATE TABLE [dbo].[Profiles] (
     [profileId] int IDENTITY(1,1) NOT NULL,
     [experience] nvarchar(max)  NOT NULL,
     [careerPath] nvarchar(max)  NOT NULL,
-    [skillBadges] nvarchar(max)  NOT NULL,
     [careerPathCompletion] nvarchar(max)  NOT NULL
 );
 GO
@@ -169,7 +168,6 @@ GO
 CREATE TABLE [dbo].[Paths] (
     [pathId] int IDENTITY(1,1) NOT NULL,
     [pathType] nvarchar(max)  NOT NULL,
-    [courses] nvarchar(max)  NOT NULL,
     [description] nvarchar(max)  NOT NULL,
     [PathAdmin_userID] int  NOT NULL
 );

@@ -23,7 +23,6 @@ namespace DBModel
     
         public int pathId { get; set; }
         public string pathType { get; set; }
-        public string courses { get; set; }
         public string description { get; set; }
         public int PathAdmin_userID { get; set; }
     

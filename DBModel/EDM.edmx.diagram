@@ -29,11 +29,11 @@
         <AssociationConnector Association="EDM.ProfileSystemQuestions" />
         <AssociationConnector Association="EDM.ApplicantProfile" />
         <AssociationConnector Association="EDM.PathAdminPath" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.125" PointY="3.9201896744791664" />
-          <ConnectorPoint PointX="1.6458333333333333" PointY="3.920189674479166" />
-          <ConnectorPoint PointX="1.4791666666666667" PointY="3.9201896744791664" />
-          <ConnectorPoint PointX="1.128905625" PointY="3.9201896744791664" />
-          <ConnectorPoint PointX="1.128905625" PointY="3.1821907552083331" />
+          <ConnectorPoint PointX="4.125" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.7478840364583332" PointY="3.7978417968749993" />
+          <ConnectorPoint PointX="1.5812173697916667" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.2229003515625" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.2229003515625" PointY="2.989889322916667" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

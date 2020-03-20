@@ -25,7 +25,6 @@ namespace DBModel
         public int profileId { get; set; }
         public string experience { get; set; }
         public string careerPath { get; set; }
-        public string skillBadges { get; set; }
         public string careerPathCompletion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
