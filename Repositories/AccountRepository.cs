@@ -9,7 +9,7 @@ using DBModel;
 
 namespace Repositories
 {
-    class AccountRepository : IAccountRepository
+    public class AccountRepository : IAccountRepository
     {
         private EDMContainer db = new EDMContainer();
 

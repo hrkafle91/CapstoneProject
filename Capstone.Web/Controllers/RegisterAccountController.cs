@@ -7,17 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DBModel;
+using Interfaces;
+using Repositories;
 
 namespace Capstone.Web.Controllers
 {
     public class RegisterAccountController : Controller
     {
-        private EDMContainer db = new EDMContainer();
+
+        private AccountRepository repo = new AccountRepository();
 
         // GET: RegisterAccount
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            return View(repo.GetAllAccounts());
         }
 
         // GET: RegisterAccount/Details/5
@@ -27,7 +30,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = repo.GetAccount(Convert.ToInt32(id));
             if (account == null)
             {
                 return HttpNotFound();
@@ -50,8 +53,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Accounts.Add(account);
-                db.SaveChanges();
+                repo.Add(account);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +67,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = repo.GetAccount(Convert.ToInt32(id));
             if (account == null)
             {
                 return HttpNotFound();
@@ -82,8 +84,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(account).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Edit(account);
                 return RedirectToAction("Index");
             }
             return View(account);
@@ -96,7 +97,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = db.Accounts.Find(id);
+            Account account = repo.GetAccount(Convert.ToInt32(id)); 
             if (account == null)
             {
                 return HttpNotFound();
@@ -109,9 +110,7 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Account account = db.Accounts.Find(id);
-            db.Accounts.Remove(account);
-            db.SaveChanges();
+            repo.Delete(id);
             return RedirectToAction("Index");
         }
 
@@ -119,7 +118,7 @@ namespace Capstone.Web.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                repo.Dispose();
             }
             base.Dispose(disposing);
         }
