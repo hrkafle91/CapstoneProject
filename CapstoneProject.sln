@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.960
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone.Web", "Capstone.Web\Capstone.Web.csproj", "{BB97C44B-EEE4-4EFA-A5FB-918F3B7A92DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBModel", "DBModel\DBModel.csproj", "{62E5C29E-B6B0-4628-BA7C-23BA03851528}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{56478DF7-4F24-46B6-A11A-84847B1F61FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{DA224FC1-F284-48CF-A3A0-40C6B7F53508}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{62E5C29E-B6B0-4628-BA7C-23BA03851528}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62E5C29E-B6B0-4628-BA7C-23BA03851528}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62E5C29E-B6B0-4628-BA7C-23BA03851528}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56478DF7-4F24-46B6-A11A-84847B1F61FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56478DF7-4F24-46B6-A11A-84847B1F61FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56478DF7-4F24-46B6-A11A-84847B1F61FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56478DF7-4F24-46B6-A11A-84847B1F61FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA224FC1-F284-48CF-A3A0-40C6B7F53508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA224FC1-F284-48CF-A3A0-40C6B7F53508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA224FC1-F284-48CF-A3A0-40C6B7F53508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA224FC1-F284-48CF-A3A0-40C6B7F53508}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
