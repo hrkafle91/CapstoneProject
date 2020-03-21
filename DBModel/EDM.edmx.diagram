@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8411f04d805412fbcba244aae3285b8" Name="Diagram1" >
+        <EntityTypeShape EntityType="EDM.Account" Width="1.5" PointX="6" PointY="0.5" />
+        <EntityTypeShape EntityType="EDM.JobPosting" Width="1.5" PointX="11.75" PointY="0.625" />
+        <EntityTypeShape EntityType="EDM.PathAdmin" Width="1.5" PointX="4.125" PointY="3" />
+        <InheritanceConnector EntityType="EDM.PathAdmin" />
+        <EntityTypeShape EntityType="EDM.Applicant" Width="1.5" PointX="9.125" PointY="3" />
+        <EntityTypeShape EntityType="EDM.HiringManager" Width="1.5" PointX="9.375" PointY="0.875" />
+        <InheritanceConnector EntityType="EDM.Applicant" />
+        <InheritanceConnector EntityType="EDM.HiringManager" />
+        <EntityTypeShape EntityType="EDM.Application" Width="1.5" PointX="11.5" PointY="3.625" />
+        <AssociationConnector Association="EDM.HiringManagerJobPosting" />
+        <AssociationConnector Association="EDM.ApplicationJobPosting" />
+        <EntityTypeShape EntityType="EDM.Profile" Width="1.5" PointX="6.875" PointY="4.5" />
+        <AssociationConnector Association="EDM.ApplicationProfile" />
+        <EntityTypeShape EntityType="EDM.Course" Width="1.5" PointX="1.125" PointY="4.75" />
+        <EntityTypeShape EntityType="EDM.Path" Width="1.5" PointX="0.5" PointY="0.625" />
+        <AssociationConnector Association="EDM.PathCourse" />
+        <EntityTypeShape EntityType="EDM.SkillBadge" Width="1.5" PointX="4.375" PointY="5.25" />
+        <AssociationConnector Association="EDM.CourseSkillBadge" />
+        <AssociationConnector Association="EDM.SkillBadgeProfile" />
+        <EntityTypeShape EntityType="EDM.SystemQuestions" Width="1.5" PointX="9.5" PointY="5.75" />
+        <AssociationConnector Association="EDM.PathSystemQuestions" />
+        <AssociationConnector Association="EDM.ProfileSystemQuestions" />
+        <AssociationConnector Association="EDM.ApplicantProfile" />
+        <AssociationConnector Association="EDM.PathAdminPath" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.125" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.7478840364583332" PointY="3.7978417968749993" />
+          <ConnectorPoint PointX="1.5812173697916667" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.2229003515625" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.2229003515625" PointY="2.989889322916667" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

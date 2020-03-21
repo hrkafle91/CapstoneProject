@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EDM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EDMStoreContainer">
+    <EntitySet Name="Accounts" EntityType="EDM.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobPostings" EntityType="EDM.Store.JobPostings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Applications" EntityType="EDM.Store.Applications" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profiles" EntityType="EDM.Store.Profiles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Courses" EntityType="EDM.Store.Courses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Paths" EntityType="EDM.Store.Paths" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SkillBadges" EntityType="EDM.Store.SkillBadges" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SystemQuestions" EntityType="EDM.Store.SystemQuestions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts_HiringManager" EntityType="EDM.Store.Accounts_HiringManager" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts_Applicant" EntityType="EDM.Store.Accounts_Applicant" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts_PathAdmin" EntityType="EDM.Store.Accounts_PathAdmin" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PathCourse" EntityType="EDM.Store.PathCourse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SkillBadgeProfile" EntityType="EDM.Store.SkillBadgeProfile" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="HiringManagerJobPosting" Association="EDM.Store.HiringManagerJobPosting">
+      <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
+      <End Role="JobPosting" EntitySet="JobPostings" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationJobPosting" Association="EDM.Store.ApplicationJobPosting">
+      <End Role="Application" EntitySet="Applications" />
+      <End Role="JobPosting" EntitySet="JobPostings" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicationProfile" Association="EDM.Store.ApplicationProfile">
+      <End Role="Application" EntitySet="Applications" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PathCourse_Path" Association="EDM.Store.FK_PathCourse_Path">
+      <End Role="Path" EntitySet="Paths" />
+      <End Role="PathCourse" EntitySet="PathCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PathCourse_Course" Association="EDM.Store.FK_PathCourse_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="PathCourse" EntitySet="PathCourse" />
+    </AssociationSet>
+    <AssociationSet Name="CourseSkillBadge" Association="EDM.Store.CourseSkillBadge">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="SkillBadge" EntitySet="SkillBadges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillBadgeProfile_SkillBadge" Association="EDM.Store.FK_SkillBadgeProfile_SkillBadge">
+      <End Role="SkillBadge" EntitySet="SkillBadges" />
+      <End Role="SkillBadgeProfile" EntitySet="SkillBadgeProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SkillBadgeProfile_Profile" Association="EDM.Store.FK_SkillBadgeProfile_Profile">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="SkillBadgeProfile" EntitySet="SkillBadgeProfile" />
+    </AssociationSet>
+    <AssociationSet Name="PathSystemQuestions" Association="EDM.Store.PathSystemQuestions">
+      <End Role="Path" EntitySet="Paths" />
+      <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="ProfileSystemQuestions" Association="EDM.Store.ProfileSystemQuestions">
+      <End Role="Profile" EntitySet="Profiles" />
+      <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="ApplicantProfile" Association="EDM.Store.ApplicantProfile">
+      <End Role="Applicant" EntitySet="Accounts_Applicant" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
+    <AssociationSet Name="PathAdminPath" Association="EDM.Store.PathAdminPath">
+      <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
+      <End Role="Path" EntitySet="Paths" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HiringManager_inherits_Account" Association="EDM.Store.FK_HiringManager_inherits_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Applicant_inherits_Account" Association="EDM.Store.FK_Applicant_inherits_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Applicant" EntitySet="Accounts_Applicant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="EDM.Store.FK_PathAdmin_inherits_Account">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="JobPostings">
+    <Key>
+      <PropertyRef Name="jobId" />
+    </Key>
+    <Property Name="jobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="jobTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="jobDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="jobSalary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="numOfPositions" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HiringManager_userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Applications">
+    <Key>
+      <PropertyRef Name="appId" />
+    </Key>
+    <Property Name="appId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="profileId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="JobPosting_jobId" Type="int" Nullable="false" />
+    <Property Name="Profile_profileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profiles">
+    <Key>
+      <PropertyRef Name="profileId" />
+    </Key>
+    <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="experience" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="careerPath" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="careerPathCompletion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="courseId" />
+    </Key>
+    <Property Name="courseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="courseCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="courseTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="learningHours" Type="int" Nullable="false" />
+    <Property Name="SkillBadge_skillBadgeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paths">
+    <Key>
+      <PropertyRef Name="pathId" />
+    </Key>
+    <Property Name="pathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PathAdmin_userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkillBadges">
+    <Key>
+      <PropertyRef Name="skillBadgeId" />
+    </Key>
+    <Property Name="skillBadgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="skillCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="skillName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="skillDescription" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemQuestions">
+    <Key>
+      <PropertyRef Name="questionSetId" />
+    </Key>
+    <Property Name="questions" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="answers" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="false" />
+    <Property Name="Path_pathId" Type="int" Nullable="false" />
+    <Property Name="Profile_profileId" Type="int" Nullable="false" />
+    <Property Name="questionSetId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts_HiringManager">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="HiringManagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="companyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="position" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts_Applicant">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="ApplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrailHeadUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="Profile_profileId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts_PathAdmin">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="pathAdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PathCourse">
+    <Key>
+      <PropertyRef Name="Paths_pathId" />
+      <PropertyRef Name="Courses_courseId" />
+    </Key>
+    <Property Name="Paths_pathId" Type="int" Nullable="false" />
+    <Property Name="Courses_courseId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SkillBadgeProfile">
+    <Key>
+      <PropertyRef Name="SkillBadges_skillBadgeId" />
+      <PropertyRef Name="Profiles_profileId" />
+    </Key>
+    <Property Name="SkillBadges_skillBadgeId" Type="int" Nullable="false" />
+    <Property Name="Profiles_profileId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="HiringManagerJobPosting">
+    <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="1" />
+    <End Role="JobPosting" Type="EDM.Store.JobPostings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HiringManager">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="JobPosting">
+        <PropertyRef Name="HiringManager_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationJobPosting">
+    <End Role="Application" Type="EDM.Store.Applications" Multiplicity="*" />
+    <End Role="JobPosting" Type="EDM.Store.JobPostings" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="JobPosting">
+        <PropertyRef Name="jobId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="JobPosting_jobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicationProfile">
+    <End Role="Application" Type="EDM.Store.Applications" Multiplicity="*" />
+    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Profile_profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseSkillBadge">
+    <End Role="Course" Type="EDM.Store.Courses" Multiplicity="*" />
+    <End Role="SkillBadge" Type="EDM.Store.SkillBadges" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SkillBadge">
+        <PropertyRef Name="skillBadgeId" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="SkillBadge_skillBadgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PathSystemQuestions">
+    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
+    <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Path">
+        <PropertyRef Name="pathId" />
+      </Principal>
+      <Dependent Role="SystemQuestions">
+        <PropertyRef Name="Path_pathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfileSystemQuestions">
+    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
+    <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="SystemQuestions">
+        <PropertyRef Name="Profile_profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ApplicantProfile">
+    <End Role="Applicant" Type="EDM.Store.Accounts_Applicant" Multiplicity="*" />
+    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="Profile_profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PathAdminPath">
+    <End Role="PathAdmin" Type="EDM.Store.Accounts_PathAdmin" Multiplicity="1" />
+    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PathAdmin">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Path">
+        <PropertyRef Name="PathAdmin_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PathCourse_Path">
+    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
+    <End Role="PathCourse" Type="EDM.Store.PathCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Path">
+        <PropertyRef Name="pathId" />
+      </Principal>
+      <Dependent Role="PathCourse">
+        <PropertyRef Name="Paths_pathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PathCourse_Course">
+    <End Role="PathCourse" Type="EDM.Store.PathCourse" Multiplicity="*" />
+    <End Role="Course" Type="EDM.Store.Courses" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="courseId" />
+      </Principal>
+      <Dependent Role="PathCourse">
+        <PropertyRef Name="Courses_courseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkillBadgeProfile_SkillBadge">
+    <End Role="SkillBadge" Type="EDM.Store.SkillBadges" Multiplicity="1" />
+    <End Role="SkillBadgeProfile" Type="EDM.Store.SkillBadgeProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillBadge">
+        <PropertyRef Name="skillBadgeId" />
+      </Principal>
+      <Dependent Role="SkillBadgeProfile">
+        <PropertyRef Name="SkillBadges_skillBadgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SkillBadgeProfile_Profile">
+    <End Role="SkillBadgeProfile" Type="EDM.Store.SkillBadgeProfile" Multiplicity="*" />
+    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="SkillBadgeProfile">
+        <PropertyRef Name="Profiles_profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HiringManager_inherits_Account">
+    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="HiringManager">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Applicant_inherits_Account">
+    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Applicant" Type="EDM.Store.Accounts_Applicant" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Applicant">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PathAdmin_inherits_Account">
+    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PathAdmin" Type="EDM.Store.Accounts_PathAdmin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="PathAdmin">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EDM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EDMContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="EDM.Account" />
+          <EntitySet Name="JobPostings" EntityType="EDM.JobPosting" />
+          <EntitySet Name="Applications" EntityType="EDM.Application" />
+          <AssociationSet Name="HiringManagerJobPosting" Association="EDM.HiringManagerJobPosting">
+            <End Role="HiringManager" EntitySet="Accounts" />
+            <End Role="JobPosting" EntitySet="JobPostings" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationJobPosting" Association="EDM.ApplicationJobPosting">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="JobPosting" EntitySet="JobPostings" />
+          </AssociationSet>
+          <EntitySet Name="Profiles" EntityType="EDM.Profile" />
+          <AssociationSet Name="ApplicationProfile" Association="EDM.ApplicationProfile">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <EntitySet Name="Courses" EntityType="EDM.Course" />
+          <EntitySet Name="Paths" EntityType="EDM.Path" />
+          <AssociationSet Name="PathCourse" Association="EDM.PathCourse">
+            <End Role="Path" EntitySet="Paths" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <EntitySet Name="SkillBadges" EntityType="EDM.SkillBadge" />
+          <AssociationSet Name="CourseSkillBadge" Association="EDM.CourseSkillBadge">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="SkillBadge" EntitySet="SkillBadges" />
+          </AssociationSet>
+          <AssociationSet Name="SkillBadgeProfile" Association="EDM.SkillBadgeProfile">
+            <End Role="SkillBadge" EntitySet="SkillBadges" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <EntitySet Name="SystemQuestions" EntityType="EDM.SystemQuestions" />
+          <AssociationSet Name="PathSystemQuestions" Association="EDM.PathSystemQuestions">
+            <End Role="Path" EntitySet="Paths" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="ProfileSystemQuestions" Association="EDM.ProfileSystemQuestions">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicantProfile" Association="EDM.ApplicantProfile">
+            <End Role="Applicant" EntitySet="Accounts" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="PathAdminPath" Association="EDM.PathAdminPath">
+            <End Role="PathAdmin" EntitySet="Accounts" />
+            <End Role="Path" EntitySet="Paths" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" />
+          <Property Name="lastName" Type="String" Nullable="false" />
+          <Property Name="emailID" Type="String" Nullable="false" />
+          <Property Name="userType" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobPosting">
+          <Key>
+            <PropertyRef Name="jobId" />
+          </Key>
+          <Property Name="jobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Property1" Type="String" Nullable="false" />
+          <Property Name="jobTitle" Type="String" Nullable="false" />
+          <Property Name="jobDescription" Type="String" Nullable="false" />
+          <Property Name="jobSalary" Type="String" Nullable="false" />
+          <Property Name="numOfPositions" Type="String" Nullable="false" />
+          <NavigationProperty Name="HiringManager" Relationship="EDM.HiringManagerJobPosting" FromRole="JobPosting" ToRole="HiringManager" />
+          <Property Name="HiringManager_userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="EDM.ApplicationJobPosting" FromRole="JobPosting" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="PathAdmin" BaseType="EDM.Account">
+          <Property Name="pathAdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pathType" Type="String" Nullable="false" />
+          <NavigationProperty Name="Paths" Relationship="EDM.PathAdminPath" FromRole="PathAdmin" ToRole="Path" />
+        </EntityType>
+        <EntityType Name="Applicant" BaseType="EDM.Account">
+          <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrailHeadUrl" Type="String" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="EDM.ApplicantProfile" FromRole="Applicant" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="HiringManager" BaseType="EDM.Account">
+          <Property Name="HiringManagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyName" Type="String" Nullable="false" />
+          <Property Name="position" Type="String" Nullable="false" />
+          <NavigationProperty Name="JobPostings" Relationship="EDM.HiringManagerJobPosting" FromRole="HiringManager" ToRole="JobPosting" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="appId" />
+          </Key>
+          <Property Name="appId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="profileId" Type="String" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" />
+          <NavigationProperty Name="JobPosting" Relationship="EDM.ApplicationJobPosting" FromRole="Application" ToRole="JobPosting" />
+          <Property Name="JobPosting_jobId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="EDM.ApplicationProfile" FromRole="Application" ToRole="Profile" />
+          <Property Name="Profile_profileId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="HiringManagerJobPosting">
+          <End Type="EDM.HiringManager" Role="HiringManager" Multiplicity="1" />
+          <End Type="EDM.JobPosting" Role="JobPosting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HiringManager">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="JobPosting">
+              <PropertyRef Name="HiringManager_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationJobPosting">
+          <End Type="EDM.Application" Role="Application" Multiplicity="*" />
+          <End Type="EDM.JobPosting" Role="JobPosting" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="JobPosting">
+              <PropertyRef Name="jobId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="JobPosting_jobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="experience" Type="String" Nullable="false" />
+          <Property Name="careerPath" Type="String" Nullable="false" />
+          <Property Name="careerPathCompletion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="EDM.ApplicationProfile" FromRole="Profile" ToRole="Application" />
+          <NavigationProperty Name="SkillBadges" Relationship="EDM.SkillBadgeProfile" FromRole="Profile" ToRole="SkillBadge" />
+          <NavigationProperty Name="SystemQuestions" Relationship="EDM.ProfileSystemQuestions" FromRole="Profile" ToRole="SystemQuestions" />
+          <NavigationProperty Name="Applicant" Relationship="EDM.ApplicantProfile" FromRole="Profile" ToRole="Applicant" />
+        </EntityType>
+        <Association Name="ApplicationProfile">
+          <End Type="EDM.Application" Role="Application" Multiplicity="*" />
+          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="profileId" />
+            </Principal>
+            <Dependent Role="Application">
+              <PropertyRef Name="Profile_profileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="courseId" />
+          </Key>
+          <Property Name="courseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="courseCode" Type="String" Nullable="false" />
+          <Property Name="courseTitle" Type="String" Nullable="false" />
+          <Property Name="learningHours" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Paths" Relationship="EDM.PathCourse" FromRole="Course" ToRole="Path" />
+          <NavigationProperty Name="SkillBadge" Relationship="EDM.CourseSkillBadge" FromRole="Course" ToRole="SkillBadge" />
+        </EntityType>
+        <EntityType Name="Path">
+          <Key>
+            <PropertyRef Name="pathId" />
+          </Key>
+          <Property Name="pathId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pathType" Type="String" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="EDM.PathCourse" FromRole="Path" ToRole="Course" />
+          <NavigationProperty Name="SystemQuestions" Relationship="EDM.PathSystemQuestions" FromRole="Path" ToRole="SystemQuestions" />
+          <NavigationProperty Name="PathAdmin" Relationship="EDM.PathAdminPath" FromRole="Path" ToRole="PathAdmin" />
+          <Property Name="PathAdmin_userID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PathCourse">
+          <End Type="EDM.Path" Role="Path" Multiplicity="*" />
+          <End Type="EDM.Course" Role="Course" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SkillBadge">
+          <Key>
+            <PropertyRef Name="skillBadgeId" />
+          </Key>
+          <Property Name="skillBadgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="skillCode" Type="String" Nullable="false" />
+          <Property Name="skillName" Type="String" Nullable="false" />
+          <Property Name="skillDescription" Type="String" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="EDM.CourseSkillBadge" FromRole="SkillBadge" ToRole="Course" />
+          <NavigationProperty Name="Profiles" Relationship="EDM.SkillBadgeProfile" FromRole="SkillBadge" ToRole="Profile" />
+        </EntityType>
+        <Association Name="CourseSkillBadge">
+          <End Type="EDM.Course" Role="Course" Multiplicity="1" />
+          <End Type="EDM.SkillBadge" Role="SkillBadge" Multiplicity="1" />
+        </Association>
+        <Association Name="SkillBadgeProfile">
+          <End Type="EDM.SkillBadge" Role="SkillBadge" Multiplicity="*" />
+          <End Type="EDM.Profile" Role="Profile" Multiplicity="*" />
+        </Association>
+        <EntityType Name="SystemQuestions" >
+          <Key>
+            <PropertyRef Name="questionSetId" />
+          </Key>
+          <Property Name="questions" Type="String" Nullable="false" />
+          <Property Name="answers" Type="String" Nullable="false" />
+          <Property Name="score" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Path" Relationship="EDM.PathSystemQuestions" FromRole="SystemQuestions" ToRole="Path" />
+          <Property Name="Path_pathId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="EDM.ProfileSystemQuestions" FromRole="SystemQuestions" ToRole="Profile" />
+          <Property Name="Profile_profileId" Type="Int32" Nullable="false" />
+          <Property Name="questionSetId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PathSystemQuestions">
+          <End Type="EDM.Path" Role="Path" Multiplicity="1" />
+          <End Type="EDM.SystemQuestions" Role="SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Path">
+              <PropertyRef Name="pathId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Path_pathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProfileSystemQuestions">
+          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
+          <End Type="EDM.SystemQuestions" Role="SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="profileId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Profile_profileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicantProfile">
+          <End Type="EDM.Applicant" Role="Applicant" Multiplicity="1" />
+          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
+        </Association>
+        <Association Name="PathAdminPath">
+          <End Type="EDM.PathAdmin" Role="PathAdmin" Multiplicity="1" />
+          <End Type="EDM.Path" Role="Path" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PathAdmin">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Path">
+              <PropertyRef Name="PathAdmin_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EDMStoreContainer" CdmEntityContainer="EDMContainer">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Account)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="emailID" ColumnName="emailID" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.HiringManager)">
+        <MappingFragment StoreEntitySet="Accounts_HiringManager">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="HiringManagerId" ColumnName="HiringManagerId" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="position" ColumnName="position" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Applicant)">
+        <MappingFragment StoreEntitySet="Accounts_Applicant">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="TrailHeadUrl" ColumnName="TrailHeadUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.PathAdmin)">
+        <MappingFragment StoreEntitySet="Accounts_PathAdmin">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="pathAdminId" ColumnName="pathAdminId" />
+          <ScalarProperty Name="pathType" ColumnName="pathType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobPostings">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.JobPosting)">
+        <MappingFragment StoreEntitySet="JobPostings">
+          <ScalarProperty Name="jobId" ColumnName="jobId" />
+          <ScalarProperty Name="Property1" ColumnName="Property1" />
+          <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+          <ScalarProperty Name="jobDescription" ColumnName="jobDescription" />
+          <ScalarProperty Name="jobSalary" ColumnName="jobSalary" />
+          <ScalarProperty Name="numOfPositions" ColumnName="numOfPositions" />
+          <ScalarProperty Name="HiringManager_userID" ColumnName="HiringManager_userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Applications">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Application)">
+        <MappingFragment StoreEntitySet="Applications">
+          <ScalarProperty Name="appId" ColumnName="appId" />
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="JobPosting_jobId" ColumnName="JobPosting_jobId" />
+          <ScalarProperty Name="Profile_profileId" ColumnName="Profile_profileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profiles">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Profile)">
+        <MappingFragment StoreEntitySet="Profiles">
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="careerPath" ColumnName="careerPath" />
+          <ScalarProperty Name="careerPathCompletion" ColumnName="careerPathCompletion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Course)">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="courseId" ColumnName="courseId" />
+          <ScalarProperty Name="courseCode" ColumnName="courseCode" />
+          <ScalarProperty Name="courseTitle" ColumnName="courseTitle" />
+          <ScalarProperty Name="learningHours" ColumnName="learningHours" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Paths">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Path)">
+        <MappingFragment StoreEntitySet="Paths">
+          <ScalarProperty Name="pathId" ColumnName="pathId" />
+          <ScalarProperty Name="pathType" ColumnName="pathType" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="PathAdmin_userID" ColumnName="PathAdmin_userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SkillBadges">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.SkillBadge)">
+        <MappingFragment StoreEntitySet="SkillBadges">
+          <ScalarProperty Name="skillBadgeId" ColumnName="skillBadgeId" />
+          <ScalarProperty Name="skillCode" ColumnName="skillCode" />
+          <ScalarProperty Name="skillName" ColumnName="skillName" />
+          <ScalarProperty Name="skillDescription" ColumnName="skillDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemQuestions">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.SystemQuestions)">
+        <MappingFragment StoreEntitySet="SystemQuestions">
+          <ScalarProperty Name="questionSetId" ColumnName="questionSetId" />
+          <ScalarProperty Name="questions" ColumnName="questions" />
+          <ScalarProperty Name="answers" ColumnName="answers" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="Path_pathId" ColumnName="Path_pathId" />
+          <ScalarProperty Name="Profile_profileId" ColumnName="Profile_profileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PathCourse" TypeName="EDM.PathCourse" StoreEntitySet="PathCourse">
+      <EndProperty Name="Path">
+        <ScalarProperty Name="pathId" ColumnName="Paths_pathId" />
+      </EndProperty>
+      <EndProperty Name="Course">
+        <ScalarProperty Name="courseId" ColumnName="Courses_courseId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CourseSkillBadge" TypeName="EDM.CourseSkillBadge" StoreEntitySet="Courses">
+      <EndProperty Name="SkillBadge">
+        <ScalarProperty Name="skillBadgeId" ColumnName="SkillBadge_skillBadgeId" />
+      </EndProperty>
+      <EndProperty Name="Course">
+        <ScalarProperty Name="courseId" ColumnName="courseId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SkillBadgeProfile" TypeName="EDM.SkillBadgeProfile" StoreEntitySet="SkillBadgeProfile">
+      <EndProperty Name="SkillBadge">
+        <ScalarProperty Name="skillBadgeId" ColumnName="SkillBadges_skillBadgeId" />
+      </EndProperty>
+      <EndProperty Name="Profile">
+        <ScalarProperty Name="profileId" ColumnName="Profiles_profileId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ApplicantProfile" TypeName="EDM.ApplicantProfile" StoreEntitySet="Accounts_Applicant">
+      <EndProperty Name="Profile">
+        <ScalarProperty Name="profileId" ColumnName="Profile_profileId" />
+      </EndProperty>
+      <EndProperty Name="Applicant">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
