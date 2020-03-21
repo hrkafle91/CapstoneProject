@@ -6,23 +6,14 @@
     <title> - Salesforce</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Styles/layout_styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+            <div class="navbar-brand navbar-collapse collapse" id="navbarResponsive">
+                <img src="~/Images/logo.png" width=70 height=70 />
                 @Html.ActionLink("Application name", "Index", "RegisterAccount", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Register", "Index", "RegisterAccount")</li>
-                    <li>@Html.ActionLink("Login", "login", "RegisterAccount")</li>
-                </ul>
             </div>
         </div>
     </div>
@@ -30,7 +21,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Salesforce</p>
+            <svg id="svgFooter" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 901 345.6">
+                <defs></defs>
+                <path class="cls-1" d="M0,376.41l114.73-58.23,98.11,29.11,162-63.92,96.84,43,148.1-70.26,79.74,41.14L900,215.65V560H0Z" transform="translate(0.5 -214.9)" />
+                <path class="cls-1" d="M649.54-4" transform="translate(0.5 -214.9)" />
+                <image x="15%" y="42%" href="~/Images/logo.png" width="70px" height="70px" />
+                <text x="45%" y="45%" dominant-baseline="middle" text-anchor="middle" stroke="white">About Us</text>
+                <text x="75%" y="45%" dominant-baseline="middle" text-anchor="middle" stroke="white">Contact Us</text>
+            </svg>
         </footer>
     </div>
 
