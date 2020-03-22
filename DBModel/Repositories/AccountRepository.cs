@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Interfaces;
+using DBModel.Interfaces;
 using DBModel;
 
-namespace Repositories
+namespace DBModel.Repositories
 {
     public class AccountRepository : IAccountRepository
     {

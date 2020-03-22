@@ -7,8 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DBModel;
-using Interfaces;
-using Repositories;
+using DBModel.Repositories;
 
 namespace Capstone.Web.Controllers
 {

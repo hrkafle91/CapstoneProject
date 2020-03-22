@@ -83,6 +83,7 @@
     <Compile Include="HiringManager.cs">
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IAccountRepository.cs" />
     <Compile Include="JobPosting.cs">
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
@@ -96,6 +97,7 @@
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="SkillBadge.cs">
       <DependentUpon>EDM.tt</DependentUpon>
     </Compile>
@@ -132,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Metadata\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

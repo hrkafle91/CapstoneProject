@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DBModel;
 
-namespace Interfaces
+namespace DBModel.Interfaces
 {
     public interface IAccountRepository : IDisposable
     {
