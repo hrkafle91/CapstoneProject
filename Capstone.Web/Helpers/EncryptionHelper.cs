@@ -5,6 +5,9 @@ using System.Web;
 
 namespace Capstone.Web.Helpers
 {
+    /// <summary>
+    /// Class that helps in encryption process
+    /// </summary>
     public class EncryptionHelper
     {
     }
