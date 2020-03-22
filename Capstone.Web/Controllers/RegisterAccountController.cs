@@ -121,5 +121,24 @@ namespace Capstone.Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        /// <summary>
+        /// Method to send passcode to the registrant during registration process
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
+        public ActionResult SendPasscode(Account account)
+        {
+            if (account == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            int passcode = Helpers.EmailHelper.SendPasscode(account);
+            if (passcode == 0)
+            {
+                return HttpNotFound();
+            }
+            return View(true);
+        }
     }
 }
