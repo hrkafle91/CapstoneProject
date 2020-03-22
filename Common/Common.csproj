@@ -44,5 +44,11 @@
     <Compile Include="Enumerations\UserTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBModel\DBModel.csproj">
+      <Project>{62e5c29e-b6b0-4628-ba7c-23ba03851528}</Project>
+      <Name>DBModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
