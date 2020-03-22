@@ -1,7 +1,23 @@
 ﻿
 @{
-    ViewBag.Title = "VerifyEmail";
+	ViewBag.Title = "VerifyEmail";
 }
 
 <h2>VerifyEmail</h2>
 
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<p>A verification code has been sent to the email you provided.</p>
+	<div class="row d-flex justify-content-center">
+		<h3>Enter the verification code</h3>
+		<input type="text">
+		<input type="text">
+		<input type="text">
+	</div>
+	<input type="submit" value="Verify">
+	<br />
+	<br />
+	<input type="submit" value="Resend Code">
+}
