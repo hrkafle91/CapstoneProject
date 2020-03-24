@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DBModel;
 using DBModel.Repositories;
+using Capstone.Web.Helpers;
 
 namespace Capstone.Web.Controllers
 {
@@ -52,11 +53,21 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.Add(account);
-                return RedirectToAction("Index");
+                int passcode = Helpers.EmailHelper.SendPasscode(account);
+                TempData["passcode"] = passcode;
+                TempData["account"] = account;
+                if (passcode != 0)
+                {
+                    return RedirectToAction("VerifyEmail");
+                }            
             }
+            return View();
+        }
 
-            return View(account);
+        // GET: RegisterAccount/Create
+        public ActionResult VerifyEmail()
+        {
+            return View();
         }
 
         // GET: RegisterAccount/Edit/5
@@ -113,6 +124,29 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult ConfirmEmailValidation(int? enteredCode)
+        {
+            int generatedCode = (int)TempData["passcode"];
+            Account account = (Account)TempData["account"];
+            if (enteredCode.Value == generatedCode)
+            {
+                repo.Add(account);
+                return Json(true);
+            }
+            else
+                return Json(false);
+        }
+
+        public ActionResult ResendPasscode()
+        {
+            LogHelper.WriteLog("line 143");
+            Account account = (Account)TempData["account"];
+            int passcode = Helpers.EmailHelper.SendPasscode(account);
+            TempData["passcode"] = passcode;
+            return RedirectToAction("VerifyEmail");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -120,25 +154,6 @@ namespace Capstone.Web.Controllers
                 repo.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        /// <summary>
-        /// Method to send passcode to the registrant during registration process
-        /// </summary>
-        /// <param name="account"></param>
-        /// <returns></returns>
-        public ActionResult SendPasscode(Account account)
-        {
-            if (account == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            int passcode = Helpers.EmailHelper.SendPasscode(account);
-            if (passcode == 0)
-            {
-                return HttpNotFound();
-            }
-            return View(true);
         }
     }
 }

@@ -12,12 +12,49 @@
 	<p>A verification code has been sent to the email you provided.</p>
 	<div class="row d-flex justify-content-center">
 		<h3>Enter the verification code</h3>
-		<input type="text">
-		<input type="text">
-		<input type="text">
+		<input type="text" id="verifyCode">
 	</div>
-	<input type="submit" value="Verify">
+    <div>
+        <span id="message" class="text-danger"></span>
+    </div>
+	<input type="submit" value="Verify" id="btnVerify">
 	<br />
 	<br />
-	<input type="submit" value="Resend Code">
+	<input type="submit" value="Resend Code" id="btnResend">
+}
+
+@section Scripts {
+;
+	<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnVerify").on('click', function () {
+                var code = $('#verifyCode').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("ConfirmEmailValidation", "RegisterAccount")',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ enteredCode: code }),
+                    dataType: "json",
+                    success: function (data) {
+                        if (data === true) {
+                            $('#message').text = "Your email address has been verified";
+                        } else {
+                            $('#message').text = "The entered code is incorrect. Please try again.";
+                        }
+                    },
+                    error: function (m) {
+
+                    },
+                })
+            });
+
+            $("#btnResend").on('click', function () {
+                $.ajax({
+                    url: '@Url.Action("ResendPasscode", "RegisterAccount")'
+                });
+            });
+
+        })
+	</script>
 }
