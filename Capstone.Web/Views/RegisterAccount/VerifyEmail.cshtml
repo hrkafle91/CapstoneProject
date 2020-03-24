@@ -3,25 +3,40 @@
 	ViewBag.Title = "VerifyEmail";
 }
 
-<h2>VerifyEmail</h2>
-
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
 
-	<p>A verification code has been sent to the email you provided.</p>
-	<div class="row d-flex justify-content-center">
-		<h3>Enter the verification code</h3>
-		<input type="text" id="verifyCode">
-	</div>
-    <div>
-        <span id="message" class="text-danger"></span>
+    <div class="container cloudBox">
+        <div class="row">
+            <div class="col-md-3 cloud-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <p>BLAZE YOUR TRAIL!</p>
+            </div>
+            <div class="col-md-8">
+                <img src="~/Images/cloud.png" style="width:700px; height:500px;">
+
+                <div class="cloudText" style="top:30%; width:75%;">
+
+                    <h3>A verification code has been sent to the email you provided.</h3><br /><br />
+                    <div class="row">
+                        <p class="col">Enter the verification code:</p>
+                        <input class="col form-control" type="text" id="verifyCode">
+                    </div>
+                    <div>
+                        <span id="message" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <br />
+                    <input type="submit" value="Verify" class="btnLoginRegister" id="btnVerify">
+                    <input type="submit" value="Resend Code" class="btnLoginRegister" id="btnResend">
+                </div>
+            </div>
+        </div>
     </div>
-	<input type="submit" value="Verify" id="btnVerify">
-	<br />
-	<br />
-	<input type="submit" value="Resend Code" id="btnResend">
 }
+
+
 
 @section Scripts {
 ;
