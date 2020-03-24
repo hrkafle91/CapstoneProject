@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DBModel.Metadata
+namespace DBModel
 {
 	public class AccountMetadata
 	{

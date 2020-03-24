@@ -1,7 +1,7 @@
 ﻿/* CSS Styles for Layout view */
 
 div {
-    line-height: 75%;
+    line-height: 60%;
 }
 
 #navBtn {
@@ -65,3 +65,4 @@ div {
     cursor: pointer;
     font-size: 12px;
 }
+

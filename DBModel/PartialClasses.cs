@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace DBModel.Metadata
+namespace DBModel
 {
     [MetadataType(typeof(AccountMetadata))]
     public partial class Account
     {
-
+        
     }
 }
