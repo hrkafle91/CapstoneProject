@@ -9,6 +9,9 @@ using System.Web.Mvc;
 using DBModel;
 using DBModel.Repositories;
 using Capstone.Web.Helpers;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace Capstone.Web.Controllers
 {
@@ -54,7 +57,10 @@ namespace Capstone.Web.Controllers
             if (ModelState.IsValid)
             {
                 //repo.Add(account);
-                int passcode = Helpers.EmailHelper.SendPasscode(account);
+                PasscodeHelper helper = new PasscodeHelper();
+                int passcode = helper.GetPasscode();
+                SendEmail(account, passcode).Wait();
+                //int passcode = Helpers.EmailHelper.SendPasscode(account);
                 TempData["passcode"] = passcode;
                 TempData["account"] = account;
                 if (passcode != 0)
@@ -63,6 +69,35 @@ namespace Capstone.Web.Controllers
                 }            
             }
             return View();
+        }
+
+        static async Task SendEmail(Account account, int passcode)
+        {
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var client = new SendGridClient(apiKey);
+
+            var msg = new SendGridMessage();
+
+            msg.SetFrom(new EmailAddress("noreply.nrnacanada@gmail.com", "TRIOS Capstone"));
+
+            var recipients = new List<EmailAddress>
+            {
+                new EmailAddress(account.emailID, account.firstName + ' ' + account.lastName),
+            };
+
+            msg.AddTos(recipients);
+
+            msg.SetSubject("Passcode for Registration");
+
+            string content = $"<p>Hello {account.firstName } {account.lastName},</p>" +
+                $"<br><p>Please use {passcode} as a passcode for registration.</p>" +
+                $"<br><p>Thank you...</p>" +
+                $"<br><h3>TRIOS Capstone Team</h3>";
+
+            //msg.AddContent(MimeType.Text, "Hello World plain text!");
+            msg.AddContent(MimeType.Html, content);
+
+            var response = await client.SendEmailAsync(msg);
         }
 
         // GET: RegisterAccount/Create
@@ -142,7 +177,9 @@ namespace Capstone.Web.Controllers
         public ActionResult ResendPasscode()
         {
             Account account = (Account)TempData["account"];
-            int passcode = Helpers.EmailHelper.SendPasscode(account);
+            PasscodeHelper helper = new PasscodeHelper();
+            int passcode = helper.GetPasscode();
+            SendEmail(account, passcode).Wait();
             TempData["passcode"] = passcode;
             return RedirectToAction("VerifyEmail");
         }
