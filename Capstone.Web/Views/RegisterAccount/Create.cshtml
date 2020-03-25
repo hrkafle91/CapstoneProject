@@ -9,6 +9,25 @@
     <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#confirmPassword").keyup(validate);
+        });
+
+
+        function validate() {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirmPassword").val();
+
+            if (password == confirmPassword) {
+                $("#validate-status").text("");
+            }
+            else {
+                $("#validate-status").text("Password's don't match!").css({ 'color': 'red' });
+            }
+
+        }
+    </script>
     
 @using (Html.BeginForm())
 {
@@ -38,7 +57,7 @@
                     <div class="form-group row">
 
                         <div class="col-md-6">
-                            @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })                          
+                            @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Last Name" } })
                         </div>
                         <div class="col">
                             @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
@@ -66,7 +85,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-6" id="pass">
-                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", id = "password" } })
                         </div>
                         <div class="col">
                             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
@@ -75,14 +94,16 @@
 
                     <div class="form-group row">
                         <div class="col-md-6" id="confirm">
-                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password" } })
-                            
-                        </div>
-                        <div class="col">
-                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+                            <input type="text" id="confirmPassword" placeholder="Confirm Password" class="form-control"><br><br>
+                            @*@Html.EditorFor(new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", id = "confirmPassword" } })*@
 
+                        </div>
+                        <div class="col" id="validate-status"></div>
+                        @*<div class="col">
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" , id = "validate-status"})
+                        </div>*@
+                    </div>
+                    
                     <div class="form-group row">
 
                         <div class="col-md-6">
@@ -109,7 +130,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input id="submit" type="submit" class="btnLoginRegister" value="Register" />
-                            <button type="button" class="btnLoginRegister">@Html.ActionLink("Cancel","Index","LoginAccount")</button>
+                            <button type="button" class="btnLoginRegister" OnClientClick="confirmPassword()">@Html.ActionLink("Cancel", "Index", "LoginAccount")</button>
                         </div>
                     </div>
                 </div>
