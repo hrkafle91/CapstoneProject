@@ -141,7 +141,6 @@ namespace Capstone.Web.Controllers
 
         public ActionResult ResendPasscode()
         {
-            LogHelper.WriteLog("line 143");
             Account account = (Account)TempData["account"];
             int passcode = Helpers.EmailHelper.SendPasscode(account);
             TempData["passcode"] = passcode;

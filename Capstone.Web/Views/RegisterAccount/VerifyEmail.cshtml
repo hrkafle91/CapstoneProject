@@ -17,8 +17,6 @@
                 <img src="~/Images/cloud.png" style="width:700px; height:500px;">
 
                 <div class="cloudText" style="top:30%; width:75%;">
-
-                    <h3>A verification code has been sent to the email you provided.</h3><br /><br />
                     <div class="row">
                         <p class="col">Enter the verification code:</p>
                         <input class="col form-control" type="text" id="verifyCode">
@@ -42,7 +40,6 @@
 ;
 	<script type="text/javascript">
         $(document).ready(function () {
-
             $("#btnVerify").on('click', function () {
                 var code = $('#verifyCode').val();
                 $.ajax({
@@ -53,15 +50,15 @@
                     dataType: "json",
                     success: function (data) {
                         if (data === true) {
-                            $('#message').text = "Your email address has been verified";
+                            alert("Your account has been created");
                         } else {
-                            $('#message').text = "The entered code is incorrect. Please try again.";
+                            alert("Your account could not be created");
                         }
                     },
                     error: function (m) {
 
                     },
-                })
+                });
             });
 
             $("#btnResend").on('click', function () {
@@ -69,7 +66,7 @@
                     url: '@Url.Action("ResendPasscode", "RegisterAccount")'
                 });
             });
-
         })
+
 	</script>
 }
