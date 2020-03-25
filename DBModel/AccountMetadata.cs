@@ -19,6 +19,7 @@ namespace DBModel
         [StringLength(8, MinimumLength = 8, ErrorMessage = "Password should be exactly 8 characters long")]
         [Required(ErrorMessage = "Password is required.")]
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string password { get; set; }
 
         [Required(ErrorMessage = "First Name is required.")]
