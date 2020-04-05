@@ -1,34 +1,70 @@
-﻿
+﻿@model Capstone.Web.ViewModels.LoginViewModel
+@using Mvc.Honeypot;
+
 @{
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm())
-{
-<div class="container cloudBox">
-    <div class="row">
-        <div class="col-md-3 cloud-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <p>BLAZE YOUR TRAIL!</p>
-        </div>
-        <div class="col-md-8">
-            <img src="~/Images/cloud.png" style="width:700px; height:500px;">
+    <div class="container cloudBox">
+        <div class="row">
+            <div class="col-md-3 cloud-left">
+                <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+                <p>BLAZE YOUR TRAIL!</p>
+            </div>
+            <div class="col-md-8">
+                <img src="~/Images/cloud.png" style="width:700px; height:500px;">
 
-            <div class="cloudText" style="top:30%; width:75%;">
-                <div class="form-group d-flex justify-content-center">
-                    <input type="email" class="form-control" placeholder="Username" value="" />
-                </div>
+                <div class="cloudText" style="top:30%; width:75%;">
+                    <div class="form-group d-flex justify-content-center">
+                        @Html.EditorFor(model => model.emailID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Address" } })
+                    </div>
 
-                <div class="form-group d-flex justify-content-center">
-                    <input type="password" class="form-control" placeholder="Password" value="" />
-                </div>
+                    <div class="form-group d-flex justify-content-center">
+                        @Html.PasswordFor(m => m.password, new { @id = "form-password", @name = "form-password", @class = "form-password form-control", @placeholder = "Password", @onBlur = "if(this.value == '') this.value = 'Password'", @onFocus = "if(this.value == 'Password') this.value = ''", @autocomplete = "off" })
+                    </div>
 
-                <div class="form-group ml-lg-5">
-                    <input type="submit" class="btnLoginRegister" value="Login" />
-                    <button class="btnLoginRegister">@Html.ActionLink("Register", "Create", "RegisterAccount")</button>
+                    <div class="form-group d-flex justify-content-center">
+                        <p id="message" style="color:red;">The username and/or password is/are incorrect.</p>
+                    </div>
+
+                    <div class="form-group ml-lg-5">
+                        <input type="submit" class="btnLoginRegister" value="Login" id="btnLogin"/>
+                        <button class="btnLoginRegister">@Html.ActionLink("Register", "Create", "RegisterAccount")</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#message").hide();
+            $("#btnLogin").on('click', function () {
+                var username = $('#emailID').val();
+                var password = $('#form-password').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("VerifyAccount", "LoginAccount")',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ emailId: username, password: password }),
+                    dataType: "json",
+                    async: false,
+                    success: function (data) {
+                        if (data == true) {
+                            window.location.href = '@Url.Action("Index", "Home")';
+                        } else {
+                            $("#message").show();
+                            $('#form-password').val('');
+                        }
+                    },
+                    error: function (m) {
+
+                    },
+                });
+            });        
+        })
+
+    </script>
 }
