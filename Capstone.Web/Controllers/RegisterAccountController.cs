@@ -59,7 +59,7 @@ namespace Capstone.Web.Controllers
                 //repo.Add(account);
                 PasscodeHelper helper = new PasscodeHelper();
                 int passcode = helper.GetPasscode();
-                SendEmail(account, passcode).Wait();
+                SendEmail(account, passcode);
                 //int passcode = Helpers.EmailHelper.SendPasscode(account);
                 TempData["passcode"] = passcode;
                 TempData["account"] = account;
@@ -73,7 +73,7 @@ namespace Capstone.Web.Controllers
 
         static async Task SendEmail(Account account, int passcode)
         {
-            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_WEB_API");
             var client = new SendGridClient(apiKey);
 
             var msg = new SendGridMessage();
