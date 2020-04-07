@@ -131,7 +131,7 @@ namespace Capstone.Web.Controllers
             if (ModelState.IsValid)
             {
                 repo.Edit(account);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             return View(account);
         }
@@ -157,7 +157,7 @@ namespace Capstone.Web.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             repo.Delete(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "LoginAccount");
         }
 
         [HttpPost]

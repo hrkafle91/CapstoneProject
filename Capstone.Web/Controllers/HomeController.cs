@@ -16,8 +16,7 @@ namespace Capstone.Web.Controllers
             var user = Session["user"] as Account;
             if(user != null)
             {
-                ViewData["username"] = user.userName;
-                return View();
+                return View(user);
             } 
             else
             {
@@ -34,6 +33,11 @@ namespace Capstone.Web.Controllers
         public ActionResult Edit(int? id)
         {
             return RedirectToAction("Edit/"+id, "RegisterAccount");
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            return RedirectToAction("Delete/" + id, "RegisterAccount");
         }
     }
 }

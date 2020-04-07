@@ -35,6 +35,7 @@ namespace DBModel
         public string emailID { get; set; }
 
         [Required(ErrorMessage = "User Type is required.")]
+        [Display(Name = "Type")]
         public string userType { get; set; }
     }
 }

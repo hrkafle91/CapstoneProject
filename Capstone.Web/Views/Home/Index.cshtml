@@ -18,7 +18,7 @@
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Welcome @user.firstName !</div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 Account Information<br /><br /><br />
-                <table>
+                <table class="table">
                     <tr>
                         <th>First Name: </th>
                         <td>@user.firstName</td>
@@ -32,10 +32,11 @@
                     </tr>
                     <tr>
                         <th>Password: </th>
-                        <td>@user.password</td>
+                        <td>*********</td>
                     </tr>
-                </table>
-                @Html.ActionLink("Edit", "Edit", new { id = user.userID })
+                </table><br /><br /><br />
+                @Html.ActionLink("Edit", "Edit", new { id = user.userID }) <br /><br /><br />
+                @Html.ActionLink("Delete", "Delete", new { id = user.userID })
             </div>
         </div>
     </div>
