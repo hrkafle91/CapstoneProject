@@ -30,5 +30,10 @@ namespace Capstone.Web.Controllers
         {
             return PartialView("SideMenu");
         }
+
+        public ActionResult Edit(int? id)
+        {
+            return RedirectToAction("Edit/"+id, "RegisterAccount");
+        }
     }
 }
