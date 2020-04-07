@@ -25,6 +25,7 @@ namespace Capstone.Web.Controllers
                 Account account = repo.GetAllAccounts().Where(x => x.emailID == emailId).FirstOrDefault();
                 if ((account != null) && (account.password == password))
                 {
+                    Session["user"] = account;
                     return Json(true);
                 }
                 else

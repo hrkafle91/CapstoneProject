@@ -1,7 +1,49 @@
-﻿
+﻿@using DBModel
+@model DBModel.Account
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
 }
 
-<h2>Index</h2>
+<div class="row" style="margin-top:5%">
+
+    @{ 
+        Html.RenderAction("SideMenu", "Home");
+
+        var user = Session["user"] as Account;
+    }
+
+    <div class="col-9">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">Welcome @user.firstName !</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                Account Information<br /><br /><br />
+                <table>
+                    <tr>
+                        <th>First Name: </th>
+                        <td>@user.firstName</td>
+                        <th>Last Name: </th>
+                        <td>@user.lastName</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <th>Email Address: </th>
+                        <td>@user.emailID</td>
+                    </tr>
+                    <tr>
+                        <th>Password: </th>
+                        <td>@user.password</td>
+                    </tr>
+                </table>
+                @Html.ActionLink("Edit", "Edit", "RegisterAccount", new { id = user.userID })
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+        
+
 

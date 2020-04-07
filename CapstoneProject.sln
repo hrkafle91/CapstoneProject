@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBModel", "DBModel\DBModel.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B11E807D-01D1-4405-84AB-511EA2EF4FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{558F2555-37D8-4D96-9967-0D63675986DE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{B11E807D-01D1-4405-84AB-511EA2EF4FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B11E807D-01D1-4405-84AB-511EA2EF4FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B11E807D-01D1-4405-84AB-511EA2EF4FAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{558F2555-37D8-4D96-9967-0D63675986DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{558F2555-37D8-4D96-9967-0D63675986DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{558F2555-37D8-4D96-9967-0D63675986DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{558F2555-37D8-4D96-9967-0D63675986DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
