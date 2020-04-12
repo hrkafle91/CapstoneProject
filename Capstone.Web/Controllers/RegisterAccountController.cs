@@ -131,6 +131,8 @@ namespace Capstone.Web.Controllers
             if (ModelState.IsValid)
             {
                 repo.Edit(account);
+                Session.Clear();
+                Session["user"] = account;
                 return RedirectToAction("Index", "Home");
             }
             return View(account);
