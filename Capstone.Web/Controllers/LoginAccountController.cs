@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using DBModel;
 using System.Web.Mvc;
-using Capstone.Web.Helpers;
 using Capstone.Web.ViewModels;
 using DBModel.Repositories;
 

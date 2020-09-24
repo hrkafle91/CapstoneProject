@@ -8,10 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using DBModel;
 using DBModel.Repositories;
-using Capstone.Web.Helpers;
 using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using Capstone.Business;
 
 namespace Capstone.Web.Controllers
 {
@@ -20,13 +20,11 @@ namespace Capstone.Web.Controllers
 
         private AccountRepository repo = new AccountRepository();
 
-        // GET: RegisterAccount
         public ActionResult Index()
         {
             return View(repo.GetAllAccounts());
         }
 
-        // GET: RegisterAccount/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,26 +39,22 @@ namespace Capstone.Web.Controllers
             return View(account);
         }
 
-        // GET: RegisterAccount/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: RegisterAccount/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "userID,userName,password,firstName,lastName,emailID,userType")] Account account)
         {
             if (ModelState.IsValid)
             {
-                //repo.Add(account);
-                PasscodeHelper helper = new PasscodeHelper();
-                int passcode = helper.GetPasscode();
-                SendEmail(account, passcode);
-                //int passcode = Helpers.EmailHelper.SendPasscode(account);
+                LogService.ClearLog();
+                LogService.WriteLog("Sending passcode");
+
+                int passcode = PasscodeHelper.GetPasscode();
+                EmailHelper.SendPasscode(account, passcode);
                 TempData["passcode"] = passcode;
                 TempData["account"] = account;
                 if (passcode != 0)
@@ -179,8 +173,7 @@ namespace Capstone.Web.Controllers
         public ActionResult ResendPasscode()
         {
             Account account = (Account)TempData["account"];
-            PasscodeHelper helper = new PasscodeHelper();
-            int passcode = helper.GetPasscode();
+            int passcode = PasscodeHelper.GetPasscode();
             SendEmail(account, passcode).Wait();
             TempData["passcode"] = passcode;
             return RedirectToAction("VerifyEmail");
