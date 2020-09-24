@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capstone.Business", "Capstone.Business\Capstone.Business.csproj", "{10EF656E-F21D-41A5-83E5-31072FB2F4FA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebScraper", "..\..\..\Desktop\WebScraper\WebScraper.csproj", "{DFAD6988-4040-4D98-ADD6-6594365E1C23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{10EF656E-F21D-41A5-83E5-31072FB2F4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10EF656E-F21D-41A5-83E5-31072FB2F4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10EF656E-F21D-41A5-83E5-31072FB2F4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFAD6988-4040-4D98-ADD6-6594365E1C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFAD6988-4040-4D98-ADD6-6594365E1C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFAD6988-4040-4D98-ADD6-6594365E1C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFAD6988-4040-4D98-ADD6-6594365E1C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
