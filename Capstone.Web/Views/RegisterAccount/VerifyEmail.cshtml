@@ -38,7 +38,7 @@
 
 @section Scripts {
 ;
-	<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             $("#btnVerify").on('click', function () {
                 var code = $('#verifyCode').val();
@@ -50,7 +50,7 @@
                     dataType: "json",
                     success: function (data) {
                         if (data === true) {
-                            alert("Your account has been created");
+                            window.location.href = '@Url.Action("../Home/Index")'
                         } else {
                             alert("Your account could not be created");
                         }
@@ -68,5 +68,5 @@
             });
         })
 
-	</script>
+    </script>
 }

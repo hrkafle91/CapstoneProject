@@ -50,9 +50,6 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                LogService.ClearLog();
-                LogService.WriteLog("Sending passcode");
-
                 int passcode = PasscodeHelper.GetPasscode();
                 EmailHelper.SendPasscode(account, passcode);
                 TempData["passcode"] = passcode;
@@ -164,10 +161,13 @@ namespace Capstone.Web.Controllers
             if (enteredCode.Value == generatedCode)
             {
                 repo.Add(account);
+                Session["user"] = account;
                 return Json(true);
             }
             else
+            {
                 return Json(false);
+            }
         }
 
         public ActionResult ResendPasscode()

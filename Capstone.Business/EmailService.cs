@@ -24,7 +24,6 @@ namespace Capstone.Business
             {
                 string subject = "Passcode for registration";
                 string message = $"Hello {account.firstName} {account.lastName}\nYour passcode is {passcode}";
-                LogService.WriteLog(message);
                 SendEmail(account.emailID, subject, message);
                 return passcode;
             }
@@ -48,9 +47,7 @@ namespace Capstone.Business
                 SmtpServer.Port = 587;
                 SmtpServer.Credentials = GetNetworkCredential();
                 SmtpServer.EnableSsl = true;
-                LogService.WriteLog("Sending email");
                 SmtpServer.Send(GetMailMessage(email, subject, message));
-                LogService.WriteLog("Email Sent");
             }
             catch (Exception ex)
             {
@@ -71,7 +68,6 @@ namespace Capstone.Business
             mail.To.Add(recipientEmail);
             mail.Subject = subject;
             mail.Body = body;
-            LogService.WriteLog("MailMessage received");
             return mail;
         }
 
