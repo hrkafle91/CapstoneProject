@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/20/2020 09:46:12
--- Generated from EDMX file: E:\Capstone\CapstoneRepo\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 09/26/2020 15:11:22
+-- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -31,15 +31,6 @@ IF OBJECT_ID(N'[dbo].[FK_PathCourse_Path]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathCourse_Course]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathCourse] DROP CONSTRAINT [FK_PathCourse_Course];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CourseSkillBadge]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Courses] DROP CONSTRAINT [FK_CourseSkillBadge];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SkillBadgeProfile_SkillBadge]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SkillBadgeProfile] DROP CONSTRAINT [FK_SkillBadgeProfile_SkillBadge];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SkillBadgeProfile_Profile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SkillBadgeProfile] DROP CONSTRAINT [FK_SkillBadgeProfile_Profile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathSystemQuestions]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_PathSystemQuestions];
@@ -85,9 +76,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Paths]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Paths];
 GO
-IF OBJECT_ID(N'[dbo].[SkillBadges]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SkillBadges];
-GO
 IF OBJECT_ID(N'[dbo].[SystemQuestions]', 'U') IS NOT NULL
     DROP TABLE [dbo].[SystemQuestions];
 GO
@@ -102,9 +90,6 @@ IF OBJECT_ID(N'[dbo].[Accounts_PathAdmin]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[PathCourse]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PathCourse];
-GO
-IF OBJECT_ID(N'[dbo].[SkillBadgeProfile]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SkillBadgeProfile];
 GO
 
 -- --------------------------------------------------
@@ -159,8 +144,7 @@ CREATE TABLE [dbo].[Courses] (
     [courseId] int IDENTITY(1,1) NOT NULL,
     [courseCode] nvarchar(max)  NOT NULL,
     [courseTitle] nvarchar(max)  NOT NULL,
-    [learningHours] int  NOT NULL,
-    [SkillBadge_skillBadgeId] int  NOT NULL
+    [learningHours] int  NOT NULL
 );
 GO
 
@@ -173,20 +157,11 @@ CREATE TABLE [dbo].[Paths] (
 );
 GO
 
--- Creating table 'SkillBadges'
-CREATE TABLE [dbo].[SkillBadges] (
-    [skillBadgeId] int IDENTITY(1,1) NOT NULL,
-    [skillCode] nvarchar(max)  NOT NULL,
-    [skillName] nvarchar(max)  NOT NULL,
-    [skillDescription] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'SystemQuestions'
 CREATE TABLE [dbo].[SystemQuestions] (
-    [questions] nvarchar(max)  NOT NULL,
-    [answers] nvarchar(max)  NOT NULL,
-    [score] int  NOT NULL,
+    [skill] nvarchar(max)  NOT NULL,
+    [userLevel] nvarchar(max)  NOT NULL,
+    [badge] int  NOT NULL,
     [Path_pathId] int  NOT NULL,
     [Profile_profileId] int  NOT NULL,
     [questionSetId] int  NOT NULL
@@ -223,13 +198,6 @@ GO
 CREATE TABLE [dbo].[PathCourse] (
     [Paths_pathId] int  NOT NULL,
     [Courses_courseId] int  NOT NULL
-);
-GO
-
--- Creating table 'SkillBadgeProfile'
-CREATE TABLE [dbo].[SkillBadgeProfile] (
-    [SkillBadges_skillBadgeId] int  NOT NULL,
-    [Profiles_profileId] int  NOT NULL
 );
 GO
 
@@ -273,12 +241,6 @@ ADD CONSTRAINT [PK_Paths]
     PRIMARY KEY CLUSTERED ([pathId] ASC);
 GO
 
--- Creating primary key on [skillBadgeId] in table 'SkillBadges'
-ALTER TABLE [dbo].[SkillBadges]
-ADD CONSTRAINT [PK_SkillBadges]
-    PRIMARY KEY CLUSTERED ([skillBadgeId] ASC);
-GO
-
 -- Creating primary key on [questionSetId] in table 'SystemQuestions'
 ALTER TABLE [dbo].[SystemQuestions]
 ADD CONSTRAINT [PK_SystemQuestions]
@@ -307,12 +269,6 @@ GO
 ALTER TABLE [dbo].[PathCourse]
 ADD CONSTRAINT [PK_PathCourse]
     PRIMARY KEY CLUSTERED ([Paths_pathId], [Courses_courseId] ASC);
-GO
-
--- Creating primary key on [SkillBadges_skillBadgeId], [Profiles_profileId] in table 'SkillBadgeProfile'
-ALTER TABLE [dbo].[SkillBadgeProfile]
-ADD CONSTRAINT [PK_SkillBadgeProfile]
-    PRIMARY KEY CLUSTERED ([SkillBadges_skillBadgeId], [Profiles_profileId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -386,45 +342,6 @@ GO
 CREATE INDEX [IX_FK_PathCourse_Course]
 ON [dbo].[PathCourse]
     ([Courses_courseId]);
-GO
-
--- Creating foreign key on [SkillBadge_skillBadgeId] in table 'Courses'
-ALTER TABLE [dbo].[Courses]
-ADD CONSTRAINT [FK_CourseSkillBadge]
-    FOREIGN KEY ([SkillBadge_skillBadgeId])
-    REFERENCES [dbo].[SkillBadges]
-        ([skillBadgeId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CourseSkillBadge'
-CREATE INDEX [IX_FK_CourseSkillBadge]
-ON [dbo].[Courses]
-    ([SkillBadge_skillBadgeId]);
-GO
-
--- Creating foreign key on [SkillBadges_skillBadgeId] in table 'SkillBadgeProfile'
-ALTER TABLE [dbo].[SkillBadgeProfile]
-ADD CONSTRAINT [FK_SkillBadgeProfile_SkillBadge]
-    FOREIGN KEY ([SkillBadges_skillBadgeId])
-    REFERENCES [dbo].[SkillBadges]
-        ([skillBadgeId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [Profiles_profileId] in table 'SkillBadgeProfile'
-ALTER TABLE [dbo].[SkillBadgeProfile]
-ADD CONSTRAINT [FK_SkillBadgeProfile_Profile]
-    FOREIGN KEY ([Profiles_profileId])
-    REFERENCES [dbo].[Profiles]
-        ([profileId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_SkillBadgeProfile_Profile'
-CREATE INDEX [IX_FK_SkillBadgeProfile_Profile]
-ON [dbo].[SkillBadgeProfile]
-    ([Profiles_profileId]);
 GO
 
 -- Creating foreign key on [Path_pathId] in table 'SystemQuestions'

@@ -6,20 +6,16 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 using DBModel;
-using WebScraper;
 
 namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
-        Scraper sc = new Scraper();
         public ActionResult Index()
         {
             var user = Session["user"] as Account;
             if(user != null)
             {
-                var badges = sc.ScrapeData("esmikle");
-                ViewBag.Badges = badges;
                 return View(user);
             } 
             else

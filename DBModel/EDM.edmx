@@ -12,13 +12,10 @@
     <EntitySet Name="Profiles" EntityType="EDM.Store.Profiles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Courses" EntityType="EDM.Store.Courses" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paths" EntityType="EDM.Store.Paths" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SkillBadges" EntityType="EDM.Store.SkillBadges" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SystemQuestions" EntityType="EDM.Store.SystemQuestions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts_HiringManager" EntityType="EDM.Store.Accounts_HiringManager" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts_Applicant" EntityType="EDM.Store.Accounts_Applicant" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts_PathAdmin" EntityType="EDM.Store.Accounts_PathAdmin" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PathCourse" EntityType="EDM.Store.PathCourse" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SkillBadgeProfile" EntityType="EDM.Store.SkillBadgeProfile" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="HiringManagerJobPosting" Association="EDM.Store.HiringManagerJobPosting">
       <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
       <End Role="JobPosting" EntitySet="JobPostings" />
@@ -30,26 +27,6 @@
     <AssociationSet Name="ApplicationProfile" Association="EDM.Store.ApplicationProfile">
       <End Role="Application" EntitySet="Applications" />
       <End Role="Profile" EntitySet="Profiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PathCourse_Path" Association="EDM.Store.FK_PathCourse_Path">
-      <End Role="Path" EntitySet="Paths" />
-      <End Role="PathCourse" EntitySet="PathCourse" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PathCourse_Course" Association="EDM.Store.FK_PathCourse_Course">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="PathCourse" EntitySet="PathCourse" />
-    </AssociationSet>
-    <AssociationSet Name="CourseSkillBadge" Association="EDM.Store.CourseSkillBadge">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="SkillBadge" EntitySet="SkillBadges" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SkillBadgeProfile_SkillBadge" Association="EDM.Store.FK_SkillBadgeProfile_SkillBadge">
-      <End Role="SkillBadge" EntitySet="SkillBadges" />
-      <End Role="SkillBadgeProfile" EntitySet="SkillBadgeProfile" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SkillBadgeProfile_Profile" Association="EDM.Store.FK_SkillBadgeProfile_Profile">
-      <End Role="Profile" EntitySet="Profiles" />
-      <End Role="SkillBadgeProfile" EntitySet="SkillBadgeProfile" />
     </AssociationSet>
     <AssociationSet Name="PathSystemQuestions" Association="EDM.Store.PathSystemQuestions">
       <End Role="Path" EntitySet="Paths" />
@@ -131,7 +108,6 @@
     <Property Name="courseCode" Type="nvarchar(max)" Nullable="false" />
     <Property Name="courseTitle" Type="nvarchar(max)" Nullable="false" />
     <Property Name="learningHours" Type="int" Nullable="false" />
-    <Property Name="SkillBadge_skillBadgeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Paths">
     <Key>
@@ -142,22 +118,13 @@
     <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="PathAdmin_userID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="SkillBadges">
-    <Key>
-      <PropertyRef Name="skillBadgeId" />
-    </Key>
-    <Property Name="skillBadgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="skillCode" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="skillName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="skillDescription" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
   <EntityType Name="SystemQuestions">
     <Key>
       <PropertyRef Name="questionSetId" />
     </Key>
-    <Property Name="questions" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="answers" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="score" Type="int" Nullable="false" />
+    <Property Name="skill" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="userLevel" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="badge" Type="int" Nullable="false" />
     <Property Name="Path_pathId" Type="int" Nullable="false" />
     <Property Name="Profile_profileId" Type="int" Nullable="false" />
     <Property Name="questionSetId" Type="int" Nullable="false" />
@@ -187,22 +154,6 @@
     <Property Name="pathAdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
     <Property Name="userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PathCourse">
-    <Key>
-      <PropertyRef Name="Paths_pathId" />
-      <PropertyRef Name="Courses_courseId" />
-    </Key>
-    <Property Name="Paths_pathId" Type="int" Nullable="false" />
-    <Property Name="Courses_courseId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SkillBadgeProfile">
-    <Key>
-      <PropertyRef Name="SkillBadges_skillBadgeId" />
-      <PropertyRef Name="Profiles_profileId" />
-    </Key>
-    <Property Name="SkillBadges_skillBadgeId" Type="int" Nullable="false" />
-    <Property Name="Profiles_profileId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="HiringManagerJobPosting">
     <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="1" />
@@ -237,18 +188,6 @@
       </Principal>
       <Dependent Role="Application">
         <PropertyRef Name="Profile_profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CourseSkillBadge">
-    <End Role="Course" Type="EDM.Store.Courses" Multiplicity="*" />
-    <End Role="SkillBadge" Type="EDM.Store.SkillBadges" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="SkillBadge">
-        <PropertyRef Name="skillBadgeId" />
-      </Principal>
-      <Dependent Role="Course">
-        <PropertyRef Name="SkillBadge_skillBadgeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -297,54 +236,6 @@
       </Principal>
       <Dependent Role="Path">
         <PropertyRef Name="PathAdmin_userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PathCourse_Path">
-    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
-    <End Role="PathCourse" Type="EDM.Store.PathCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Path">
-        <PropertyRef Name="pathId" />
-      </Principal>
-      <Dependent Role="PathCourse">
-        <PropertyRef Name="Paths_pathId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PathCourse_Course">
-    <End Role="PathCourse" Type="EDM.Store.PathCourse" Multiplicity="*" />
-    <End Role="Course" Type="EDM.Store.Courses" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Course">
-        <PropertyRef Name="courseId" />
-      </Principal>
-      <Dependent Role="PathCourse">
-        <PropertyRef Name="Courses_courseId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SkillBadgeProfile_SkillBadge">
-    <End Role="SkillBadge" Type="EDM.Store.SkillBadges" Multiplicity="1" />
-    <End Role="SkillBadgeProfile" Type="EDM.Store.SkillBadgeProfile" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SkillBadge">
-        <PropertyRef Name="skillBadgeId" />
-      </Principal>
-      <Dependent Role="SkillBadgeProfile">
-        <PropertyRef Name="SkillBadges_skillBadgeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SkillBadgeProfile_Profile">
-    <End Role="SkillBadgeProfile" Type="EDM.Store.SkillBadgeProfile" Multiplicity="*" />
-    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="profileId" />
-      </Principal>
-      <Dependent Role="SkillBadgeProfile">
-        <PropertyRef Name="Profiles_profileId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -411,21 +302,8 @@
             <End Role="Application" EntitySet="Applications" />
             <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
-          <EntitySet Name="Courses" EntityType="EDM.Course" />
+          <EntitySet Name="Badges" EntityType="EDM.Badge" />
           <EntitySet Name="Paths" EntityType="EDM.Path" />
-          <AssociationSet Name="PathCourse" Association="EDM.PathCourse">
-            <End Role="Path" EntitySet="Paths" />
-            <End Role="Course" EntitySet="Courses" />
-          </AssociationSet>
-          <EntitySet Name="SkillBadges" EntityType="EDM.SkillBadge" />
-          <AssociationSet Name="CourseSkillBadge" Association="EDM.CourseSkillBadge">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="SkillBadge" EntitySet="SkillBadges" />
-          </AssociationSet>
-          <AssociationSet Name="SkillBadgeProfile" Association="EDM.SkillBadgeProfile">
-            <End Role="SkillBadge" EntitySet="SkillBadges" />
-            <End Role="Profile" EntitySet="Profiles" />
-          </AssociationSet>
           <EntitySet Name="SystemQuestions" EntityType="EDM.SystemQuestions" />
           <AssociationSet Name="PathSystemQuestions" Association="EDM.PathSystemQuestions">
             <End Role="Path" EntitySet="Paths" />
@@ -442,6 +320,14 @@
           <AssociationSet Name="PathAdminPath" Association="EDM.PathAdminPath">
             <End Role="PathAdmin" EntitySet="Accounts" />
             <End Role="Path" EntitySet="Paths" />
+          </AssociationSet>
+          <AssociationSet Name="BadgePath" Association="EDM.BadgePath">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="Path" EntitySet="Paths" />
+          </AssociationSet>
+          <AssociationSet Name="BadgeSystemQuestions" Association="EDM.BadgeSystemQuestions">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Account">
@@ -527,11 +413,9 @@
             <PropertyRef Name="profileId" />
           </Key>
           <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="experience" Type="String" Nullable="false" />
           <Property Name="careerPath" Type="String" Nullable="false" />
           <Property Name="careerPathCompletion" Type="String" Nullable="false" />
           <NavigationProperty Name="Applications" Relationship="EDM.ApplicationProfile" FromRole="Profile" ToRole="Application" />
-          <NavigationProperty Name="SkillBadges" Relationship="EDM.SkillBadgeProfile" FromRole="Profile" ToRole="SkillBadge" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.ProfileSystemQuestions" FromRole="Profile" ToRole="SystemQuestions" />
           <NavigationProperty Name="Applicant" Relationship="EDM.ApplicantProfile" FromRole="Profile" ToRole="Applicant" />
         </EntityType>
@@ -547,16 +431,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Course">
+        <EntityType Name="Badge">
           <Key>
-            <PropertyRef Name="courseId" />
+            <PropertyRef Name="badgeId" />
           </Key>
-          <Property Name="courseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="courseCode" Type="String" Nullable="false" />
-          <Property Name="courseTitle" Type="String" Nullable="false" />
-          <Property Name="learningHours" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Paths" Relationship="EDM.PathCourse" FromRole="Course" ToRole="Path" />
-          <NavigationProperty Name="SkillBadge" Relationship="EDM.CourseSkillBadge" FromRole="Course" ToRole="SkillBadge" />
+          <Property Name="badgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="badgeTitle" Type="String" Nullable="false" />
+          <Property Name="description" Type="Int32" Nullable="false" />
+          <Property Name="link" Type="String" Nullable="false" />
+          <NavigationProperty Name="Paths" Relationship="EDM.BadgePath" FromRole="Badge" ToRole="Path" />
+          <NavigationProperty Name="SystemQuestions" Relationship="EDM.BadgeSystemQuestions" FromRole="Badge" ToRole="SystemQuestions" />
         </EntityType>
         <EntityType Name="Path">
           <Key>
@@ -565,46 +449,20 @@
           <Property Name="pathId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pathType" Type="String" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" />
-          <NavigationProperty Name="Courses" Relationship="EDM.PathCourse" FromRole="Path" ToRole="Course" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.PathSystemQuestions" FromRole="Path" ToRole="SystemQuestions" />
           <NavigationProperty Name="PathAdmin" Relationship="EDM.PathAdminPath" FromRole="Path" ToRole="PathAdmin" />
           <Property Name="PathAdmin_userID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Badges" Relationship="EDM.BadgePath" FromRole="Path" ToRole="Badge" />
         </EntityType>
-        <Association Name="PathCourse">
-          <End Type="EDM.Path" Role="Path" Multiplicity="*" />
-          <End Type="EDM.Course" Role="Course" Multiplicity="*" />
-        </Association>
-        <EntityType Name="SkillBadge">
-          <Key>
-            <PropertyRef Name="skillBadgeId" />
-          </Key>
-          <Property Name="skillBadgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="skillCode" Type="String" Nullable="false" />
-          <Property Name="skillName" Type="String" Nullable="false" />
-          <Property Name="skillDescription" Type="String" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="EDM.CourseSkillBadge" FromRole="SkillBadge" ToRole="Course" />
-          <NavigationProperty Name="Profiles" Relationship="EDM.SkillBadgeProfile" FromRole="SkillBadge" ToRole="Profile" />
-        </EntityType>
-        <Association Name="CourseSkillBadge">
-          <End Type="EDM.Course" Role="Course" Multiplicity="1" />
-          <End Type="EDM.SkillBadge" Role="SkillBadge" Multiplicity="1" />
-        </Association>
-        <Association Name="SkillBadgeProfile">
-          <End Type="EDM.SkillBadge" Role="SkillBadge" Multiplicity="*" />
-          <End Type="EDM.Profile" Role="Profile" Multiplicity="*" />
-        </Association>
         <EntityType Name="SystemQuestions" >
-          <Key>
-            <PropertyRef Name="questionSetId" />
-          </Key>
-          <Property Name="questions" Type="String" Nullable="false" />
-          <Property Name="answers" Type="String" Nullable="false" />
-          <Property Name="score" Type="Int32" Nullable="false" />
+          <Property Name="skill" Type="String" Nullable="false" />
+          <Property Name="userLevel" Type="String" Nullable="false" />
           <NavigationProperty Name="Path" Relationship="EDM.PathSystemQuestions" FromRole="SystemQuestions" ToRole="Path" />
           <Property Name="Path_pathId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Profile" Relationship="EDM.ProfileSystemQuestions" FromRole="SystemQuestions" ToRole="Profile" />
           <Property Name="Profile_profileId" Type="Int32" Nullable="false" />
-          <Property Name="questionSetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Badge" Relationship="EDM.BadgeSystemQuestions" FromRole="SystemQuestions" ToRole="Badge" />
+          <Property Name="Badge_badgeId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="PathSystemQuestions">
           <End Type="EDM.Path" Role="Path" Multiplicity="1" />
@@ -643,6 +501,22 @@
             </Principal>
             <Dependent Role="Path">
               <PropertyRef Name="PathAdmin_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="BadgePath">
+          <End Type="EDM.Badge" Role="Badge" Multiplicity="*" />
+          <End Type="EDM.Path" Role="Path" Multiplicity="*" />
+        </Association>
+        <Association Name="BadgeSystemQuestions">
+          <End Type="EDM.Badge" Role="Badge" Multiplicity="1" />
+          <End Type="EDM.SystemQuestions" Role="SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Badge_badgeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -715,19 +589,18 @@
       <EntityTypeMapping TypeName="IsTypeOf(EDM.Profile)">
         <MappingFragment StoreEntitySet="Profiles">
           <ScalarProperty Name="profileId" ColumnName="profileId" />
-          <ScalarProperty Name="experience" ColumnName="experience" />
           <ScalarProperty Name="careerPath" ColumnName="careerPath" />
           <ScalarProperty Name="careerPathCompletion" ColumnName="careerPathCompletion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.Course)">
+    <EntitySetMapping Name="Badges">
+      <EntityTypeMapping TypeName="IsTypeOf(EDM.Badge)">
         <MappingFragment StoreEntitySet="Courses">
-          <ScalarProperty Name="courseId" ColumnName="courseId" />
-          <ScalarProperty Name="courseCode" ColumnName="courseCode" />
-          <ScalarProperty Name="courseTitle" ColumnName="courseTitle" />
-          <ScalarProperty Name="learningHours" ColumnName="learningHours" />
+          <ScalarProperty Name="link" ColumnName="courseCode" />
+                <ScalarProperty Name="badgeId" ColumnName="courseId" />
+          <ScalarProperty Name="badgeTitle" ColumnName="courseTitle" />
+          <ScalarProperty Name="description" ColumnName="learningHours" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -741,52 +614,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SkillBadges">
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.SkillBadge)">
-        <MappingFragment StoreEntitySet="SkillBadges">
-          <ScalarProperty Name="skillBadgeId" ColumnName="skillBadgeId" />
-          <ScalarProperty Name="skillCode" ColumnName="skillCode" />
-          <ScalarProperty Name="skillName" ColumnName="skillName" />
-          <ScalarProperty Name="skillDescription" ColumnName="skillDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SystemQuestions">
       <EntityTypeMapping TypeName="IsTypeOf(EDM.SystemQuestions)">
         <MappingFragment StoreEntitySet="SystemQuestions">
-          <ScalarProperty Name="questionSetId" ColumnName="questionSetId" />
-          <ScalarProperty Name="questions" ColumnName="questions" />
-          <ScalarProperty Name="answers" ColumnName="answers" />
-          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="skill" ColumnName="skill" />
+          <ScalarProperty Name="userLevel" ColumnName="userLevel" />
           <ScalarProperty Name="Path_pathId" ColumnName="Path_pathId" />
           <ScalarProperty Name="Profile_profileId" ColumnName="Profile_profileId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PathCourse" TypeName="EDM.PathCourse" StoreEntitySet="PathCourse">
-      <EndProperty Name="Path">
-        <ScalarProperty Name="pathId" ColumnName="Paths_pathId" />
-      </EndProperty>
-      <EndProperty Name="Course">
-        <ScalarProperty Name="courseId" ColumnName="Courses_courseId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="CourseSkillBadge" TypeName="EDM.CourseSkillBadge" StoreEntitySet="Courses">
-      <EndProperty Name="SkillBadge">
-        <ScalarProperty Name="skillBadgeId" ColumnName="SkillBadge_skillBadgeId" />
-      </EndProperty>
-      <EndProperty Name="Course">
-        <ScalarProperty Name="courseId" ColumnName="courseId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="SkillBadgeProfile" TypeName="EDM.SkillBadgeProfile" StoreEntitySet="SkillBadgeProfile">
-      <EndProperty Name="SkillBadge">
-        <ScalarProperty Name="skillBadgeId" ColumnName="SkillBadges_skillBadgeId" />
-      </EndProperty>
-      <EndProperty Name="Profile">
-        <ScalarProperty Name="profileId" ColumnName="Profiles_profileId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ApplicantProfile" TypeName="EDM.ApplicantProfile" StoreEntitySet="Accounts_Applicant">
       <EndProperty Name="Profile">
         <ScalarProperty Name="profileId" ColumnName="Profile_profileId" />

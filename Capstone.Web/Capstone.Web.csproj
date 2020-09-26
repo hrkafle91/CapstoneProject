@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginAccountController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RegisterAccountController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -308,6 +309,7 @@
     <Content Include="Views\LoginAccount\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\SideMenu.cshtml" />
+    <Content Include="Views\Profile\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -319,10 +321,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\WebScraper\WebScraper.csproj">
-      <Project>{dfad6988-4040-4d98-add6-6594365e1c23}</Project>
-      <Name>WebScraper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Capstone.Business\Capstone.Business.csproj">
       <Project>{10ef656e-f21d-41a5-83e5-31072fb2f4fa}</Project>
       <Name>Capstone.Business</Name>

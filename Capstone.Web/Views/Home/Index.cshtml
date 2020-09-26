@@ -9,7 +9,6 @@
 
     @{ 
         Html.RenderAction("SideMenu", "Home");
-        var badges = ViewBag.Badges;
         var user = Session["user"] as Account;
     }
 
@@ -17,14 +16,9 @@
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 Welcome @user.firstName !
-                <br />
-                <ul>
-                    Your Current Badges:
-                    @foreach (var x in badges)
-                    {
-                        <li>@x</li>
-                    }
-                </ul>
+                
+                @Html.ActionLink("Create Profile", "CreateProfile", "Profile", new { id = user.userID })
+
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 Account Information<br /><br /><br />
@@ -54,7 +48,7 @@
 
 </div>
 
-
+-->
 
         
 
