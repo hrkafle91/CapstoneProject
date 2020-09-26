@@ -127,6 +127,9 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -162,6 +165,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\data\log.txt" />
+    <Content Include="Drivers\chromedriver.exe" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -315,6 +319,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Desktop\WebScraper\WebScraper.csproj">
+      <Project>{dfad6988-4040-4d98-add6-6594365e1c23}</Project>
+      <Name>WebScraper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Capstone.Business\Capstone.Business.csproj">
       <Project>{10ef656e-f21d-41a5-83e5-31072fb2f4fa}</Project>
       <Name>Capstone.Business</Name>

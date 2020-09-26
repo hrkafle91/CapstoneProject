@@ -10,25 +10,20 @@
 </head>
 <body>
     <div class="navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
+        <div class="col-3">
             <div class="navbar-brand navbar-collapse collapse" id="navbarResponsive">
                 <img src="~/Images/logo.png" width=70 height=70 />
                 @Html.ActionLink("Application name", "Index", "LoginAccount", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <svg id="svgFooter" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 901 345.6">
-                <defs></defs>
-                <path class="cls-1" d="M0,376.41l114.73-58.23,98.11,29.11,162-63.92,96.84,43,148.1-70.26,79.74,41.14L900,215.65V560H0Z" transform="translate(0.5 -214.9)" />
-                <path class="cls-1" d="M649.54-4" transform="translate(0.5 -214.9)" />
-                <image x="15%" y="42%" href="~/Images/logo.png" width="70px" height="70px" />
-                <text x="45%" y="45%" dominant-baseline="middle" text-anchor="middle" stroke="white">About Us</text>
-                <text x="75%" y="45%" dominant-baseline="middle" text-anchor="middle" stroke="white">Contact Us</text>
-            </svg>
+        <footer class="fixed-bottom bg-dark font-small">
+            <div class="col-3 text-center text-md-left">
+                <h5 class="text-light mt-3 mb-4">Footer</h5>
+            </div>
         </footer>
     </div>
 
