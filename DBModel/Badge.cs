@@ -12,21 +12,23 @@ namespace DBModel
     using System;
     using System.Collections.Generic;
     
-    public partial class SkillBadge
+    public partial class Badge
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SkillBadge()
+        public Badge()
         {
-            this.Profiles = new HashSet<Profile>();
+            this.Paths = new HashSet<Path>();
+            this.SystemQuestions = new HashSet<SystemQuestions>();
         }
     
-        public int skillBadgeId { get; set; }
-        public string skillCode { get; set; }
-        public string skillName { get; set; }
-        public string skillDescription { get; set; }
+        public int badgeId { get; set; }
+        public string badgeTitle { get; set; }
+        public int description { get; set; }
+        public string link { get; set; }
     
-        public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Profile> Profiles { get; set; }
+        public virtual ICollection<Path> Paths { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SystemQuestions> SystemQuestions { get; set; }
     }
 }

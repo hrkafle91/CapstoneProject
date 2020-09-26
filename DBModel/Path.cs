@@ -17,8 +17,8 @@ namespace DBModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Path()
         {
-            this.Courses = new HashSet<Course>();
             this.SystemQuestions = new HashSet<SystemQuestions>();
+            this.Badges = new HashSet<Badge>();
         }
     
         public int pathId { get; set; }
@@ -27,9 +27,9 @@ namespace DBModel
         public int PathAdmin_userID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SystemQuestions> SystemQuestions { get; set; }
         public virtual PathAdmin PathAdmin { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Badge> Badges { get; set; }
     }
 }

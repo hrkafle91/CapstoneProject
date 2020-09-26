@@ -18,19 +18,15 @@ namespace DBModel
         public Profile()
         {
             this.Applications = new HashSet<Application>();
-            this.SkillBadges = new HashSet<SkillBadge>();
             this.SystemQuestions = new HashSet<SystemQuestions>();
         }
     
         public int profileId { get; set; }
-        public string experience { get; set; }
         public string careerPath { get; set; }
         public string careerPathCompletion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Applications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SkillBadge> SkillBadges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SystemQuestions> SystemQuestions { get; set; }
         public virtual Applicant Applicant { get; set; }

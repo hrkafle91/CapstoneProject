@@ -14,14 +14,15 @@ namespace DBModel
     
     public partial class SystemQuestions
     {
-        public string questions { get; set; }
-        public string answers { get; set; }
-        public int score { get; set; }
+        public string skill { get; set; }
+        public string userLevel { get; set; }
         public int Path_pathId { get; set; }
         public int Profile_profileId { get; set; }
-        public int questionSetId { get; set; }
+        public int Badge_badgeId { get; set; }
+        public int skill_id { get; set; }
     
         public virtual Path Path { get; set; }
         public virtual Profile Profile { get; set; }
+        public virtual Badge Badge { get; set; }
     }
 }
