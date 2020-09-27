@@ -41,6 +41,11 @@ namespace Capstone.Web.Controllers
             return View();
         }
 
+        public ActionResult QuestionsView()
+        {
+            return View();
+        }
+
         // POST: Profile/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
