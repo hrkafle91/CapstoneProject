@@ -42,5 +42,10 @@ namespace DBModel.Repositories
         {
             return db.Profiles.Find(profileId);
         }
+
+        public List<Skill> GetAllSkills()
+        {
+            return db.Skills.ToList();
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace DBModel.Interfaces
         void Edit(Profile profile);
         List<Profile> GetAllProfiles();
         Profile GetProfile(int profileId);
+        List<Skill> GetAllSkills();
     }
 }

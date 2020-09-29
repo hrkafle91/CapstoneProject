@@ -7,7 +7,7 @@ namespace Capstone.Business
 {
     public static class LogService
     {
-        public static void WriteLog(string text)
+        public static void Write(string text)
         {
             try
             {
@@ -22,7 +22,22 @@ namespace Capstone.Business
             }
         }
 
-        public static void ClearLog()
+        public static void NextLine()
+        {
+            try
+            {
+                string file = System.Web.HttpContext.Current.Server.MapPath("~/Content/data/log.txt");
+                string sentence = System.IO.File.ReadAllText(file);
+                sentence += "";
+                System.IO.File.WriteAllText(file, sentence);
+            }
+            catch
+            {
+
+            }
+        }
+
+        public static void Clear()
         {
             try
             {

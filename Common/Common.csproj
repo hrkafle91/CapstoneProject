@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Enumerations\UserSkillLevel.cs" />
     <Compile Include="Enumerations\UserTypeEnum.cs" />
-    <Compile Include="Model\QuestionAnswerModel.cs" />
+    <Compile Include="Model\SkillsLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

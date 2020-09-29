@@ -1,4 +1,6 @@
-﻿using DBModel;
+﻿using Capstone.Business;
+using Common.Model;
+using DBModel;
 using DBModel.Repositories;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,7 @@ namespace Capstone.Web.Controllers
 
         public ActionResult QuestionsView()
         {
+            LogService.Clear();
             return View();
         }
 
@@ -104,6 +107,25 @@ namespace Capstone.Web.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult GetSkillsQuestion()
+        {
+            var skills = ProfileService.GetAllSkills();
+            return Json(skills);
+        }
+
+        public ActionResult PostSkillLevels(List<SkillsLevel> skills)
+        {
+            LogService.Write("Skill Level received; Count: " + skills.Count);
+            foreach(var skill in skills)
+            {
+                LogService.NextLine();
+                LogService.Write("Skill Id: " + skill.SkillId);
+                LogService.Write("Skill Level: " + skill.SkillLevel);
+
+            }
+            return Json(skills);
         }
     }
 }
