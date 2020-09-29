@@ -24,7 +24,7 @@ namespace DBModel
     
         public int badgeId { get; set; }
         public string badgeTitle { get; set; }
-        public int description { get; set; }
+        public string description { get; set; }
         public string link { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -123,7 +123,7 @@
     </Key>
     <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="badgeTitle" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="int" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="link" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Paths">
@@ -523,7 +523,7 @@
           </Key>
           <Property Name="badgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="badgeTitle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="description" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
           <Property Name="link" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Paths" Relationship="EDM.BadgePath" FromRole="Badge" ToRole="Path" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.BadgeSystemQuestions" FromRole="Badge" ToRole="SystemQuestions" />
