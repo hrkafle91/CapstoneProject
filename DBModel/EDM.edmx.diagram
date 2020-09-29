@@ -26,13 +26,15 @@
         <AssociationConnector Association="EDM.ApplicantProfile" />
         <AssociationConnector Association="EDM.PathAdminPath" ManuallyRouted="true" >
           <ConnectorPoint PointX="4.125" PointY="3.797841796875" />
-          <ConnectorPoint PointX="1.7596333772786459" PointY="3.7978417968749993" />
-          <ConnectorPoint PointX="1.5929667106119794" PointY="3.797841796875" />
-          <ConnectorPoint PointX="1.227600087890625" PointY="3.797841796875" />
-          <ConnectorPoint PointX="1.227600087890625" PointY="2.989889322916667" />
+          <ConnectorPoint PointX="1.8567720833333332" PointY="3.7978417968749993" />
+          <ConnectorPoint PointX="1.6901054166666667" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.4218775" PointY="3.797841796875" />
+          <ConnectorPoint PointX="1.4218775" PointY="2.989889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="EDM.BadgePath" />
         <AssociationConnector Association="EDM.BadgeSystemQuestions" />
+        <EntityTypeShape EntityType="EDM.Skill" Width="1.5" PointX="3.375" PointY="6" />
+        <AssociationConnector Association="EDM.FK_BadgeSkills" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

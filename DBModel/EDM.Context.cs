@@ -32,5 +32,6 @@ namespace DBModel
         public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<Path> Paths { get; set; }
         public virtual DbSet<SystemQuestions> SystemQuestions { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
     }
 }
