@@ -4,35 +4,50 @@
     var skills = ProfileService.GetAllSkills();
 }
 
-<div style="margin-top:3%;">
+    <div style="margin-top:3%;">
 
-    <h2>Select your experience with the following skills:</h2><br /><br /><br />
+        <h2>Select your experience with the following skills:</h2><br /><br /><br />
+        <div id="skillList">
+            @foreach (var skill in skills)
+            {
+                <div id="@skill.skillId">
+                    <div class="col-md-12 form-group row justify-content-center">
+                        <label for="inputState" class="col-md-3 col-form-label-lg">@skill.skillName</label>
+                        <div class="col-md-2">
+                            <select id="skillLevel" class="form-control">
+                                <option selected>None</option>
+                                <option>Beginner</option>
+                                <option>Intermediate</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group row justify-content-center">
+                        @if (skills.IndexOf(skill) < skills.Count - 1)
+                        {
+                            if (skills.IndexOf(skill) == 0)
+                            {
+                                <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
 
-    @foreach (var skill in skills)
-    {
-        <div class="form-group row justify-content-center">
-            <label for="inputState" class="col-md-2 col-form-label-lg">@skill.skillName</label>
-            <div class="col-md-2">
-                <select id="skillLevel" class="form-control">
-                    <option selected>None</option>
-                    <option>Beginner</option>
-                    <option>Intermediate</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            @if (skills.IndexOf(skill) < skills.Count - 1)
-            {
-                <button type="button" id="btnNext" skill-id="@skill.skillId" class=" btn btn-primary col-sm-1 m-1">Next</button>
+                            }
+                            else
+                            {
+                                <button type="button" skill-id="@skill.skillId" class="btnBack btn btn-primary col-sm-1 m-1">Back</button>
+                                <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
+                            }
+
+                        }
+                        else
+                        {
+                            <button type="button" skill-id="@skill.skillId" class="btnBack btn btn-primary col-sm-1 m-1">Back</button>
+                            <button type="button" id="btnSubmit" skill-id="@skill.skillId" class=" btn btn-primary col-sm-1 m-1">Submit</button>
+                        }
+                    </div>
+                </div>
             }
-            else
-            {
-                <button type="button" id="btnSubmit" skill-id="@skill.skillId" class=" btn btn-primary col-sm-1 m-1">Submit</button>
-            }
-            <button type="button" class=" btn btn-primary col-sm-1 m-1">Cancel</button>
         </div>
-    }
-</div>
+        <button type="button" class="btn btn-outline-primary col-sm-1 float-right">Cancel</button>
+    </div>
 
 @section Scripts {
     <script type="text/javascript">
@@ -41,8 +56,12 @@
 
         $(document).ready(function () {
             var skills = [];
+            var divId = $("#skillList div").attr("id");
 
-            $('#btnNext').click(function () {
+            $("div#"+divId).nextAll().hide();
+            
+
+            $('.btnNext').click(function () {
                 console.log("hahahah")
                 var skillId = $(this).attr('skill-id');
                 var skillLevel = $('#skillLevel').val();
@@ -51,8 +70,25 @@
                 skill.SkillId = skillId;
                 skill.skillLevel = skillLevel;
 
+                $("div#" + divId).hide();
+                divId = parseInt(divId) + 1;
+                console.log(divId)
+                $("div#" + divId).show();
+              
+
                 skills.push(skill)
                 console.log(skill)
+                
+            });
+
+            $('.btnBack').click(function () {
+                console.log("back")
+
+                $("div#" + divId).hide();
+                divId = parseInt(divId) - 1;
+                console.log(divId)
+                $("div#" + divId).show();
+             
             });
 
             $('#btnSubmit').click(function () {

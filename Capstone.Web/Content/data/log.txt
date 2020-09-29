@@ -1,7 +1,0 @@
-
-[ 2020-09-24 11:14:26 AM ] Sending passcode
-[ 2020-09-24 11:14:26 AM ] Hello Elizabeth Smikle
-Your passcode is 9660
-[ 2020-09-24 11:14:26 AM ] Sending email
-[ 2020-09-24 11:14:26 AM ] MailMessage received
-[ 2020-09-24 11:14:29 AM ] Email Sent
