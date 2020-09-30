@@ -25,9 +25,19 @@
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 Welcome @user.FirstName !
-                
-                @Html.ActionLink("Create Profile", "CreateProfile", "Profile");
+                <hr />
+                @using (Html.BeginForm("CreateProfile", "Profile"))
+                { 
+            <div class="card text-center mx-auto" style="width: 30rem;">
+                <img class="card-img-top" src="~/Images/createprofile.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Create Profile</h5><br />
+                    <p class="card-text" style="line-height: 1.6;">Choose your desired Salesforce career path and complete a skills assessment.</p>
+                    <button type="submit" class="btn btn-primary">Get Started!</button>
+                </div>
+            </div>
 
+                }
             </div>
             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 Account Information<br /><br /><br />
