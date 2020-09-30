@@ -123,7 +123,7 @@ namespace Capstone.Web.Controllers
             {
                 repo.Edit(account);
                 Session.Clear();
-                Session["user"] = account;
+                Session["user"] = UserService.SetUser(account);
                 return RedirectToAction("Index", "Home");
             }
             return View(account);
@@ -161,7 +161,7 @@ namespace Capstone.Web.Controllers
             if (enteredCode.Value == generatedCode)
             {
                 repo.Add(account);
-                Session["user"] = account;
+                Session["user"] = UserService.SetUser(account);
                 return Json(true);
             }
             else

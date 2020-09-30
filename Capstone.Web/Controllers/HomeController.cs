@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
+using Common.Model;
 using DBModel;
 
 namespace Capstone.Web.Controllers
@@ -13,7 +14,7 @@ namespace Capstone.Web.Controllers
     {
         public ActionResult Index()
         {
-            var user = Session["user"] as Account;
+            var user = Session["user"] as UserViewModel;
             if(user != null)
             {
                 return View(user);

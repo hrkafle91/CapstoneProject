@@ -1,7 +1,11 @@
 ﻿@using Capstone.Business;
+@using Common.Model;
 @{
-    ViewBag.Title = "QuestionsView";
-    var skills = ProfileService.GetAllSkills();
+    ViewBag.Title = "Questions View";
+    var user = Session["user"] as UserViewModel;
+
+    var skills = ProfileService.GetSkillsFByPath(user.CareerPath);
+
 }
 
     <div style="margin-top:3%;">

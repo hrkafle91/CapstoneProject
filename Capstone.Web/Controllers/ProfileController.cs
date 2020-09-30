@@ -15,29 +15,15 @@ namespace Capstone.Web.Controllers
     {
         private ProfileRepository repo = new ProfileRepository();
 
-        // GET: Profile
-        public ActionResult Index()
+        public UserViewModel GetUser()
         {
-            return View(repo.GetAllProfiles());
+            return (UserViewModel) Session["user"];
         }
 
-        // GET: Profile/Details/5
-        public ActionResult Details(int? id)
+        public void SetUser(UserViewModel user)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Profile profile = repo.GetProfile(Convert.ToInt32(id));
-            if(profile == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(profile);
+            Session["user"] = user;
         }
-
-        // GET: Profile/Create
         public ActionResult CreateProfile()
         {
             return View();
@@ -45,68 +31,8 @@ namespace Capstone.Web.Controllers
 
         public ActionResult QuestionsView()
         {
-            LogService.Clear();
-            return View();
-        }
-
-        // POST: Profile/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Profile/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Profile/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Profile/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Profile/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            var user = GetUser();
+            return View(user);
         }
 
         public ActionResult GetSkillsQuestion()
@@ -126,6 +52,13 @@ namespace Capstone.Web.Controllers
 
             }
             return Json(skills);
+        }
+
+        public ActionResult SetCareerPath(string path)
+        {
+            var user = GetUser();
+            SetUser(UserService.SetCareerPath(user, path));
+            return Json(true);
         }
     }
 }

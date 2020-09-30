@@ -6,6 +6,8 @@ using DBModel;
 using System.Web.Mvc;
 using Capstone.Web.ViewModels;
 using DBModel.Repositories;
+using Common.Model;
+using Capstone.Business;
 
 namespace Capstone.Web.Controllers
 {
@@ -24,7 +26,7 @@ namespace Capstone.Web.Controllers
                 Account account = repo.GetAllAccounts().Where(x => x.emailID == emailId).FirstOrDefault();
                 if ((account != null) && (account.password == password))
                 {
-                    Session["user"] = account;
+                    Session["user"] = UserService.SetUser(account);
                     return Json(true);
                 }
                 else

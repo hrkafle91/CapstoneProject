@@ -16,5 +16,10 @@ namespace Capstone.Business
         {
             return Repository.GetAllSkills();
         }
+
+        public static List<Skill> GetSkillsFByPath(string path)
+        {
+            return Repository.GetSkillsByPath(path);
+        }
     }
 }

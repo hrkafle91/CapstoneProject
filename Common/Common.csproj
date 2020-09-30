@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enumerations\CareerPath.cs" />
     <Compile Include="Enumerations\UserSkillLevel.cs" />
     <Compile Include="Enumerations\UserTypeEnum.cs" />
+    <Compile Include="Model\UserViewModel.cs" />
     <Compile Include="Model\SkillsLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

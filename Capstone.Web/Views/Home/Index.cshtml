@@ -1,5 +1,6 @@
 ﻿@using DBModel
-@model DBModel.Account
+@using Common.Model
+@model Common.Model.UserViewModel
 
 @{
     ViewBag.Title = "Home";
@@ -9,13 +10,13 @@
 
     @{ 
         Html.RenderAction("SideMenu", "Home");
-        var user = Session["user"] as Account;
+        var user = Session["user"] as UserViewModel;
     }
 
     <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                Welcome @user.firstName !
+                Welcome @user.FirstName !
                 
                 @Html.ActionLink("Create Profile", "CreateProfile", "Profile");
 
@@ -25,23 +26,23 @@
                 <table class="table">
                     <tr>
                         <th>First Name: </th>
-                        <td>@user.firstName</td>
+                        <td>@user.FirstName</td>
                     </tr>
                     <tr>
                         <th>Last Name: </th>
-                        <td>@user.lastName</td>
+                        <td>@user.Lastname</td>
                     </tr>
                     <tr>
                         <th>Email Address: </th>
-                        <td>@user.emailID</td>
+                        <td>@user.EmailId</td>
                     </tr>
                     <tr>
                         <th>Password: </th>
                         <td>*********</td>
                     </tr>
                 </table><br /><br /><br />
-                @Html.ActionLink("Edit", "Edit", new { id = user.userID }) <br /><br /><br />
-                @Html.ActionLink("Delete", "Delete", new { id = user.userID })
+                @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
+                @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
             </div>
         </div>
     </div>

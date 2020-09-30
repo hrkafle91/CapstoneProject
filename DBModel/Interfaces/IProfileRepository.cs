@@ -14,5 +14,6 @@ namespace DBModel.Interfaces
         List<Profile> GetAllProfiles();
         Profile GetProfile(int profileId);
         List<Skill> GetAllSkills();
+        List<Skill> GetSkillsByPath(string path);
     }
 }

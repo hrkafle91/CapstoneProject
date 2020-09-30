@@ -47,5 +47,10 @@ namespace DBModel.Repositories
         {
             return db.Skills.ToList();
         }
+
+        public List<Skill> GetSkillsByPath(string path)
+        {
+            return db.Skills.ToList();
+        }
     }
 }
