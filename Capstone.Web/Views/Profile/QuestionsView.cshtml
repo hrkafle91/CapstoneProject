@@ -21,11 +21,11 @@
         <div id="skillList">
             @foreach (var skill in skills)
             {
-                <div id="@skill.skillId">
+                <div id="@skills.IndexOf(skill)">
                     <div class="col-md-12 form-group row justify-content-center">
                         <label for="inputState" class="col-md-3 col-form-label-lg">@skill.skillName</label>
                         <div class="col-md-2">
-                            <select class="form-control skillLevel">
+                            <select id="@skills.IndexOf(skill)" class="form-control">
                                 <option selected>None</option>
                                 <option>Beginner</option>
                                 <option>Intermediate</option>
@@ -74,7 +74,7 @@
 
             $('.btnNext').click(function () {
                 var skillId = $(this).attr('skill-id');
-                var skillLevel = $('.skillLevel').val();
+                var skillLevel = $('#' + divId+" option:selected").text();
 
                 var skill = new Object();
                 skill.SkillId = skillId;
@@ -84,8 +84,9 @@
                 divId = parseInt(divId) + 1;
                 $("div#" + divId).show();
 
+                console.log(skill)
                 skills.push(skill)
-
+                
             });
 
             $('.btnBack').click(function () {

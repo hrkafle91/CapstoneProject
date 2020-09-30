@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/30/2020 14:18:14
--- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 09/30/2020 16:32:11
+-- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -49,6 +49,12 @@ IF OBJECT_ID(N'[dbo].[FK_BadgeSystemQuestions]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_BadgeSkills]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Skills] DROP CONSTRAINT [FK_BadgeSkills];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PathSkill_Path]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Path];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PathSkill_Skill]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Skill];
 GO
 IF OBJECT_ID(N'[dbo].[FK_HiringManager_inherits_Account]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Accounts_HiringManager] DROP CONSTRAINT [FK_HiringManager_inherits_Account];
@@ -99,6 +105,9 @@ IF OBJECT_ID(N'[dbo].[Accounts_PathAdmin]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[BadgePath]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BadgePath];
+GO
+IF OBJECT_ID(N'[dbo].[PathSkill]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PathSkill];
 GO
 
 -- --------------------------------------------------

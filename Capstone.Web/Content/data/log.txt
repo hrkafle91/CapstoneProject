@@ -1,2 +1,1007 @@
 
 [ 2020-09-30 3:56:53 PM ] Selected path is: Administrator
+[ 2020-09-30 4:53:55 PM ] Selected path is: Administrator
+[ 2020-09-30 4:53:56 PM ] Count of skills: 14
+[ 2020-09-30 4:53:56 PM ] Salesforce platform
+
+[ 2020-09-30 4:53:56 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:53:56 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:53:56 PM ] Lightning Experience
+
+[ 2020-09-30 4:53:56 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:53:56 PM ] User Engagement
+
+[ 2020-09-30 4:53:56 PM ] Lightning Dashboard Builder
+
+[ 2020-09-30 4:53:56 PM ] Report Builder
+
+[ 2020-09-30 4:53:56 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:53:56 PM ] Validation Rules
+
+[ 2020-09-30 4:53:56 PM ] Managing User Access
+
+[ 2020-09-30 4:53:56 PM ] Picklists (Select boxes, Check boxes, Radio buttons)
+
+[ 2020-09-30 4:53:56 PM ] Process Automation
+
+[ 2020-09-30 4:53:56 PM ] AppExchange
+
+[ 2020-09-30 4:54:12 PM ] Skill Level received; Count: 14
+[ 2020-09-30 4:54:12 PM ] Skill Id: 1
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 2
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 3
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 4
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 5
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 6
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 7
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 8
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 9
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 10
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 11
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 12
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 13
+[ 2020-09-30 4:54:12 PM ] Skill Level: None
+[ 2020-09-30 4:54:12 PM ] Skill Id: 14
+[ 2020-09-30 4:54:12 PM ] Skill Level: 
+[ 2020-09-30 4:54:33 PM ] Skill Level received; Count: 14
+[ 2020-09-30 4:54:33 PM ] Skill Id: 1
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 2
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 3
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 4
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 5
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 6
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 7
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 8
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 9
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 10
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 11
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 12
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 13
+[ 2020-09-30 4:54:33 PM ] Skill Level: None
+[ 2020-09-30 4:54:33 PM ] Skill Id: 14
+[ 2020-09-30 4:54:33 PM ] Skill Level: 
+[ 2020-09-30 4:55:03 PM ] Selected path is: Developer
+[ 2020-09-30 4:55:03 PM ] Count of skills: 32
+[ 2020-09-30 4:55:03 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:55:03 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:55:03 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:55:03 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:55:03 PM ] Managing User Access
+
+[ 2020-09-30 4:55:03 PM ] Process Automation
+
+[ 2020-09-30 4:55:03 PM ] External Services
+
+[ 2020-09-30 4:55:03 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:55:03 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:55:03 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:55:03 PM ] Apex
+
+[ 2020-09-30 4:55:03 PM ] DML
+
+[ 2020-09-30 4:55:03 PM ] SOQL
+
+[ 2020-09-30 4:55:03 PM ] SOSL
+
+[ 2020-09-30 4:55:03 PM ] Apex triggers
+
+[ 2020-09-30 4:55:03 PM ] Apex unit testing
+
+[ 2020-09-30 4:55:03 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:55:03 PM ] Developer Console
+
+[ 2020-09-30 4:55:03 PM ] Search APIs
+
+[ 2020-09-30 4:55:03 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:55:03 PM ] User Interface API
+
+[ 2020-09-30 4:55:03 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:55:03 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:55:03 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:55:03 PM ] Aura Components
+
+[ 2020-09-30 4:55:03 PM ] Salesforce Connect
+
+[ 2020-09-30 4:55:03 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:55:03 PM ] Change Set Development Model
+
+[ 2020-09-30 4:55:03 PM ] Org Development Model
+
+[ 2020-09-30 4:55:03 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:55:03 PM ] Event monitoring
+
+[ 2020-09-30 4:55:03 PM ] Big Objects
+
+[ 2020-09-30 4:55:22 PM ] Selected path is: Developer
+[ 2020-09-30 4:55:22 PM ] Count of skills: 32
+[ 2020-09-30 4:55:22 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:55:22 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:55:22 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:55:22 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:55:22 PM ] Managing User Access
+
+[ 2020-09-30 4:55:22 PM ] Process Automation
+
+[ 2020-09-30 4:55:22 PM ] External Services
+
+[ 2020-09-30 4:55:22 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:55:22 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:55:22 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:55:22 PM ] Apex
+
+[ 2020-09-30 4:55:22 PM ] DML
+
+[ 2020-09-30 4:55:22 PM ] SOQL
+
+[ 2020-09-30 4:55:22 PM ] SOSL
+
+[ 2020-09-30 4:55:22 PM ] Apex triggers
+
+[ 2020-09-30 4:55:22 PM ] Apex unit testing
+
+[ 2020-09-30 4:55:22 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:55:22 PM ] Developer Console
+
+[ 2020-09-30 4:55:22 PM ] Search APIs
+
+[ 2020-09-30 4:55:22 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:55:22 PM ] User Interface API
+
+[ 2020-09-30 4:55:22 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:55:22 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:55:22 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:55:22 PM ] Aura Components
+
+[ 2020-09-30 4:55:22 PM ] Salesforce Connect
+
+[ 2020-09-30 4:55:22 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:55:22 PM ] Change Set Development Model
+
+[ 2020-09-30 4:55:22 PM ] Org Development Model
+
+[ 2020-09-30 4:55:22 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:55:22 PM ] Event monitoring
+
+[ 2020-09-30 4:55:22 PM ] Big Objects
+
+[ 2020-09-30 4:55:35 PM ] Selected path is: Administrator
+[ 2020-09-30 4:55:35 PM ] Count of skills: 14
+[ 2020-09-30 4:55:35 PM ] Salesforce platform
+
+[ 2020-09-30 4:55:35 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:55:35 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:55:35 PM ] Lightning Experience
+
+[ 2020-09-30 4:55:35 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:55:35 PM ] User Engagement
+
+[ 2020-09-30 4:55:35 PM ] Lightning Dashboard Builder
+
+[ 2020-09-30 4:55:35 PM ] Report Builder
+
+[ 2020-09-30 4:55:35 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:55:35 PM ] Validation Rules
+
+[ 2020-09-30 4:55:35 PM ] Managing User Access
+
+[ 2020-09-30 4:55:35 PM ] Picklists (Select boxes, Check boxes, Radio buttons)
+
+[ 2020-09-30 4:55:35 PM ] Process Automation
+
+[ 2020-09-30 4:55:35 PM ] AppExchange
+
+[ 2020-09-30 4:55:42 PM ] Skill Level received; Count: 14
+[ 2020-09-30 4:55:42 PM ] Skill Id: 1
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 2
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 3
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 4
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 5
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 6
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 7
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 8
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:42 PM ] Skill Id: 9
+[ 2020-09-30 4:55:42 PM ] Skill Level: None
+[ 2020-09-30 4:55:43 PM ] Skill Id: 10
+[ 2020-09-30 4:55:43 PM ] Skill Level: None
+[ 2020-09-30 4:55:43 PM ] Skill Id: 11
+[ 2020-09-30 4:55:43 PM ] Skill Level: None
+[ 2020-09-30 4:55:43 PM ] Skill Id: 12
+[ 2020-09-30 4:55:43 PM ] Skill Level: None
+[ 2020-09-30 4:55:43 PM ] Skill Id: 13
+[ 2020-09-30 4:55:43 PM ] Skill Level: None
+[ 2020-09-30 4:55:43 PM ] Skill Id: 14
+[ 2020-09-30 4:55:43 PM ] Skill Level: 
+[ 2020-09-30 4:55:48 PM ] Selected path is: Developer
+[ 2020-09-30 4:55:48 PM ] Count of skills: 32
+[ 2020-09-30 4:55:48 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:55:48 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:55:48 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:55:48 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:55:48 PM ] Managing User Access
+
+[ 2020-09-30 4:55:48 PM ] Process Automation
+
+[ 2020-09-30 4:55:48 PM ] External Services
+
+[ 2020-09-30 4:55:48 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:55:48 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:55:48 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:55:48 PM ] Apex
+
+[ 2020-09-30 4:55:48 PM ] DML
+
+[ 2020-09-30 4:55:48 PM ] SOQL
+
+[ 2020-09-30 4:55:48 PM ] SOSL
+
+[ 2020-09-30 4:55:48 PM ] Apex triggers
+
+[ 2020-09-30 4:55:48 PM ] Apex unit testing
+
+[ 2020-09-30 4:55:48 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:55:48 PM ] Developer Console
+
+[ 2020-09-30 4:55:48 PM ] Search APIs
+
+[ 2020-09-30 4:55:48 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:55:48 PM ] User Interface API
+
+[ 2020-09-30 4:55:48 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:55:49 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:55:49 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:55:49 PM ] Aura Components
+
+[ 2020-09-30 4:55:49 PM ] Salesforce Connect
+
+[ 2020-09-30 4:55:49 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:55:49 PM ] Change Set Development Model
+
+[ 2020-09-30 4:55:49 PM ] Org Development Model
+
+[ 2020-09-30 4:55:49 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:55:49 PM ] Event monitoring
+
+[ 2020-09-30 4:55:49 PM ] Big Objects
+
+[ 2020-09-30 4:57:56 PM ] Selected path is: Developer
+[ 2020-09-30 4:57:56 PM ] Count of skills: 32
+[ 2020-09-30 4:57:56 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:57:56 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:57:56 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:57:56 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:57:56 PM ] Managing User Access
+
+[ 2020-09-30 4:57:56 PM ] Process Automation
+
+[ 2020-09-30 4:57:56 PM ] External Services
+
+[ 2020-09-30 4:57:56 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:57:56 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:57:56 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:57:56 PM ] Apex
+
+[ 2020-09-30 4:57:56 PM ] DML
+
+[ 2020-09-30 4:57:56 PM ] SOQL
+
+[ 2020-09-30 4:57:56 PM ] SOSL
+
+[ 2020-09-30 4:57:56 PM ] Apex triggers
+
+[ 2020-09-30 4:57:56 PM ] Apex unit testing
+
+[ 2020-09-30 4:57:56 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:57:56 PM ] Developer Console
+
+[ 2020-09-30 4:57:56 PM ] Search APIs
+
+[ 2020-09-30 4:57:56 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:57:56 PM ] User Interface API
+
+[ 2020-09-30 4:57:56 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:57:56 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:57:57 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:57:57 PM ] Aura Components
+
+[ 2020-09-30 4:57:57 PM ] Salesforce Connect
+
+[ 2020-09-30 4:57:57 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:57:57 PM ] Change Set Development Model
+
+[ 2020-09-30 4:57:57 PM ] Org Development Model
+
+[ 2020-09-30 4:57:57 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:57:57 PM ] Event monitoring
+
+[ 2020-09-30 4:57:57 PM ] Big Objects
+
+[ 2020-09-30 4:58:03 PM ] Selected path is: Developer
+[ 2020-09-30 4:58:03 PM ] Count of skills: 32
+[ 2020-09-30 4:58:03 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:58:03 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:58:03 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:58:03 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:58:03 PM ] Managing User Access
+
+[ 2020-09-30 4:58:03 PM ] Process Automation
+
+[ 2020-09-30 4:58:03 PM ] External Services
+
+[ 2020-09-30 4:58:03 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:58:03 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:58:03 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:58:03 PM ] Apex
+
+[ 2020-09-30 4:58:03 PM ] DML
+
+[ 2020-09-30 4:58:03 PM ] SOQL
+
+[ 2020-09-30 4:58:03 PM ] SOSL
+
+[ 2020-09-30 4:58:03 PM ] Apex triggers
+
+[ 2020-09-30 4:58:03 PM ] Apex unit testing
+
+[ 2020-09-30 4:58:03 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:58:03 PM ] Developer Console
+
+[ 2020-09-30 4:58:03 PM ] Search APIs
+
+[ 2020-09-30 4:58:03 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:58:03 PM ] User Interface API
+
+[ 2020-09-30 4:58:03 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:58:03 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:58:03 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:58:03 PM ] Aura Components
+
+[ 2020-09-30 4:58:03 PM ] Salesforce Connect
+
+[ 2020-09-30 4:58:03 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:58:03 PM ] Change Set Development Model
+
+[ 2020-09-30 4:58:03 PM ] Org Development Model
+
+[ 2020-09-30 4:58:03 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:58:03 PM ] Event monitoring
+
+[ 2020-09-30 4:58:03 PM ] Big Objects
+
+[ 2020-09-30 4:58:34 PM ] Selected path is: Developer
+[ 2020-09-30 4:58:34 PM ] Count of skills: 32
+[ 2020-09-30 4:58:34 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:58:34 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:58:34 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:58:34 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:58:34 PM ] Managing User Access
+
+[ 2020-09-30 4:58:34 PM ] Process Automation
+
+[ 2020-09-30 4:58:34 PM ] External Services
+
+[ 2020-09-30 4:58:34 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:58:34 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:58:34 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:58:34 PM ] Apex
+
+[ 2020-09-30 4:58:34 PM ] DML
+
+[ 2020-09-30 4:58:34 PM ] SOQL
+
+[ 2020-09-30 4:58:34 PM ] SOSL
+
+[ 2020-09-30 4:58:34 PM ] Apex triggers
+
+[ 2020-09-30 4:58:34 PM ] Apex unit testing
+
+[ 2020-09-30 4:58:34 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:58:34 PM ] Developer Console
+
+[ 2020-09-30 4:58:34 PM ] Search APIs
+
+[ 2020-09-30 4:58:34 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:58:34 PM ] User Interface API
+
+[ 2020-09-30 4:58:34 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:58:34 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:58:34 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:58:34 PM ] Aura Components
+
+[ 2020-09-30 4:58:34 PM ] Salesforce Connect
+
+[ 2020-09-30 4:58:34 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:58:34 PM ] Change Set Development Model
+
+[ 2020-09-30 4:58:34 PM ] Org Development Model
+
+[ 2020-09-30 4:58:34 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:58:34 PM ] Event monitoring
+
+[ 2020-09-30 4:58:34 PM ] Big Objects
+
+[ 2020-09-30 4:58:40 PM ] Selected path is: Developer
+[ 2020-09-30 4:58:40 PM ] Count of skills: 32
+[ 2020-09-30 4:58:40 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 4:58:40 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 4:58:40 PM ] Salesforce Mobile App
+
+[ 2020-09-30 4:58:40 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 4:58:40 PM ] Managing User Access
+
+[ 2020-09-30 4:58:40 PM ] Process Automation
+
+[ 2020-09-30 4:58:40 PM ] External Services
+
+[ 2020-09-30 4:58:40 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 4:58:40 PM ] Salesforce Development Platform
+
+[ 2020-09-30 4:58:40 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 4:58:40 PM ] Apex
+
+[ 2020-09-30 4:58:40 PM ] DML
+
+[ 2020-09-30 4:58:40 PM ] SOQL
+
+[ 2020-09-30 4:58:40 PM ] SOSL
+
+[ 2020-09-30 4:58:40 PM ] Apex triggers
+
+[ 2020-09-30 4:58:40 PM ] Apex unit testing
+
+[ 2020-09-30 4:58:40 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 4:58:40 PM ] Developer Console
+
+[ 2020-09-30 4:58:40 PM ] Search APIs
+
+[ 2020-09-30 4:58:40 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 4:58:40 PM ] User Interface API
+
+[ 2020-09-30 4:58:40 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 4:58:40 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 4:58:40 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 4:58:40 PM ] Aura Components
+
+[ 2020-09-30 4:58:40 PM ] Salesforce Connect
+
+[ 2020-09-30 4:58:40 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 4:58:40 PM ] Change Set Development Model
+
+[ 2020-09-30 4:58:40 PM ] Org Development Model
+
+[ 2020-09-30 4:58:40 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 4:58:40 PM ] Event monitoring
+
+[ 2020-09-30 4:58:40 PM ] Big Objects
+
+[ 2020-09-30 5:01:51 PM ] Selected path is: Developer
+[ 2020-09-30 5:01:51 PM ] Count of skills: 32
+[ 2020-09-30 5:01:51 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 5:01:51 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 5:01:51 PM ] Salesforce Mobile App
+
+[ 2020-09-30 5:01:51 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 5:01:51 PM ] Managing User Access
+
+[ 2020-09-30 5:01:51 PM ] Process Automation
+
+[ 2020-09-30 5:01:51 PM ] External Services
+
+[ 2020-09-30 5:01:51 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 5:01:51 PM ] Salesforce Development Platform
+
+[ 2020-09-30 5:01:51 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 5:01:51 PM ] Apex
+
+[ 2020-09-30 5:01:51 PM ] DML
+
+[ 2020-09-30 5:01:51 PM ] SOQL
+
+[ 2020-09-30 5:01:51 PM ] SOSL
+
+[ 2020-09-30 5:01:51 PM ] Apex triggers
+
+[ 2020-09-30 5:01:51 PM ] Apex unit testing
+
+[ 2020-09-30 5:01:51 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 5:01:51 PM ] Developer Console
+
+[ 2020-09-30 5:01:51 PM ] Search APIs
+
+[ 2020-09-30 5:01:51 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 5:01:51 PM ] User Interface API
+
+[ 2020-09-30 5:01:51 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 5:01:51 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 5:01:51 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 5:01:51 PM ] Aura Components
+
+[ 2020-09-30 5:01:51 PM ] Salesforce Connect
+
+[ 2020-09-30 5:01:51 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 5:01:51 PM ] Change Set Development Model
+
+[ 2020-09-30 5:01:51 PM ] Org Development Model
+
+[ 2020-09-30 5:01:51 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 5:01:51 PM ] Event monitoring
+
+[ 2020-09-30 5:01:51 PM ] Big Objects
+
+[ 2020-09-30 5:04:07 PM ] Selected path is: Developer
+[ 2020-09-30 5:04:07 PM ] Count of skills: 32
+[ 2020-09-30 5:04:07 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 5:04:07 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 5:04:07 PM ] Salesforce Mobile App
+
+[ 2020-09-30 5:04:07 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 5:04:07 PM ] Managing User Access
+
+[ 2020-09-30 5:04:07 PM ] Process Automation
+
+[ 2020-09-30 5:04:07 PM ] External Services
+
+[ 2020-09-30 5:04:07 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 5:04:07 PM ] Salesforce Development Platform
+
+[ 2020-09-30 5:04:07 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 5:04:07 PM ] Apex
+
+[ 2020-09-30 5:04:07 PM ] DML
+
+[ 2020-09-30 5:04:07 PM ] SOQL
+
+[ 2020-09-30 5:04:07 PM ] SOSL
+
+[ 2020-09-30 5:04:07 PM ] Apex triggers
+
+[ 2020-09-30 5:04:07 PM ] Apex unit testing
+
+[ 2020-09-30 5:04:07 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 5:04:07 PM ] Developer Console
+
+[ 2020-09-30 5:04:07 PM ] Search APIs
+
+[ 2020-09-30 5:04:07 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 5:04:07 PM ] User Interface API
+
+[ 2020-09-30 5:04:07 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 5:04:07 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 5:04:07 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 5:04:07 PM ] Aura Components
+
+[ 2020-09-30 5:04:07 PM ] Salesforce Connect
+
+[ 2020-09-30 5:04:07 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 5:04:07 PM ] Change Set Development Model
+
+[ 2020-09-30 5:04:07 PM ] Org Development Model
+
+[ 2020-09-30 5:04:07 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 5:04:07 PM ] Event monitoring
+
+[ 2020-09-30 5:04:07 PM ] Big Objects
+
+[ 2020-09-30 5:06:21 PM ] Selected path is: Developer
+[ 2020-09-30 5:06:21 PM ] Count of skills: 32
+[ 2020-09-30 5:06:21 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 5:06:21 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 5:06:21 PM ] Salesforce Mobile App
+
+[ 2020-09-30 5:06:21 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 5:06:21 PM ] Managing User Access
+
+[ 2020-09-30 5:06:21 PM ] Process Automation
+
+[ 2020-09-30 5:06:21 PM ] External Services
+
+[ 2020-09-30 5:06:21 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 5:06:21 PM ] Salesforce Development Platform
+
+[ 2020-09-30 5:06:21 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 5:06:21 PM ] Apex
+
+[ 2020-09-30 5:06:21 PM ] DML
+
+[ 2020-09-30 5:06:21 PM ] SOQL
+
+[ 2020-09-30 5:06:21 PM ] SOSL
+
+[ 2020-09-30 5:06:21 PM ] Apex triggers
+
+[ 2020-09-30 5:06:21 PM ] Apex unit testing
+
+[ 2020-09-30 5:06:21 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 5:06:21 PM ] Developer Console
+
+[ 2020-09-30 5:06:21 PM ] Search APIs
+
+[ 2020-09-30 5:06:21 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 5:06:21 PM ] User Interface API
+
+[ 2020-09-30 5:06:21 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 5:06:21 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 5:06:21 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 5:06:21 PM ] Aura Components
+
+[ 2020-09-30 5:06:21 PM ] Salesforce Connect
+
+[ 2020-09-30 5:06:21 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 5:06:21 PM ] Change Set Development Model
+
+[ 2020-09-30 5:06:21 PM ] Org Development Model
+
+[ 2020-09-30 5:06:21 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 5:06:21 PM ] Event monitoring
+
+[ 2020-09-30 5:06:21 PM ] Big Objects
+
+[ 2020-09-30 5:08:33 PM ] Selected path is: Developer
+[ 2020-09-30 5:08:33 PM ] Count of skills: 32
+[ 2020-09-30 5:08:33 PM ] Data modelling (ex. Objects, fields, relationships)
+
+[ 2020-09-30 5:08:33 PM ] Data management (ex. Import / Export data)
+
+[ 2020-09-30 5:08:33 PM ] Salesforce Mobile App
+
+[ 2020-09-30 5:08:33 PM ] Formulas (ex. Excel formulas)
+
+[ 2020-09-30 5:08:33 PM ] Managing User Access
+
+[ 2020-09-30 5:08:33 PM ] Process Automation
+
+[ 2020-09-30 5:08:33 PM ] External Services
+
+[ 2020-09-30 5:08:33 PM ] Developing Rollout Strategies
+
+[ 2020-09-30 5:08:33 PM ] Salesforce Development Platform
+
+[ 2020-09-30 5:08:33 PM ] Salesforce Languages (ex. Apex, Visualforce)
+
+[ 2020-09-30 5:08:33 PM ] Apex
+
+[ 2020-09-30 5:08:33 PM ] DML
+
+[ 2020-09-30 5:08:33 PM ] SOQL
+
+[ 2020-09-30 5:08:33 PM ] SOSL
+
+[ 2020-09-30 5:08:33 PM ] Apex triggers
+
+[ 2020-09-30 5:08:33 PM ] Apex unit testing
+
+[ 2020-09-30 5:08:33 PM ] Visualforce (Variables, Conditionals, Controllers, Forms)
+
+[ 2020-09-30 5:08:33 PM ] Developer Console
+
+[ 2020-09-30 5:08:33 PM ] Search APIs
+
+[ 2020-09-30 5:08:33 PM ] Lightning Platform APIs (ex. RESPT, SAOP, Bulk, Streaming)
+
+[ 2020-09-30 5:08:33 PM ] User Interface API
+
+[ 2020-09-30 5:08:33 PM ] Apex REST and SOAP services
+
+[ 2020-09-30 5:08:33 PM ] Asynchronous processes with Apex
+
+[ 2020-09-30 5:08:33 PM ] Platform Events (ex. Notifications)
+
+[ 2020-09-30 5:08:33 PM ] Aura Components
+
+[ 2020-09-30 5:08:33 PM ] Salesforce Connect
+
+[ 2020-09-30 5:08:33 PM ] Application lifecycle management and development models
+
+[ 2020-09-30 5:08:33 PM ] Change Set Development Model
+
+[ 2020-09-30 5:08:33 PM ] Org Development Model
+
+[ 2020-09-30 5:08:33 PM ] Platform Caches (ex. Org and Session)
+
+[ 2020-09-30 5:08:33 PM ] Event monitoring
+
+[ 2020-09-30 5:08:33 PM ] Big Objects
+
+[ 2020-09-30 5:09:08 PM ] Skill Level received; Count: 32
+[ 2020-09-30 5:09:08 PM ] Skill Id: 2
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 3
+[ 2020-09-30 5:09:08 PM ] Skill Level: Beginner
+[ 2020-09-30 5:09:08 PM ] Skill Id: 5
+[ 2020-09-30 5:09:08 PM ] Skill Level: Intermediate
+[ 2020-09-30 5:09:08 PM ] Skill Id: 9
+[ 2020-09-30 5:09:08 PM ] Skill Level: Beginner
+[ 2020-09-30 5:09:08 PM ] Skill Id: 11
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 13
+[ 2020-09-30 5:09:08 PM ] Skill Level: Intermediate
+[ 2020-09-30 5:09:08 PM ] Skill Id: 15
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 16
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 17
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 18
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 19
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 20
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 21
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 22
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 23
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 24
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 25
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 26
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 27
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 28
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 29
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 30
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 31
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 32
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 33
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 34
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 35
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 36
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 37
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 38
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 39
+[ 2020-09-30 5:09:08 PM ] Skill Level: None
+[ 2020-09-30 5:09:08 PM ] Skill Id: 40
+[ 2020-09-30 5:09:09 PM ] Skill Level: 
+[ 2020-09-30 5:09:09 PM ] Skill Level received; Count: 33
+[ 2020-09-30 5:09:09 PM ] Skill Id: 2
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 3
+[ 2020-09-30 5:09:09 PM ] Skill Level: Beginner
+[ 2020-09-30 5:09:09 PM ] Skill Id: 5
+[ 2020-09-30 5:09:09 PM ] Skill Level: Intermediate
+[ 2020-09-30 5:09:09 PM ] Skill Id: 9
+[ 2020-09-30 5:09:09 PM ] Skill Level: Beginner
+[ 2020-09-30 5:09:09 PM ] Skill Id: 11
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 13
+[ 2020-09-30 5:09:09 PM ] Skill Level: Intermediate
+[ 2020-09-30 5:09:09 PM ] Skill Id: 15
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 16
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 17
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 18
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 19
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 20
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 21
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 22
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 23
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 24
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 25
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:09 PM ] Skill Id: 26
+[ 2020-09-30 5:09:09 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 27
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 28
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 29
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 30
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 31
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 32
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 33
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 34
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 35
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 36
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 37
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 38
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 39
+[ 2020-09-30 5:09:10 PM ] Skill Level: None
+[ 2020-09-30 5:09:10 PM ] Skill Id: 40
+[ 2020-09-30 5:09:10 PM ] Skill Level: 
+[ 2020-09-30 5:09:10 PM ] Skill Id: 40
+[ 2020-09-30 5:09:10 PM ] Skill Level: 

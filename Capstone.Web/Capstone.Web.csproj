@@ -172,6 +172,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Images\adminpic.jpg" />
     <Content Include="Images\cloud.png" />
+    <Content Include="Images\createprofile.jpg" />
     <Content Include="Images\devpic.jpg" />
     <Content Include="Images\empty.jpg" />
     <Content Include="Images\logo.png" />
