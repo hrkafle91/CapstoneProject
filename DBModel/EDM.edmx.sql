@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/28/2020 22:04:01
--- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 09/30/2020 14:18:14
+-- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -217,6 +217,13 @@ CREATE TABLE [dbo].[BadgePath] (
 );
 GO
 
+-- Creating table 'PathSkill'
+CREATE TABLE [dbo].[PathSkill] (
+    [Paths_pathId] int  NOT NULL,
+    [Skills_skillId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -291,6 +298,12 @@ GO
 ALTER TABLE [dbo].[BadgePath]
 ADD CONSTRAINT [PK_BadgePath]
     PRIMARY KEY CLUSTERED ([Badges_badgeId], [Paths_pathId] ASC);
+GO
+
+-- Creating primary key on [Paths_pathId], [Skills_skillId] in table 'PathSkill'
+ALTER TABLE [dbo].[PathSkill]
+ADD CONSTRAINT [PK_PathSkill]
+    PRIMARY KEY CLUSTERED ([Paths_pathId], [Skills_skillId] ASC);
 GO
 
 -- --------------------------------------------------
@@ -454,6 +467,30 @@ GO
 CREATE INDEX [IX_FK_BadgeSkills]
 ON [dbo].[Skills]
     ([Badge_badgeId]);
+GO
+
+-- Creating foreign key on [Paths_pathId] in table 'PathSkill'
+ALTER TABLE [dbo].[PathSkill]
+ADD CONSTRAINT [FK_PathSkill_Path]
+    FOREIGN KEY ([Paths_pathId])
+    REFERENCES [dbo].[Paths]
+        ([pathId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Skills_skillId] in table 'PathSkill'
+ALTER TABLE [dbo].[PathSkill]
+ADD CONSTRAINT [FK_PathSkill_Skill]
+    FOREIGN KEY ([Skills_skillId])
+    REFERENCES [dbo].[Skills]
+        ([skillId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PathSkill_Skill'
+CREATE INDEX [IX_FK_PathSkill_Skill]
+ON [dbo].[PathSkill]
+    ([Skills_skillId]);
 GO
 
 -- Creating foreign key on [userID] in table 'Accounts_HiringManager'

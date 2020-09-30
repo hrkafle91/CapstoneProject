@@ -1,6 +1,12 @@
 ﻿
 @{
     ViewBag.Title = "CreateProfile";
+
+    var user = (Common.Model.UserViewModel)Session["user"];
+    if (user == null)
+    {
+        Response.Redirect("~/LoginAccount/Index");
+    }
 }
 
 <div style="margin-top:3%;">

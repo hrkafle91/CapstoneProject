@@ -3,9 +3,16 @@
 @{
     ViewBag.Title = "Questions View";
     var user = Session["user"] as UserViewModel;
+    var skills = new List<DBModel.Skill>();
 
-    var skills = ProfileService.GetSkillsFByPath(user.CareerPath);
-
+    if (user == null)
+    {
+        Response.Redirect("~/LoginAccount/Index");
+    }
+    else
+    {
+        skills = ProfileService.GetSkillsFByPath(user.CareerPath);
+    }
 }
 
     <div style="margin-top:3%;">
@@ -63,10 +70,9 @@
             var divId = $("#skillList div").attr("id");
 
             $("div#"+divId).nextAll().hide();
-            
+
 
             $('.btnNext').click(function () {
-                console.log("hahahah")
                 var skillId = $(this).attr('skill-id');
                 var skillLevel = $('#skillLevel').val();
 
@@ -76,23 +82,17 @@
 
                 $("div#" + divId).hide();
                 divId = parseInt(divId) + 1;
-                console.log(divId)
                 $("div#" + divId).show();
-              
 
                 skills.push(skill)
-                console.log(skill)
-                
+
             });
 
             $('.btnBack').click(function () {
-                console.log("back")
-
                 $("div#" + divId).hide();
                 divId = parseInt(divId) - 1;
-                console.log(divId)
                 $("div#" + divId).show();
-             
+
             });
 
             $('#btnSubmit').click(function () {
@@ -104,9 +104,6 @@
                 skill.SkillLevel = skillLevel;
 
                 skills.push(skill);
-                console.log(skill)
-
-                console.log(skills)
 
                 $.ajax({
                     type: 'POST',
@@ -116,7 +113,7 @@
                     dataType: "json",
                     success: function (data) {
                         if (data != null) {
-                            console.log(data)
+                        window.location.href = '@Url.Action("Recommendations", "Profile")';
                         }
                     },
                     error: function (m) {

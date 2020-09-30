@@ -4,13 +4,21 @@
 
 @{
     ViewBag.Title = "Home";
+
+    var user = Session["user"] as UserViewModel;
+    if (user == null)
+    {
+        Response.Redirect("~/LoginAccount/Index");
+    }
+    else
+    {
+    }
 }
 
 <div class="row" style="margin-top:5%">
 
     @{ 
         Html.RenderAction("SideMenu", "Home");
-        var user = Session["user"] as UserViewModel;
     }
 
     <div class="col-9">
@@ -48,8 +56,6 @@
     </div>
 
 </div>
-
--->
 
         
 

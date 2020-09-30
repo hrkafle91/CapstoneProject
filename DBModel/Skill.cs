@@ -14,10 +14,18 @@ namespace DBModel
     
     public partial class Skill
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Skill()
+        {
+            this.Paths = new HashSet<Path>();
+        }
+    
         public int skillId { get; set; }
         public string skillName { get; set; }
         public int Badge_badgeId { get; set; }
     
         public virtual Badge Badge { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Path> Paths { get; set; }
     }
 }

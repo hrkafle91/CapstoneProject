@@ -50,7 +50,19 @@ namespace DBModel.Repositories
 
         public List<Skill> GetSkillsByPath(string path)
         {
-            return db.Skills.ToList();
+            var skills = new List<Skill>();
+            if (path == "Administrator")
+            {
+                skills = db.Paths.Where(x => x.pathType == "AdminBeginner").FirstOrDefault().Skills.ToList();
+                skills.AddRange(db.Paths.Where(x => x.pathType == "AdminIntermediate").FirstOrDefault().Skills.ToList());
+            }
+            else if (path == "Developer")
+            {
+                skills = db.Paths.Where(x => x.pathType == "DeveloperBeginner").FirstOrDefault().Skills.ToList();
+                skills.AddRange(db.Paths.Where(x => x.pathType == "DeveloperIntermediate").FirstOrDefault().Skills.ToList());
+            }
+            
+            return skills.Distinct().ToList();
         }
     }
 }

@@ -60,5 +60,10 @@ namespace Capstone.Web.Controllers
             SetUser(UserService.SetCareerPath(user, path));
             return Json(true);
         }
+
+        public ActionResult Recommendations()
+        {
+            return View();
+        }
     }
 }

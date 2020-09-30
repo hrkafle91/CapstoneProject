@@ -18,6 +18,7 @@
     <EntitySet Name="Accounts_Applicant" EntityType="EDM.Store.Accounts_Applicant" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts_PathAdmin" EntityType="EDM.Store.Accounts_PathAdmin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BadgePath" EntityType="EDM.Store.BadgePath" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PathSkill" EntityType="EDM.Store.PathSkill" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="HiringManagerJobPosting" Association="EDM.Store.HiringManagerJobPosting">
       <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
       <End Role="JobPosting" EntitySet="JobPostings" />
@@ -61,6 +62,14 @@
     <AssociationSet Name="FK_BadgeSkills" Association="EDM.Store.FK_BadgeSkills">
       <End Role="Badge" EntitySet="Badges" />
       <End Role="Skill" EntitySet="Skills" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PathSkill_Path" Association="EDM.Store.FK_PathSkill_Path">
+      <End Role="Path" EntitySet="Paths" />
+      <End Role="PathSkill" EntitySet="PathSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PathSkill_Skill" Association="EDM.Store.FK_PathSkill_Skill">
+      <End Role="Skill" EntitySet="Skills" />
+      <End Role="PathSkill" EntitySet="PathSkill" />
     </AssociationSet>
     <AssociationSet Name="FK_HiringManager_inherits_Account" Association="EDM.Store.FK_HiringManager_inherits_Account">
       <End Role="Account" EntitySet="Accounts" />
@@ -187,6 +196,14 @@
     </Key>
     <Property Name="Badges_badgeId" Type="int" Nullable="false" />
     <Property Name="Paths_pathId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PathSkill">
+    <Key>
+      <PropertyRef Name="Paths_pathId" />
+      <PropertyRef Name="Skills_skillId" />
+    </Key>
+    <Property Name="Paths_pathId" Type="int" Nullable="false" />
+    <Property Name="Skills_skillId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="HiringManagerJobPosting">
     <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="1" />
@@ -320,6 +337,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PathSkill_Path">
+    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
+    <End Role="PathSkill" Type="EDM.Store.PathSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Path">
+        <PropertyRef Name="pathId" />
+      </Principal>
+      <Dependent Role="PathSkill">
+        <PropertyRef Name="Paths_pathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PathSkill_Skill">
+    <End Role="PathSkill" Type="EDM.Store.PathSkill" Multiplicity="*" />
+    <End Role="Skill" Type="EDM.Store.Skills" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="skillId" />
+      </Principal>
+      <Dependent Role="PathSkill">
+        <PropertyRef Name="Skills_skillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_HiringManager_inherits_Account">
     <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -413,6 +454,10 @@
           <EntitySet Name="Skills" EntityType="EDM.Skill" />
           <AssociationSet Name="FK_BadgeSkills" Association="EDM.FK_BadgeSkills">
             <End Role="Badge" EntitySet="Badges" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="PathSkill" Association="EDM.PathSkill">
+            <End Role="Path" EntitySet="Paths" />
             <End Role="Skill" EntitySet="Skills" />
           </AssociationSet>
         </EntityContainer>
@@ -540,6 +585,7 @@
           <NavigationProperty Name="PathAdmin" Relationship="EDM.PathAdminPath" FromRole="Path" ToRole="PathAdmin" />
           <Property Name="PathAdmin_userID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Badges" Relationship="EDM.BadgePath" FromRole="Path" ToRole="Badge" />
+          <NavigationProperty Name="Skills" Relationship="EDM.PathSkill" FromRole="Path" ToRole="Skill" />
         </EntityType>
         <EntityType Name="SystemQuestions" >
           <Key>
@@ -619,6 +665,7 @@
           <Property Name="skillName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Badge_badgeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Badge" Relationship="EDM.FK_BadgeSkills" FromRole="Skill" ToRole="Badge" />
+          <NavigationProperty Name="Paths" Relationship="EDM.PathSkill" FromRole="Skill" ToRole="Path" />
         </EntityType>
         <Association Name="FK_BadgeSkills">
           <End Type="EDM.Badge" Role="Badge" Multiplicity="1" />
@@ -631,6 +678,10 @@
               <PropertyRef Name="Badge_badgeId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="PathSkill">
+          <End Type="EDM.Path" Role="Path" Multiplicity="*" />
+          <End Type="EDM.Skill" Role="Skill" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -761,6 +812,14 @@
       </EndProperty>
       <EndProperty Name="Path">
         <ScalarProperty Name="pathId" ColumnName="Paths_pathId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PathSkill" TypeName="EDM.PathSkill" StoreEntitySet="PathSkill">
+      <EndProperty Name="Path">
+        <ScalarProperty Name="pathId" ColumnName="Paths_pathId" />
+      </EndProperty>
+      <EndProperty Name="Skill">
+        <ScalarProperty Name="skillId" ColumnName="Skills_skillId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

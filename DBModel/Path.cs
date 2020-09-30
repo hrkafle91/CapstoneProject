@@ -19,6 +19,7 @@ namespace DBModel
         {
             this.SystemQuestions = new HashSet<SystemQuestions>();
             this.Badges = new HashSet<Badge>();
+            this.Skills = new HashSet<Skill>();
         }
     
         public int pathId { get; set; }
@@ -31,5 +32,7 @@ namespace DBModel
         public virtual PathAdmin PathAdmin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Badge> Badges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Skill> Skills { get; set; }
     }
 }

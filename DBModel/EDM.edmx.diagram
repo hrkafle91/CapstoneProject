@@ -35,6 +35,7 @@
         <AssociationConnector Association="EDM.BadgeSystemQuestions" />
         <EntityTypeShape EntityType="EDM.Skill" Width="1.5" PointX="3.375" PointY="6" />
         <AssociationConnector Association="EDM.FK_BadgeSkills" />
+        <AssociationConnector Association="EDM.PathSkill" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
