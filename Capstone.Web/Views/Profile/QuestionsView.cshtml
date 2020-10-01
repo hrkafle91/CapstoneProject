@@ -21,49 +21,51 @@
         <div id="skillList">
             @foreach (var skill in skills)
             {
-                <div id="@skills.IndexOf(skill)">
-                    <div class="col-md-12 form-group row justify-content-center">
-                        <label for="inputState" class="col-md-3 col-form-label-lg">@skill.skillName</label>
-                        <div class="col-md-2">
-                            <select id="@skills.IndexOf(skill)" class="form-control">
-                                <option selected>None</option>
-                                <option>Beginner</option>
-                                <option>Intermediate</option>
-                            </select>
-                        </div>
+            <div id="@skills.IndexOf(skill)">
+                <div class="col-md-12 form-group row justify-content-center">
+                    <label for="inputState" class="col-md-3 col-form-label-lg">@skill.skillName</label>
+                    <div class="col-md-2">
+                        <select id="@skills.IndexOf(skill)" class="form-control">
+                            <option selected>None</option>
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                        </select>
                     </div>
-                    <hr />
-                    <div class="form-group row justify-content-center">
-                        @if (skills.IndexOf(skill) < skills.Count - 1)
+                </div>
+                <hr />
+                <div class="form-group row justify-content-center row">
+                    @if (skills.IndexOf(skill) < skills.Count - 1)
+                    {
+                        if (skills.IndexOf(skill) == 0)
                         {
-                            if (skills.IndexOf(skill) == 0)
-                            {
-                                <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
-
-                            }
-                            else
-                            {
-                                <button type="button" skill-id="@skill.skillId" class="btnBack btn btn-primary col-sm-1 m-1">Back</button>
-                                <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
-                            }
+                            <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
 
                         }
                         else
                         {
                             <button type="button" skill-id="@skill.skillId" class="btnBack btn btn-primary col-sm-1 m-1">Back</button>
-                            <button type="button" id="btnSubmit" skill-id="@skill.skillId" class=" btn btn-primary col-sm-1 m-1">Submit</button>
+                            <button type="button" skill-id="@skill.skillId" class="btnNext btn btn-primary col-sm-1 m-1">Next</button>
                         }
-                    </div>
+
+                    }
+                    else
+                    {
+                        <button type="button" skill-id="@skill.skillId" class="btnBack btn btn-primary col-sm-1 m-1">Back</button>
+                        <button type="button" id="btnSubmit" skill-id="@skill.skillId" class=" btn btn-primary col-sm-1 m-1">Submit</button>
+                    }
                 </div>
+                <button type="button" class="btn btn-outline-primary col-sm-1 float-right" onclick="cancel()">Cancel</button>
+            </div>
             }
         </div>
-        <button type="button" class="btn btn-outline-primary col-sm-1 float-right">Cancel</button>
     </div>
 
 @section Scripts {
     <script type="text/javascript">
 
-
+        var cancel = function () {
+            window.location.href = '@Url.Action("CreateProfile", "Profile")';
+        }
 
         $(document).ready(function () {
             var skills = [];
@@ -86,7 +88,7 @@
 
                 console.log(skill)
                 skills.push(skill)
-                
+
             });
 
             $('.btnBack').click(function () {
