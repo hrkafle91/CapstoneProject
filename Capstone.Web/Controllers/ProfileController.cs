@@ -43,14 +43,6 @@ namespace Capstone.Web.Controllers
 
         public ActionResult PostSkillLevels(List<SkillsLevel> skills)
         {
-            LogService.Write("Skill Level received; Count: " + skills.Count);
-            foreach(var skill in skills)
-            {
-                LogService.NextLine();
-                LogService.Write("Skill Id: " + skill.SkillId);
-                LogService.Write("Skill Level: " + skill.SkillLevel);
-
-            }
             return Json(skills);
         }
 
