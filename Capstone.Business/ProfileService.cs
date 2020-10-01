@@ -1,4 +1,5 @@
-﻿using DBModel;
+﻿using Common.Model;
+using DBModel;
 using DBModel.Repositories;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,16 @@ namespace Capstone.Business
             LogService.Write("Count of skills: " + skills.Count);
             skills.ForEach(x => LogService.Write(x.skillName));
             return skills;
+        }
+
+        public static void CreateProfile(UserViewModel user)
+        {
+            Profile profile = new Profile()
+            {
+                careerPath = user.CareerPath,
+                careerPathCompletion = "0%"
+            };
+            Repository.CreateProfile(profile);
         }
     }
 }
