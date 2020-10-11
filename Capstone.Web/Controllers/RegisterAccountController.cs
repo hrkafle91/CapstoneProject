@@ -121,7 +121,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.Edit(account);
+                repo.EditAccount(account);
                 Session.Clear();
                 Session["user"] = UserService.SetUser(account);
                 return RedirectToAction("Index", "Home");
@@ -149,7 +149,7 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            repo.Delete(id);
+            repo.DeleteAccount(id);
             return RedirectToAction("Index", "LoginAccount");
         }
 
@@ -160,7 +160,7 @@ namespace Capstone.Web.Controllers
             Account account = (Account)TempData["account"];
             if (enteredCode.Value == generatedCode)
             {
-                repo.Add(account);
+                repo.AddAccount(account);
                 Session["user"] = UserService.SetUser(account);
                 return Json(true);
             }
