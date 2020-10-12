@@ -9,7 +9,7 @@ namespace DBModel.Interfaces
 {
     public interface IAccountRepository : IDisposable
     {
-        void AddAccount(Account account);
+        Account AddAccount(Account account);
         void DeleteAccount(int accountId);
         void EditAccount(Account account);
         List<Account> GetAllAccounts();
