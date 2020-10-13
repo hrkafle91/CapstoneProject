@@ -13,19 +13,20 @@ namespace DBModel.Repositories
     {
         private EDMContainer db = new EDMContainer();
 
-        public void Add(Account account)
+        public Account AddAccount(Account account)
         {
-            db.Accounts.Add(account);
+            account = db.Accounts.Add(account);
             db.SaveChanges();
+            return account;
         }
 
-        public void Edit(Account account)
+        public void EditAccount(Account account)
         {
             db.Entry(account).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
         }
 
-        public void Delete(int accountId)
+        public void DeleteAccount(int accountId)
         {
             Account account = db.Accounts.Find(accountId);
             db.Accounts.Remove(account);

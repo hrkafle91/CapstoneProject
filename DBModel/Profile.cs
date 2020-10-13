@@ -17,18 +17,16 @@ namespace DBModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Profile()
         {
-            this.Applications = new HashSet<Application>();
             this.SystemQuestions = new HashSet<SystemQuestions>();
         }
     
         public int profileId { get; set; }
         public string careerPath { get; set; }
         public string careerPathCompletion { get; set; }
+        public string trailHeadUrl { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Application> Applications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SystemQuestions> SystemQuestions { get; set; }
-        public virtual Applicant Applicant { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

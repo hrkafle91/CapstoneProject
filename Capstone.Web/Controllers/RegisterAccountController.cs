@@ -17,12 +17,9 @@ namespace Capstone.Web.Controllers
 {
     public class RegisterAccountController : Controller
     {
-
-        private AccountRepository repo = new AccountRepository();
-
         public ActionResult Index()
         {
-            return View(repo.GetAllAccounts());
+            return View(AccountService.GetAccounts());
         }
 
         public ActionResult Details(int? id)
@@ -31,7 +28,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = repo.GetAccount(Convert.ToInt32(id));
+            Account account = AccountService.GetAccount(Convert.ToInt32(id));
             if (account == null)
             {
                 return HttpNotFound();
@@ -104,7 +101,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = repo.GetAccount(Convert.ToInt32(id));
+            Account account = AccountService.GetAccount(Convert.ToInt32(id));
             if (account == null)
             {
                 return HttpNotFound();
@@ -121,7 +118,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                repo.Edit(account);
+                AccountService.EditAccount(account);
                 Session.Clear();
                 Session["user"] = UserService.SetUser(account);
                 return RedirectToAction("Index", "Home");
@@ -136,7 +133,7 @@ namespace Capstone.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Account account = repo.GetAccount(Convert.ToInt32(id)); 
+            Account account = AccountService.GetAccount(Convert.ToInt32(id)); 
             if (account == null)
             {
                 return HttpNotFound();
@@ -149,7 +146,7 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            repo.Delete(id);
+            AccountService.DeleteAccount(id);
             return RedirectToAction("Index", "LoginAccount");
         }
 
@@ -160,7 +157,7 @@ namespace Capstone.Web.Controllers
             Account account = (Account)TempData["account"];
             if (enteredCode.Value == generatedCode)
             {
-                repo.Add(account);
+                AccountService.AddAccount(account);
                 Session["user"] = UserService.SetUser(account);
                 return Json(true);
             }
@@ -179,13 +176,5 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("VerifyEmail");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                repo.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

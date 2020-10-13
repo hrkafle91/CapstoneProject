@@ -21,18 +21,15 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult VerifyAccount(string emailId, string password)
         {
-            using (AccountRepository repo = new AccountRepository())
+            Account account = AccountService.GetAccountIfExists(emailId, password);
+            if (account != null)
             {
-                Account account = repo.GetAllAccounts().Where(x => x.emailID == emailId).FirstOrDefault();
-                if ((account != null) && (account.password == password))
-                {
-                    Session["user"] = UserService.SetUser(account);
-                    return Json(true);
-                }
-                else
-                {
-                    return Json(false);
-                }
+                Session["user"] = UserService.SetUser(account);
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
             }
         }
     }

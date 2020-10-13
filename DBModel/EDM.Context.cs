@@ -26,8 +26,6 @@ namespace DBModel
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<JobPosting> JobPostings { get; set; }
-        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<Path> Paths { get; set; }
