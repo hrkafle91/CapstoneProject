@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/12/2020 13:07:59
--- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 10/13/2020 11:14:41
+-- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,23 +17,11 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_HiringManagerJobPosting]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[JobPostings] DROP CONSTRAINT [FK_HiringManagerJobPosting];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ApplicationJobPosting]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Applications] DROP CONSTRAINT [FK_ApplicationJobPosting];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ApplicationProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Applications] DROP CONSTRAINT [FK_ApplicationProfile];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PathSystemQuestions]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_PathSystemQuestions];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProfileSystemQuestions]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_ProfileSystemQuestions];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ApplicantProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts_Applicant] DROP CONSTRAINT [FK_ApplicantProfile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathAdminPath]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Paths] DROP CONSTRAINT [FK_PathAdminPath];
@@ -56,12 +44,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PathSkill_Skill]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Skill];
 GO
-IF OBJECT_ID(N'[dbo].[FK_HiringManager_inherits_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts_HiringManager] DROP CONSTRAINT [FK_HiringManager_inherits_Account];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Applicant_inherits_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts_Applicant] DROP CONSTRAINT [FK_Applicant_inherits_Account];
-GO
 IF OBJECT_ID(N'[dbo].[FK_PathAdmin_inherits_Account]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Accounts_PathAdmin] DROP CONSTRAINT [FK_PathAdmin_inherits_Account];
 GO
@@ -72,12 +54,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[Accounts]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Accounts];
-GO
-IF OBJECT_ID(N'[dbo].[JobPostings]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[JobPostings];
-GO
-IF OBJECT_ID(N'[dbo].[Applications]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Applications];
 GO
 IF OBJECT_ID(N'[dbo].[Profiles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Profiles];
@@ -93,12 +69,6 @@ IF OBJECT_ID(N'[dbo].[SystemQuestions]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Skills]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Skills];
-GO
-IF OBJECT_ID(N'[dbo].[Accounts_HiringManager]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Accounts_HiringManager];
-GO
-IF OBJECT_ID(N'[dbo].[Accounts_Applicant]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Accounts_Applicant];
 GO
 IF OBJECT_ID(N'[dbo].[Accounts_PathAdmin]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Accounts_PathAdmin];
@@ -122,28 +92,7 @@ CREATE TABLE [dbo].[Accounts] (
     [firstName] nvarchar(max)  NOT NULL,
     [lastName] nvarchar(max)  NOT NULL,
     [emailID] nvarchar(max)  NOT NULL,
-    [userType] nvarchar(max)  NOT NULL
-);
-GO
-
--- Creating table 'JobPostings'
-CREATE TABLE [dbo].[JobPostings] (
-    [jobId] int IDENTITY(1,1) NOT NULL,
-    [Property1] nvarchar(max)  NOT NULL,
-    [jobTitle] nvarchar(max)  NOT NULL,
-    [jobDescription] nvarchar(max)  NOT NULL,
-    [jobSalary] nvarchar(max)  NOT NULL,
-    [numOfPositions] nvarchar(max)  NOT NULL,
-    [HiringManager_userID] int  NOT NULL
-);
-GO
-
--- Creating table 'Applications'
-CREATE TABLE [dbo].[Applications] (
-    [appId] int IDENTITY(1,1) NOT NULL,
-    [profileId] nvarchar(max)  NOT NULL,
-    [status] nvarchar(max)  NOT NULL,
-    [JobPosting_jobId] int  NOT NULL,
+    [userType] nvarchar(max)  NOT NULL,
     [Profile_profileId] int  NOT NULL
 );
 GO
@@ -152,7 +101,8 @@ GO
 CREATE TABLE [dbo].[Profiles] (
     [profileId] int IDENTITY(1,1) NOT NULL,
     [careerPath] nvarchar(max)  NOT NULL,
-    [careerPathCompletion] nvarchar(max)  NOT NULL
+    [careerPathCompletion] nvarchar(max)  NOT NULL,
+    [trailHeadUrl] nvarchar(max)  NULL
 );
 GO
 
@@ -160,8 +110,8 @@ GO
 CREATE TABLE [dbo].[Badges] (
     [badgeId] int IDENTITY(1,1) NOT NULL,
     [badgeTitle] nvarchar(max)  NOT NULL,
-    [description] nvarchar(max)  NOT NULL,
-    [link] nvarchar(max)  NOT NULL
+    [description] nvarchar(max)  NULL,
+    [link] nvarchar(max)  NULL
 );
 GO
 
@@ -190,24 +140,6 @@ CREATE TABLE [dbo].[Skills] (
     [skillId] int IDENTITY(1,1) NOT NULL,
     [skillName] nvarchar(max)  NOT NULL,
     [Badge_badgeId] int  NOT NULL
-);
-GO
-
--- Creating table 'Accounts_HiringManager'
-CREATE TABLE [dbo].[Accounts_HiringManager] (
-    [HiringManagerId] int IDENTITY(1,1) NOT NULL,
-    [companyName] nvarchar(max)  NOT NULL,
-    [position] nvarchar(max)  NOT NULL,
-    [userID] int  NOT NULL
-);
-GO
-
--- Creating table 'Accounts_Applicant'
-CREATE TABLE [dbo].[Accounts_Applicant] (
-    [ApplicantId] int IDENTITY(1,1) NOT NULL,
-    [TrailHeadUrl] nvarchar(max)  NOT NULL,
-    [userID] int  NOT NULL,
-    [Profile_profileId] int  NOT NULL
 );
 GO
 
@@ -243,18 +175,6 @@ ADD CONSTRAINT [PK_Accounts]
     PRIMARY KEY CLUSTERED ([userID] ASC);
 GO
 
--- Creating primary key on [jobId] in table 'JobPostings'
-ALTER TABLE [dbo].[JobPostings]
-ADD CONSTRAINT [PK_JobPostings]
-    PRIMARY KEY CLUSTERED ([jobId] ASC);
-GO
-
--- Creating primary key on [appId] in table 'Applications'
-ALTER TABLE [dbo].[Applications]
-ADD CONSTRAINT [PK_Applications]
-    PRIMARY KEY CLUSTERED ([appId] ASC);
-GO
-
 -- Creating primary key on [profileId] in table 'Profiles'
 ALTER TABLE [dbo].[Profiles]
 ADD CONSTRAINT [PK_Profiles]
@@ -285,18 +205,6 @@ ADD CONSTRAINT [PK_Skills]
     PRIMARY KEY CLUSTERED ([skillId] ASC);
 GO
 
--- Creating primary key on [userID] in table 'Accounts_HiringManager'
-ALTER TABLE [dbo].[Accounts_HiringManager]
-ADD CONSTRAINT [PK_Accounts_HiringManager]
-    PRIMARY KEY CLUSTERED ([userID] ASC);
-GO
-
--- Creating primary key on [userID] in table 'Accounts_Applicant'
-ALTER TABLE [dbo].[Accounts_Applicant]
-ADD CONSTRAINT [PK_Accounts_Applicant]
-    PRIMARY KEY CLUSTERED ([userID] ASC);
-GO
-
 -- Creating primary key on [userID] in table 'Accounts_PathAdmin'
 ALTER TABLE [dbo].[Accounts_PathAdmin]
 ADD CONSTRAINT [PK_Accounts_PathAdmin]
@@ -318,51 +226,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [HiringManager_userID] in table 'JobPostings'
-ALTER TABLE [dbo].[JobPostings]
-ADD CONSTRAINT [FK_HiringManagerJobPosting]
-    FOREIGN KEY ([HiringManager_userID])
-    REFERENCES [dbo].[Accounts_HiringManager]
-        ([userID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_HiringManagerJobPosting'
-CREATE INDEX [IX_FK_HiringManagerJobPosting]
-ON [dbo].[JobPostings]
-    ([HiringManager_userID]);
-GO
-
--- Creating foreign key on [JobPosting_jobId] in table 'Applications'
-ALTER TABLE [dbo].[Applications]
-ADD CONSTRAINT [FK_ApplicationJobPosting]
-    FOREIGN KEY ([JobPosting_jobId])
-    REFERENCES [dbo].[JobPostings]
-        ([jobId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ApplicationJobPosting'
-CREATE INDEX [IX_FK_ApplicationJobPosting]
-ON [dbo].[Applications]
-    ([JobPosting_jobId]);
-GO
-
--- Creating foreign key on [Profile_profileId] in table 'Applications'
-ALTER TABLE [dbo].[Applications]
-ADD CONSTRAINT [FK_ApplicationProfile]
-    FOREIGN KEY ([Profile_profileId])
-    REFERENCES [dbo].[Profiles]
-        ([profileId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ApplicationProfile'
-CREATE INDEX [IX_FK_ApplicationProfile]
-ON [dbo].[Applications]
-    ([Profile_profileId]);
-GO
 
 -- Creating foreign key on [Path_pathId] in table 'SystemQuestions'
 ALTER TABLE [dbo].[SystemQuestions]
@@ -391,21 +254,6 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ProfileSystemQuestions'
 CREATE INDEX [IX_FK_ProfileSystemQuestions]
 ON [dbo].[SystemQuestions]
-    ([Profile_profileId]);
-GO
-
--- Creating foreign key on [Profile_profileId] in table 'Accounts_Applicant'
-ALTER TABLE [dbo].[Accounts_Applicant]
-ADD CONSTRAINT [FK_ApplicantProfile]
-    FOREIGN KEY ([Profile_profileId])
-    REFERENCES [dbo].[Profiles]
-        ([profileId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ApplicantProfile'
-CREATE INDEX [IX_FK_ApplicantProfile]
-ON [dbo].[Accounts_Applicant]
     ([Profile_profileId]);
 GO
 
@@ -502,22 +350,19 @@ ON [dbo].[PathSkill]
     ([Skills_skillId]);
 GO
 
--- Creating foreign key on [userID] in table 'Accounts_HiringManager'
-ALTER TABLE [dbo].[Accounts_HiringManager]
-ADD CONSTRAINT [FK_HiringManager_inherits_Account]
-    FOREIGN KEY ([userID])
-    REFERENCES [dbo].[Accounts]
-        ([userID])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+-- Creating foreign key on [Profile_profileId] in table 'Accounts'
+ALTER TABLE [dbo].[Accounts]
+ADD CONSTRAINT [FK_AccountProfile]
+    FOREIGN KEY ([Profile_profileId])
+    REFERENCES [dbo].[Profiles]
+        ([profileId])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [userID] in table 'Accounts_Applicant'
-ALTER TABLE [dbo].[Accounts_Applicant]
-ADD CONSTRAINT [FK_Applicant_inherits_Account]
-    FOREIGN KEY ([userID])
-    REFERENCES [dbo].[Accounts]
-        ([userID])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+-- Creating non-clustered index for FOREIGN KEY 'FK_AccountProfile'
+CREATE INDEX [IX_FK_AccountProfile]
+ON [dbo].[Accounts]
+    ([Profile_profileId]);
 GO
 
 -- Creating foreign key on [userID] in table 'Accounts_PathAdmin'

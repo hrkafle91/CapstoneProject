@@ -51,6 +51,10 @@
       <End Role="Skill" EntitySet="Skills" />
       <End Role="PathSkill" EntitySet="PathSkill" />
     </AssociationSet>
+    <AssociationSet Name="AccountProfile" Association="EDM.Store.AccountProfile">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Profile" EntitySet="Profiles" />
+    </AssociationSet>
     <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="EDM.Store.FK_PathAdmin_inherits_Account">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
@@ -67,6 +71,7 @@
     <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
     <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Profile_profileId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Profiles">
     <Key>
@@ -75,6 +80,7 @@
     <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="careerPath" Type="nvarchar(max)" Nullable="false" />
     <Property Name="careerPathCompletion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="trailHeadUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Badges">
     <Key>
@@ -82,8 +88,8 @@
     </Key>
     <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="badgeTitle" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Paths">
     <Key>
@@ -194,6 +200,18 @@
       </Principal>
       <Dependent Role="Skill">
         <PropertyRef Name="Badge_badgeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AccountProfile">
+    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="*" />
+    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="profileId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Profile_profileId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -338,8 +356,8 @@
           </Key>
           <Property Name="badgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="badgeTitle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="description" Type="String" Nullable="false" />
-          <Property Name="link" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="true" />
+          <Property Name="link" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Paths" Relationship="EDM.BadgePath" FromRole="Badge" ToRole="Path" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.BadgeSystemQuestions" FromRole="Badge" ToRole="SystemQuestions" />
           <NavigationProperty Name="Skills" Relationship="EDM.FK_BadgeSkills" FromRole="Badge" ToRole="Skill" />
@@ -485,6 +503,7 @@
           <ScalarProperty Name="profileId" ColumnName="profileId" />
           <ScalarProperty Name="careerPath" ColumnName="careerPath" />
           <ScalarProperty Name="careerPathCompletion" ColumnName="careerPathCompletion" />
+          <ScalarProperty Name="trailHeadUrl" ColumnName="trailHeadUrl" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -545,7 +564,15 @@
         <ScalarProperty Name="skillId" ColumnName="Skills_skillId" />
       </EndProperty>
     </AssociationSetMapping>
-          </EntityContainerMapping>
+    <AssociationSetMapping Name="AccountProfile" TypeName="EDM.AccountProfile" StoreEntitySet="Accounts">
+      <EndProperty Name="Profile">
+        <ScalarProperty Name="profileId" ColumnName="Profile_profileId" />
+      </EndProperty>
+      <EndProperty Name="Account">
+        <ScalarProperty Name="userID" ColumnName="userID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
