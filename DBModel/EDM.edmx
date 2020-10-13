@@ -7,30 +7,14 @@
     <Schema Namespace="EDM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="EDMStoreContainer">
     <EntitySet Name="Accounts" EntityType="EDM.Store.Accounts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="JobPostings" EntityType="EDM.Store.JobPostings" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Applications" EntityType="EDM.Store.Applications" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Profiles" EntityType="EDM.Store.Profiles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Badges" EntityType="EDM.Store.Badges" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Paths" EntityType="EDM.Store.Paths" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SystemQuestions" EntityType="EDM.Store.SystemQuestions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Skills" EntityType="EDM.Store.Skills" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Accounts_HiringManager" EntityType="EDM.Store.Accounts_HiringManager" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Accounts_Applicant" EntityType="EDM.Store.Accounts_Applicant" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Accounts_PathAdmin" EntityType="EDM.Store.Accounts_PathAdmin" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BadgePath" EntityType="EDM.Store.BadgePath" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PathSkill" EntityType="EDM.Store.PathSkill" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="HiringManagerJobPosting" Association="EDM.Store.HiringManagerJobPosting">
-      <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
-      <End Role="JobPosting" EntitySet="JobPostings" />
-    </AssociationSet>
-    <AssociationSet Name="ApplicationJobPosting" Association="EDM.Store.ApplicationJobPosting">
-      <End Role="Application" EntitySet="Applications" />
-      <End Role="JobPosting" EntitySet="JobPostings" />
-    </AssociationSet>
-    <AssociationSet Name="ApplicationProfile" Association="EDM.Store.ApplicationProfile">
-      <End Role="Application" EntitySet="Applications" />
-      <End Role="Profile" EntitySet="Profiles" />
-    </AssociationSet>
     <AssociationSet Name="PathSystemQuestions" Association="EDM.Store.PathSystemQuestions">
       <End Role="Path" EntitySet="Paths" />
       <End Role="SystemQuestions" EntitySet="SystemQuestions" />
@@ -38,10 +22,6 @@
     <AssociationSet Name="ProfileSystemQuestions" Association="EDM.Store.ProfileSystemQuestions">
       <End Role="Profile" EntitySet="Profiles" />
       <End Role="SystemQuestions" EntitySet="SystemQuestions" />
-    </AssociationSet>
-    <AssociationSet Name="ApplicantProfile" Association="EDM.Store.ApplicantProfile">
-      <End Role="Applicant" EntitySet="Accounts_Applicant" />
-      <End Role="Profile" EntitySet="Profiles" />
     </AssociationSet>
     <AssociationSet Name="PathAdminPath" Association="EDM.Store.PathAdminPath">
       <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
@@ -71,14 +51,6 @@
       <End Role="Skill" EntitySet="Skills" />
       <End Role="PathSkill" EntitySet="PathSkill" />
     </AssociationSet>
-    <AssociationSet Name="FK_HiringManager_inherits_Account" Association="EDM.Store.FK_HiringManager_inherits_Account">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="HiringManager" EntitySet="Accounts_HiringManager" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Applicant_inherits_Account" Association="EDM.Store.FK_Applicant_inherits_Account">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="Applicant" EntitySet="Accounts_Applicant" />
-    </AssociationSet>
     <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="EDM.Store.FK_PathAdmin_inherits_Account">
       <End Role="Account" EntitySet="Accounts" />
       <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
@@ -95,28 +67,6 @@
     <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
     <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="JobPostings">
-    <Key>
-      <PropertyRef Name="jobId" />
-    </Key>
-    <Property Name="jobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Property1" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="jobTitle" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="jobDescription" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="jobSalary" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="numOfPositions" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="HiringManager_userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Applications">
-    <Key>
-      <PropertyRef Name="appId" />
-    </Key>
-    <Property Name="appId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="profileId" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="JobPosting_jobId" Type="int" Nullable="false" />
-    <Property Name="Profile_profileId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Profiles">
     <Key>
@@ -163,24 +113,6 @@
     <Property Name="skillName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Badge_badgeId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Accounts_HiringManager">
-    <Key>
-      <PropertyRef Name="userID" />
-    </Key>
-    <Property Name="HiringManagerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="companyName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="position" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Accounts_Applicant">
-    <Key>
-      <PropertyRef Name="userID" />
-    </Key>
-    <Property Name="ApplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TrailHeadUrl" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="userID" Type="int" Nullable="false" />
-    <Property Name="Profile_profileId" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Accounts_PathAdmin">
     <Key>
       <PropertyRef Name="userID" />
@@ -205,42 +137,6 @@
     <Property Name="Paths_pathId" Type="int" Nullable="false" />
     <Property Name="Skills_skillId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="HiringManagerJobPosting">
-    <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="1" />
-    <End Role="JobPosting" Type="EDM.Store.JobPostings" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HiringManager">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="JobPosting">
-        <PropertyRef Name="HiringManager_userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ApplicationJobPosting">
-    <End Role="Application" Type="EDM.Store.Applications" Multiplicity="*" />
-    <End Role="JobPosting" Type="EDM.Store.JobPostings" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="JobPosting">
-        <PropertyRef Name="jobId" />
-      </Principal>
-      <Dependent Role="Application">
-        <PropertyRef Name="JobPosting_jobId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ApplicationProfile">
-    <End Role="Application" Type="EDM.Store.Applications" Multiplicity="*" />
-    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="profileId" />
-      </Principal>
-      <Dependent Role="Application">
-        <PropertyRef Name="Profile_profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="PathSystemQuestions">
     <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
     <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
@@ -261,18 +157,6 @@
         <PropertyRef Name="profileId" />
       </Principal>
       <Dependent Role="SystemQuestions">
-        <PropertyRef Name="Profile_profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ApplicantProfile">
-    <End Role="Applicant" Type="EDM.Store.Accounts_Applicant" Multiplicity="*" />
-    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="profileId" />
-      </Principal>
-      <Dependent Role="Applicant">
         <PropertyRef Name="Profile_profileId" />
       </Dependent>
     </ReferentialConstraint>
@@ -361,34 +245,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_HiringManager_inherits_Account">
-    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="HiringManager" Type="EDM.Store.Accounts_HiringManager" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="HiringManager">
-        <PropertyRef Name="userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Applicant_inherits_Account">
-    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Applicant" Type="EDM.Store.Accounts_Applicant" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="Applicant">
-        <PropertyRef Name="userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_PathAdmin_inherits_Account">
     <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -409,21 +265,7 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EDM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="EDMContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="EDM.Account" />
-          <EntitySet Name="JobPostings" EntityType="EDM.JobPosting" />
-          <EntitySet Name="Applications" EntityType="EDM.Application" />
-          <AssociationSet Name="HiringManagerJobPosting" Association="EDM.HiringManagerJobPosting">
-            <End Role="HiringManager" EntitySet="Accounts" />
-            <End Role="JobPosting" EntitySet="JobPostings" />
-          </AssociationSet>
-          <AssociationSet Name="ApplicationJobPosting" Association="EDM.ApplicationJobPosting">
-            <End Role="Application" EntitySet="Applications" />
-            <End Role="JobPosting" EntitySet="JobPostings" />
-          </AssociationSet>
           <EntitySet Name="Profiles" EntityType="EDM.Profile" />
-          <AssociationSet Name="ApplicationProfile" Association="EDM.ApplicationProfile">
-            <End Role="Application" EntitySet="Applications" />
-            <End Role="Profile" EntitySet="Profiles" />
-          </AssociationSet>
           <EntitySet Name="Badges" EntityType="EDM.Badge" />
           <EntitySet Name="Paths" EntityType="EDM.Path" />
           <EntitySet Name="SystemQuestions" EntityType="EDM.SystemQuestions" />
@@ -434,10 +276,6 @@
           <AssociationSet Name="ProfileSystemQuestions" Association="EDM.ProfileSystemQuestions">
             <End Role="Profile" EntitySet="Profiles" />
             <End Role="SystemQuestions" EntitySet="SystemQuestions" />
-          </AssociationSet>
-          <AssociationSet Name="ApplicantProfile" Association="EDM.ApplicantProfile">
-            <End Role="Applicant" EntitySet="Accounts" />
-            <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
           <AssociationSet Name="PathAdminPath" Association="EDM.PathAdminPath">
             <End Role="PathAdmin" EntitySet="Accounts" />
@@ -460,7 +298,11 @@
             <End Role="Path" EntitySet="Paths" />
             <End Role="Skill" EntitySet="Skills" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="AccountProfile" Association="EDM.AccountProfile">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="userID" />
@@ -472,73 +314,13 @@
           <Property Name="lastName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="emailID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="userType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="JobPosting">
-          <Key>
-            <PropertyRef Name="jobId" />
-          </Key>
-          <Property Name="jobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Property1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="jobTitle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="jobDescription" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="jobSalary" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="numOfPositions" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="HiringManager" Relationship="EDM.HiringManagerJobPosting" FromRole="JobPosting" ToRole="HiringManager" />
-          <Property Name="HiringManager_userID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Applications" Relationship="EDM.ApplicationJobPosting" FromRole="JobPosting" ToRole="Application" />
+          <NavigationProperty Name="Profile" Relationship="EDM.AccountProfile" FromRole="Account" ToRole="Profile" />
         </EntityType>
         <EntityType Name="PathAdmin" BaseType="EDM.Account">
           <Property Name="pathAdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pathType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Paths" Relationship="EDM.PathAdminPath" FromRole="PathAdmin" ToRole="Path" />
         </EntityType>
-        <EntityType Name="Applicant" BaseType="EDM.Account">
-          <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TrailHeadUrl" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Profile" Relationship="EDM.ApplicantProfile" FromRole="Applicant" ToRole="Profile" />
-        </EntityType>
-        <EntityType Name="HiringManager" BaseType="EDM.Account">
-          <Property Name="HiringManagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="companyName" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="position" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="JobPostings" Relationship="EDM.HiringManagerJobPosting" FromRole="HiringManager" ToRole="JobPosting" />
-        </EntityType>
-        <EntityType Name="Application">
-          <Key>
-            <PropertyRef Name="appId" />
-          </Key>
-          <Property Name="appId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="profileId" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="JobPosting" Relationship="EDM.ApplicationJobPosting" FromRole="Application" ToRole="JobPosting" />
-          <Property Name="JobPosting_jobId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Profile" Relationship="EDM.ApplicationProfile" FromRole="Application" ToRole="Profile" />
-          <Property Name="Profile_profileId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="HiringManagerJobPosting">
-          <End Type="EDM.HiringManager" Role="HiringManager" Multiplicity="1" />
-          <End Type="EDM.JobPosting" Role="JobPosting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HiringManager">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="JobPosting">
-              <PropertyRef Name="HiringManager_userID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ApplicationJobPosting">
-          <End Type="EDM.Application" Role="Application" Multiplicity="*" />
-          <End Type="EDM.JobPosting" Role="JobPosting" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="JobPosting">
-              <PropertyRef Name="jobId" />
-            </Principal>
-            <Dependent Role="Application">
-              <PropertyRef Name="JobPosting_jobId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Profile">
           <Key>
             <PropertyRef Name="profileId" />
@@ -546,22 +328,10 @@
           <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="careerPath" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="careerPathCompletion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Applications" Relationship="EDM.ApplicationProfile" FromRole="Profile" ToRole="Application" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.ProfileSystemQuestions" FromRole="Profile" ToRole="SystemQuestions" />
-          <NavigationProperty Name="Applicant" Relationship="EDM.ApplicantProfile" FromRole="Profile" ToRole="Applicant" />
+          <Property Name="trailHeadUrl" Type="String" Nullable="true" />
+          <NavigationProperty Name="Account" Relationship="EDM.AccountProfile" FromRole="Profile" ToRole="Account" />
         </EntityType>
-        <Association Name="ApplicationProfile">
-          <End Type="EDM.Application" Role="Application" Multiplicity="*" />
-          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Profile">
-              <PropertyRef Name="profileId" />
-            </Principal>
-            <Dependent Role="Application">
-              <PropertyRef Name="Profile_profileId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Badge">
           <Key>
             <PropertyRef Name="badgeId" />
@@ -625,10 +395,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ApplicantProfile">
-          <End Type="EDM.Applicant" Role="Applicant" Multiplicity="1" />
-          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
-        </Association>
         <Association Name="PathAdminPath">
           <End Type="EDM.PathAdmin" Role="PathAdmin" Multiplicity="1" />
           <End Type="EDM.Path" Role="Path" Multiplicity="*" />
@@ -683,6 +449,10 @@
           <End Type="EDM.Path" Role="Path" Multiplicity="*" />
           <End Type="EDM.Skill" Role="Skill" Multiplicity="*" />
         </Association>
+        <Association Name="AccountProfile">
+          <End Type="EDM.Account" Role="Account" Multiplicity="1" />
+          <End Type="EDM.Profile" Role="Profile" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -701,50 +471,11 @@
           <ScalarProperty Name="userType" ColumnName="userType" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.HiringManager)">
-        <MappingFragment StoreEntitySet="Accounts_HiringManager">
-          <ScalarProperty Name="userID" ColumnName="userID" />
-          <ScalarProperty Name="HiringManagerId" ColumnName="HiringManagerId" />
-          <ScalarProperty Name="companyName" ColumnName="companyName" />
-          <ScalarProperty Name="position" ColumnName="position" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.Applicant)">
-        <MappingFragment StoreEntitySet="Accounts_Applicant">
-          <ScalarProperty Name="userID" ColumnName="userID" />
-          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
-          <ScalarProperty Name="TrailHeadUrl" ColumnName="TrailHeadUrl" />
-        </MappingFragment>
-      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(EDM.PathAdmin)">
         <MappingFragment StoreEntitySet="Accounts_PathAdmin">
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="pathAdminId" ColumnName="pathAdminId" />
           <ScalarProperty Name="pathType" ColumnName="pathType" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="JobPostings">
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.JobPosting)">
-        <MappingFragment StoreEntitySet="JobPostings">
-          <ScalarProperty Name="jobId" ColumnName="jobId" />
-          <ScalarProperty Name="Property1" ColumnName="Property1" />
-          <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
-          <ScalarProperty Name="jobDescription" ColumnName="jobDescription" />
-          <ScalarProperty Name="jobSalary" ColumnName="jobSalary" />
-          <ScalarProperty Name="numOfPositions" ColumnName="numOfPositions" />
-          <ScalarProperty Name="HiringManager_userID" ColumnName="HiringManager_userID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Applications">
-      <EntityTypeMapping TypeName="IsTypeOf(EDM.Application)">
-        <MappingFragment StoreEntitySet="Applications">
-          <ScalarProperty Name="appId" ColumnName="appId" />
-          <ScalarProperty Name="profileId" ColumnName="profileId" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="JobPosting_jobId" ColumnName="JobPosting_jobId" />
-          <ScalarProperty Name="Profile_profileId" ColumnName="Profile_profileId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -798,14 +529,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ApplicantProfile" TypeName="EDM.ApplicantProfile" StoreEntitySet="Accounts_Applicant">
-      <EndProperty Name="Profile">
-        <ScalarProperty Name="profileId" ColumnName="Profile_profileId" />
-      </EndProperty>
-      <EndProperty Name="Applicant">
-        <ScalarProperty Name="userID" ColumnName="userID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="BadgePath" TypeName="EDM.BadgePath" StoreEntitySet="BadgePath">
       <EndProperty Name="Badge">
         <ScalarProperty Name="badgeId" ColumnName="Badges_badgeId" />
@@ -822,7 +545,7 @@
         <ScalarProperty Name="skillId" ColumnName="Skills_skillId" />
       </EndProperty>
     </AssociationSetMapping>
-  </EntityContainerMapping>
+          </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
