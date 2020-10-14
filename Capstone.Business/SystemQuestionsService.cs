@@ -1,5 +1,7 @@
-﻿using DBModel;
+﻿using Common.Model;
+using DBModel;
 using DBModel.Repositories;
+using DBModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +12,20 @@ namespace Capstone.Business
 {
     public static class SystemQuestionsService
     {
-        private static SystemQuestionRepository repo = new SystemQuestionRepository();
+        private static ISystemQuestionRepository Repository = new SystemQuestionRepository();
 
-        public static void AddQuestion(SystemQuestions question)
+        public static void SaveUserResponses(List<SkillsLevel> skills)
         {
-           repo.CreateSystemQuestion(question);
+            foreach(var skill in skills)
+            {
+                var systemQuestion = new SystemQuestions()
+                {
+                    skill_id = skill.SkillId,
+                    userLevel = skill.SkillLevel
+                };
+                Repository.CreateSystemQuestion(systemQuestion);
+            }
         }
-
-        public static void EditQuestion(SystemQuestions question)
-        {
-            repo.Edit(question);
-        }
-
-        public static List<SystemQuestions> GetSystemQuestionsByProfile (int profileId)
-        {
-            return repo.GetSystemQuestionsByProfileId(profileId);
-        }
-
-        public static void DeleteQuestion(int sqId)
-        {
-            repo.Delete(sqId);
-        }
-
+    
     }
 }

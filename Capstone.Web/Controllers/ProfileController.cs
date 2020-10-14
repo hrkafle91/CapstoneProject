@@ -43,7 +43,7 @@ namespace Capstone.Web.Controllers
 
         public ActionResult PostSkillLevels(List<SkillsLevel> skills)
         {
-            ProfileService.CreateProfile(GetUser());
+            SystemQuestionsService.SaveUserResponses(skills);
             return Json(skills);
         }
 

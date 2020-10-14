@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2020 11:14:41
--- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 10/14/2020 16:30:36
+-- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -43,6 +43,9 @@ IF OBJECT_ID(N'[dbo].[FK_PathSkill_Path]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathSkill_Skill]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Skill];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AccountProfile]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Accounts] DROP CONSTRAINT [FK_AccountProfile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathAdmin_inherits_Account]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Accounts_PathAdmin] DROP CONSTRAINT [FK_PathAdmin_inherits_Account];
