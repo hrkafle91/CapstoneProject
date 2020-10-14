@@ -6,6 +6,7 @@
     ViewBag.Title = "Home";
 
     var user = Session["user"] as UserViewModel;
+    var profileID = "ID";
     if (user == null)
     {
         Response.Redirect("~/LoginAccount/Index");
@@ -18,51 +19,103 @@
 <div class="row" style="margin-top:5%">
 
     @{ 
-        Html.RenderAction("SideMenu", "Home");
+    Html.RenderAction("SideMenu", "Home");
     }
 
     <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 Welcome @user.FirstName !
-                <hr />
-                @using (Html.BeginForm("CreateProfile", "Profile"))
-                { 
-            <div class="card text-center mx-auto" style="width: 30rem;">
-                <img class="card-img-top" src="~/Images/createprofile.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Create Profile</h5><br />
-                    <p class="card-text" style="line-height: 1.6;">Choose your desired Salesforce career path and complete a skills assessment.</p>
-                    <button type="submit" class="btn btn-primary">Get Started!</button>
-                </div>
-            </div>
+                @{
+                    if (profileID == null)
+                    {
+                        <hr />
+                        using (Html.BeginForm("CreateProfile", "Profile"))
+                        {
+                            <div class="card text-center mx-auto" style="width: 30rem;">
+                                <img class="card-img-top" src="~/Images/createprofile.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Create Profile</h5><br />
+                                    <p class="card-text" style="line-height: 1.6;">Choose your desired Salesforce career path and complete a skills assessment.</p>
+                                    <button type="submit" class="btn btn-primary">Get Started!</button>
+                                </div>
+                            </div>
 
+                        }
+                    }
+                    else
+                    {
+                        <br /><br /><br />
+                        <table class="table row">
+                            <tr class="col-6">
+                                <th>Career Path:</th>
+                                <td>Admin or Dev</td>
+                            </tr>
+                            <tr class="col-6">
+                                <th>Trailblazer Url:</th>
+                                <td>user.trailblazer.me</td>
+                            </tr>
+                            <tr>
+                                <th>Resume:</th>
+                                <td style="font-size: 14px;"><input type="file" /></td>
+                            </tr>
+                            <tr class="col-6">
+                                <th>My Badges:</th>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <div class="card col-6">
+                            <div class="row no-gutters">
+                                <div class="col-3">
+                                    <img src="~/Images/empty.jpg" class="card-img" alt="...">
+                                </div>
+                                <div class="badge card-body col-3 text-left ml-2">
+                                    <h5 class="card-title">Badge 1</h5>
+                                    <p class="card-text">Badge description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br />
+                        <div class="card col-6">
+                            <div class="row no-gutters">
+                                <div class="col-3 float-left">
+                                    <img src="~/Images/empty.jpg" class="card-img" alt="...">
+                                </div>
+                                <div class="badge card-body col-3 text-left ml-2">
+                                    <h5 class="card-title">Badge 1</h5>
+                                    <p class="card-text">Badge description</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 }
             </div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                Account Information<br /><br /><br />
-                <table class="table">
-                    <tr>
-                        <th>First Name: </th>
-                        <td>@user.FirstName</td>
-                    </tr>
-                    <tr>
-                        <th>Last Name: </th>
-                        <td>@user.Lastname</td>
-                    </tr>
-                    <tr>
-                        <th>Email Address: </th>
-                        <td>@user.EmailId</td>
-                    </tr>
-                    <tr>
-                        <th>Password: </th>
-                        <td>*********</td>
-                    </tr>
-                </table><br /><br /><br />
-                @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
-                @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+
+                
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    Account Information<br /><br /><br />
+                    <table class="table">
+                        <tr>
+                            <th>First Name: </th>
+                            <td>@user.FirstName</td>
+                        </tr>
+                        <tr>
+                            <th>Last Name: </th>
+                            <td>@user.Lastname</td>
+                        </tr>
+                        <tr>
+                            <th>Email Address: </th>
+                            <td>@user.EmailId</td>
+                        </tr>
+                        <tr>
+                            <th>Password: </th>
+                            <td>*********</td>
+                        </tr>
+                    </table><br /><br /><br />
+                    @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
+                    @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+                </div>
             </div>
-        </div>
     </div>
 
 </div>
