@@ -10,10 +10,12 @@ namespace DBModel.Repositories
     public class ProfileRepository : IProfileRepository
     {
         private EDMContainer db = new EDMContainer();
-        public void CreateProfile(Profile profile)
+
+        public Profile CreateProfile(Profile profile)
         {
-            db.Profiles.Add(profile);
+            var newProfile = db.Profiles.Add(profile);
             db.SaveChanges();
+            return newProfile;
         }
 
         public void Delete(int profileId)

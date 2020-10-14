@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="EDM.Account" Width="1.5" PointX="6" PointY="0.5" />
         <EntityTypeShape EntityType="EDM.PathAdmin" Width="1.5" PointX="4.125" PointY="3" />
         <InheritanceConnector EntityType="EDM.PathAdmin" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.75" PointY="3.0571907552083331" />
-          <ConnectorPoint PointX="6.75" PointY="3.4321907552083335" />
-          <ConnectorPoint PointX="7.104166666666667" PointY="3.4321907552083331" />
-          <ConnectorPoint PointX="7.270833333333333" PointY="3.4321907552083335" />
-          <ConnectorPoint PointX="7.875" PointY="3.4321907552083335" />
+          <ConnectorPoint PointX="6.75" PointY="3.2494921874999996" />
+          <ConnectorPoint PointX="6.75" PointY="3.6244921874999996" />
+          <ConnectorPoint PointX="7.104166666666667" PointY="3.6244921874999991" />
+          <ConnectorPoint PointX="7.270833333333333" PointY="3.6244921874999996" />
+          <ConnectorPoint PointX="7.875" PointY="3.6244921874999996" />
           <ConnectorPoint PointX="7.875" PointY="0.125" />
           <ConnectorPoint PointX="3.75" PointY="0.125" />
           <ConnectorPoint PointX="3.75" PointY="2.625" />

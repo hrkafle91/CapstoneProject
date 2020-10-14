@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2020 16:30:36
+-- Date Created: 10/14/2020 19:04:59
 -- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
@@ -96,6 +96,7 @@ CREATE TABLE [dbo].[Accounts] (
     [lastName] nvarchar(max)  NOT NULL,
     [emailID] nvarchar(max)  NOT NULL,
     [userType] nvarchar(max)  NOT NULL,
+    [profileId] int  NOT NULL,
     [Profile_profileId] int  NOT NULL
 );
 GO
@@ -103,8 +104,8 @@ GO
 -- Creating table 'Profiles'
 CREATE TABLE [dbo].[Profiles] (
     [profileId] int IDENTITY(1,1) NOT NULL,
-    [careerPath] nvarchar(max)  NOT NULL,
-    [careerPathCompletion] nvarchar(max)  NOT NULL,
+    [careerPath] nvarchar(max)  NULL,
+    [careerPathCompletion] nvarchar(max)  NULL,
     [trailHeadUrl] nvarchar(max)  NULL
 );
 GO
@@ -113,8 +114,8 @@ GO
 CREATE TABLE [dbo].[Badges] (
     [badgeId] int IDENTITY(1,1) NOT NULL,
     [badgeTitle] nvarchar(max)  NOT NULL,
-    [description] nvarchar(max)  NULL,
-    [link] nvarchar(max)  NULL
+    [description] nvarchar(max)  NOT NULL,
+    [link] nvarchar(max)  NOT NULL
 );
 GO
 

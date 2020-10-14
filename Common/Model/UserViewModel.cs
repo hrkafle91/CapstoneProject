@@ -15,5 +15,8 @@ namespace Common.Model
         public string FirstName { get; set; }
         public string Lastname { get; set; }
         public bool? IsLoggedIn { get; set; }
+
+        public int? ProfileId { get; set; }
+        public int? PathId { get; set; }
     }
 }

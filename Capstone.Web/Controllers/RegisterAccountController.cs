@@ -120,7 +120,7 @@ namespace Capstone.Web.Controllers
             {
                 AccountService.EditAccount(account);
                 Session.Clear();
-                Session["user"] = UserService.SetUser(account);
+                Session["user"] = UserService.SetUser(account, ProfileService.GetProfile(account.Profile.profileId));
                 return RedirectToAction("Index", "Home");
             }
             return View(account);
@@ -155,10 +155,20 @@ namespace Capstone.Web.Controllers
         {
             int generatedCode = (int)TempData["passcode"];
             Account account = (Account)TempData["account"];
+
+            LogService.Write("Logged");
             if (enteredCode.Value == generatedCode)
             {
+                LogService.Write("Entered code is correct");
+                var profile = ProfileService.CreateProfile();
+
+                LogService.Write("Profile created");
+                account.profileId = 1;
                 AccountService.AddAccount(account);
-                Session["user"] = UserService.SetUser(account);
+
+                LogService.Write("Account created");
+
+                Session["user"] = UserService.SetUser(account, profile);
                 return Json(true);
             }
             else

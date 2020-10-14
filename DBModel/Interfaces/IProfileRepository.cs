@@ -8,7 +8,7 @@ namespace DBModel.Interfaces
 {
     public interface IProfileRepository : IDisposable 
     {
-        void CreateProfile(Profile profile);
+        Profile CreateProfile(Profile profile);
         void Delete(int profileId);
         void Edit(Profile profile);
         List<Profile> GetAllProfiles();

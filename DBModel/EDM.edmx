@@ -71,6 +71,7 @@
     <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
     <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
     <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="profileId" Type="int" Nullable="false" />
     <Property Name="Profile_profileId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Profiles">
@@ -78,8 +79,8 @@
       <PropertyRef Name="profileId" />
     </Key>
     <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="careerPath" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="careerPathCompletion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="careerPath" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="careerPathCompletion" Type="nvarchar(max)" Nullable="true" />
     <Property Name="trailHeadUrl" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Badges">
@@ -88,8 +89,8 @@
     </Key>
     <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="badgeTitle" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="link" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Paths">
     <Key>
@@ -333,6 +334,7 @@
           <Property Name="emailID" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="userType" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Profile" Relationship="EDM.AccountProfile" FromRole="Account" ToRole="Profile" />
+          <Property Name="profileId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="PathAdmin" BaseType="EDM.Account">
           <Property Name="pathAdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -344,10 +346,10 @@
             <PropertyRef Name="profileId" />
           </Key>
           <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="careerPath" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="careerPathCompletion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="careerPath" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="careerPathCompletion" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.ProfileSystemQuestions" FromRole="Profile" ToRole="SystemQuestions" />
-          <Property Name="trailHeadUrl" Type="String" Nullable="true" />
+          <Property Name="trailHeadUrl" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Account" Relationship="EDM.AccountProfile" FromRole="Profile" ToRole="Account" />
         </EntityType>
         <EntityType Name="Badge">
@@ -356,8 +358,8 @@
           </Key>
           <Property Name="badgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="badgeTitle" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="description" Type="String" Nullable="true" />
-          <Property Name="link" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Paths" Relationship="EDM.BadgePath" FromRole="Badge" ToRole="Path" />
           <NavigationProperty Name="SystemQuestions" Relationship="EDM.BadgeSystemQuestions" FromRole="Badge" ToRole="SystemQuestions" />
           <NavigationProperty Name="Skills" Relationship="EDM.FK_BadgeSkills" FromRole="Badge" ToRole="Skill" />
@@ -487,6 +489,7 @@
           <ScalarProperty Name="lastName" ColumnName="lastName" />
           <ScalarProperty Name="emailID" ColumnName="emailID" />
           <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(EDM.PathAdmin)">

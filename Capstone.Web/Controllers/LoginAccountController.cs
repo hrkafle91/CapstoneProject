@@ -22,9 +22,10 @@ namespace Capstone.Web.Controllers
         public ActionResult VerifyAccount(string emailId, string password)
         {
             Account account = AccountService.GetAccountIfExists(emailId, password);
+            Profile profile = ProfileService.GetProfile(account.Profile.profileId);
             if (account != null)
             {
-                Session["user"] = UserService.SetUser(account);
+                Session["user"] = UserService.SetUser(account, profile);
                 return Json(true);
             }
             else

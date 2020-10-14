@@ -14,14 +14,17 @@ namespace Capstone.Business
     {
         private static ISystemQuestionRepository Repository = new SystemQuestionRepository();
 
-        public static void SaveUserResponses(List<SkillsLevel> skills)
+        public static void SaveUserResponses(UserViewModel user, List<SkillsLevel> skills)
         {
             foreach(var skill in skills)
             {
                 var systemQuestion = new SystemQuestions()
                 {
                     skill_id = skill.SkillId,
-                    userLevel = skill.SkillLevel
+                    userLevel = skill.SkillLevel,
+                    Profile_profileId = user.ProfileId.Value,
+                    Path_pathId = user.PathId.Value,
+                    Badge_badgeId = skill.BadgeId.Value
                 };
                 Repository.CreateSystemQuestion(systemQuestion);
             }

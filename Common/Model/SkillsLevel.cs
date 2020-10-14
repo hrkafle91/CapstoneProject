@@ -10,5 +10,6 @@ namespace Common.Model
     {
         public int SkillId { get; set; }
         public string SkillLevel { get; set; }
+        public int? BadgeId { get; set; }
     }
 }

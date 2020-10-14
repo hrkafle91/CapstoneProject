@@ -27,14 +27,26 @@ namespace Capstone.Business
             return skills;
         }
 
-        public static void CreateProfile(UserViewModel user)
+        public static Profile CreateProfile()
         {
+            LogService.Write("I am here");
             Profile profile = new Profile()
             {
-                careerPath = user.CareerPath,
-                careerPathCompletion = "0%"
+                trailHeadUrl = "n/a",
+                careerPath = "n/a",
+                careerPathCompletion = "0"
             };
-            Repository.CreateProfile(profile);
+
+            LogService.Write("about to add");
+
+            var abc = Repository.CreateProfile(profile);
+            LogService.Write("Profile added; ID: " + abc.profileId);
+            return abc;
+        }
+
+        public static Profile GetProfile(int profileId)
+        {
+            return Repository.GetProfile(profileId);
         }
     }
 }

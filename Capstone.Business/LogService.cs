@@ -7,11 +7,12 @@ namespace Capstone.Business
 {
     public static class LogService
     {
+        static string file = System.Web.HttpContext.Current.Server.MapPath("~/Content/log.txt");
+
         public static void Write(string text)
         {
             try
             {
-                string file = System.Web.HttpContext.Current.Server.MapPath("~/Content/data/log.txt");
                 string sentence = System.IO.File.ReadAllText(file);
                 sentence += "\n[ " + DateTime.Now + " ] " + text;
                 System.IO.File.WriteAllText(file, sentence);
@@ -26,7 +27,6 @@ namespace Capstone.Business
         {
             try
             {
-                string file = System.Web.HttpContext.Current.Server.MapPath("~/Content/data/log.txt");
                 string sentence = System.IO.File.ReadAllText(file);
                 sentence += "";
                 System.IO.File.WriteAllText(file, sentence);
@@ -41,7 +41,6 @@ namespace Capstone.Business
         {
             try
             {
-                string file = System.Web.HttpContext.Current.Server.MapPath("~/Content/data/log.txt");
                 string sentence = System.IO.File.ReadAllText(file);
                 sentence = "";
                 System.IO.File.WriteAllText(file, sentence);
