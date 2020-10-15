@@ -20,28 +20,21 @@ namespace Capstone.Business
 
         public static List<Skill> GetSkillsFByPath(string path)
         {
-            LogService.Write("Selected path is: " + path);
             var skills =  Repository.GetSkillsByPath(path);
-            LogService.Write("Count of skills: " + skills.Count);
             skills.ForEach(x => LogService.Write(x.skillName));
             return skills;
         }
 
-        public static Profile CreateProfile()
+        public static Profile CreateApplicantProfile(Account account)
         {
-            LogService.Write("I am here");
             Profile profile = new Profile()
             {
-                trailHeadUrl = "n/a",
+                trailHeadUrl = "salesforce.com/" + account.userName,
                 careerPath = "n/a",
-                careerPathCompletion = "0"
+                careerPathCompletion = "0",
+                Account = account
             };
-
-            LogService.Write("about to add");
-
-            var abc = Repository.CreateProfile(profile);
-            LogService.Write("Profile added; ID: " + abc.profileId);
-            return abc;
+            return Repository.CreateProfile(profile);
         }
 
         public static Profile GetProfile(int profileId)

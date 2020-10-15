@@ -21,7 +21,6 @@ namespace DBModel
         public string lastName { get; set; }
         public string emailID { get; set; }
         public string userType { get; set; }
-        public int profileId { get; set; }
     
         public virtual Profile Profile { get; set; }
     }

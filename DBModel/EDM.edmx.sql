@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2020 19:04:59
+-- Date Created: 10/14/2020 21:35:02
 -- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
@@ -45,7 +45,7 @@ IF OBJECT_ID(N'[dbo].[FK_PathSkill_Skill]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Skill];
 GO
 IF OBJECT_ID(N'[dbo].[FK_AccountProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts] DROP CONSTRAINT [FK_AccountProfile];
+    ALTER TABLE [dbo].[Profiles] DROP CONSTRAINT [FK_AccountProfile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathAdmin_inherits_Account]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Accounts_PathAdmin] DROP CONSTRAINT [FK_PathAdmin_inherits_Account];
@@ -95,9 +95,7 @@ CREATE TABLE [dbo].[Accounts] (
     [firstName] nvarchar(max)  NOT NULL,
     [lastName] nvarchar(max)  NOT NULL,
     [emailID] nvarchar(max)  NOT NULL,
-    [userType] nvarchar(max)  NOT NULL,
-    [profileId] int  NOT NULL,
-    [Profile_profileId] int  NOT NULL
+    [userType] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -106,7 +104,8 @@ CREATE TABLE [dbo].[Profiles] (
     [profileId] int IDENTITY(1,1) NOT NULL,
     [careerPath] nvarchar(max)  NULL,
     [careerPathCompletion] nvarchar(max)  NULL,
-    [trailHeadUrl] nvarchar(max)  NULL
+    [trailHeadUrl] nvarchar(max)  NULL,
+    [Account_userID] int  NOT NULL
 );
 GO
 
@@ -354,19 +353,19 @@ ON [dbo].[PathSkill]
     ([Skills_skillId]);
 GO
 
--- Creating foreign key on [Profile_profileId] in table 'Accounts'
-ALTER TABLE [dbo].[Accounts]
+-- Creating foreign key on [Account_userID] in table 'Profiles'
+ALTER TABLE [dbo].[Profiles]
 ADD CONSTRAINT [FK_AccountProfile]
-    FOREIGN KEY ([Profile_profileId])
-    REFERENCES [dbo].[Profiles]
-        ([profileId])
+    FOREIGN KEY ([Account_userID])
+    REFERENCES [dbo].[Accounts]
+        ([userID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_AccountProfile'
 CREATE INDEX [IX_FK_AccountProfile]
-ON [dbo].[Accounts]
-    ([Profile_profileId]);
+ON [dbo].[Profiles]
+    ([Account_userID]);
 GO
 
 -- Creating foreign key on [userID] in table 'Accounts_PathAdmin'

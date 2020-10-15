@@ -25,7 +25,7 @@ namespace Capstone.Web.Controllers
             Profile profile = ProfileService.GetProfile(account.Profile.profileId);
             if (account != null)
             {
-                Session["user"] = UserService.SetUser(account, profile);
+                Session["user"] = UserService.SetUser(account);
                 return Json(true);
             }
             else

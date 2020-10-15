@@ -11,7 +11,7 @@ namespace Capstone.Business
 {
     public static class UserService
     {
-        public static UserViewModel SetUser(Account account, Profile profile)
+        public static UserViewModel SetUser(Account account)
         {
             return new UserViewModel()
             {
@@ -20,7 +20,7 @@ namespace Capstone.Business
                 UserType = account.userType,
                 FirstName = account.firstName,
                 Lastname = account.lastName,
-                ProfileId = profile.profileId
+                ProfileId = account.Profile.profileId
             };
         }
 
