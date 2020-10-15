@@ -16,19 +16,26 @@ namespace Capstone.Business
 
         public static void SaveUserResponses(UserViewModel user, List<SkillsLevel> skills)
         {
+            //var replies = new List<SystemQuestions>();
+
             foreach(var skill in skills)
             {
-                var systemQuestion = new SystemQuestions()
+                var sk = ProfileService.GetSkill(skill.SkillId);
+
+                LogService.Write("Skill Id: " + skill.SkillId + "; Skill Level: + " + skill.SkillLevel);
+                LogService.Write("Profile Id: " + user.ProfileId + "; path Id: " + user.PathId + "; Skill: " + sk.skillName + "; Badge Id: " + sk.Badge_badgeId);
+
+                var reply = new SystemQuestions()
                 {
-                    skill_id = skill.SkillId,
                     userLevel = skill.SkillLevel,
                     Profile_profileId = user.ProfileId.Value,
-                    Path_pathId = user.PathId.Value,
-                    Badge_badgeId = skill.BadgeId.Value
+                    Path_pathId = sk.Paths.FirstOrDefault().pathId,
+                    skill = sk.skillName,
+                    Badge_badgeId = sk.Badge_badgeId
                 };
-                Repository.CreateSystemQuestion(systemQuestion);
+
+                Repository.AddSystemQuestion(reply);
             }
         }
-    
     }
 }

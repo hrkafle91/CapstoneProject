@@ -10,9 +10,15 @@ namespace DBModel.Repositories
     public class SystemQuestionRepository : ISystemQuestionRepository
     {
         private EDMContainer db = new EDMContainer();
-        public void CreateSystemQuestion(SystemQuestions question)
+        public void AddSystemQuestion(SystemQuestions question)
         {
             db.SystemQuestions.Add(question);
+            db.SaveChanges();
+        }
+
+        public void AddSystemQuestions(List<SystemQuestions> questions)
+        {
+            db.SystemQuestions.AddRange(questions);
             db.SaveChanges();
         }
 

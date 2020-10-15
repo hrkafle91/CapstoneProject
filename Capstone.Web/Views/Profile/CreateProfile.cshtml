@@ -1,4 +1,4 @@
-﻿
+﻿@using Common.Enumerations
 @{
     ViewBag.Title = "CreateProfile";
 
@@ -57,11 +57,11 @@
 
         $(document).ready(function () {
             $("#adm").on('click', function () {
-                SetCareerPath("Administrator")
+                SetCareerPath('@CareerPath.Administrator');
             });
 
             $("#dev").on('click', function () {
-                SetCareerPath("Developer")
+                SetCareerPath('@CareerPath.Developer');
             });
         })
 

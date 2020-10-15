@@ -8,7 +8,8 @@ namespace DBModel.Interfaces
 {
     public interface ISystemQuestionRepository : IDisposable
     {
-        void CreateSystemQuestion(SystemQuestions question);
+        void AddSystemQuestion(SystemQuestions question);
+        void AddSystemQuestions(List<SystemQuestions> questions);
         void Delete(int sqId);
         void Edit(SystemQuestions question);
         List<SystemQuestions> GetAllSystemQuestions();

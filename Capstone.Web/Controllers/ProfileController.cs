@@ -52,6 +52,7 @@ namespace Capstone.Web.Controllers
         {
             var user = GetUser();
             SetUser(UserService.SetCareerPath(user, path));
+            ProfileService.UpdateCareerPath(user, path);
             return Json(true);
         }
 
