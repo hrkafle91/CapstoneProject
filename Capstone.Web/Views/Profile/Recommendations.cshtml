@@ -15,7 +15,7 @@
     else
     {
         profileId = user.ProfileId;
-        badges = BadgesService.GetBadges(profileId.Value);
+        badges = BadgesService.GetEarnedBadges(profileId.Value);
     }
 }
 
@@ -49,29 +49,24 @@
         </div>
         <div id="neededBadges" class="col-md-4 ml-4">
             <h3 class="text-left">Badges Needed:</h3>
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-md-3">
-                        <img src="~/Images/empty.jpg" class="card-img" height="100px;" alt="...">
-                    </div>
-                    <div class="badge card-body col-md-8 text-left ml-2">
-                        <h5 class="card-title">Badge 1</h5>
-                        <p class="card-text">Badge description</p>
-                    </div>
-                </div>
-            </div>
-            <br /><br />
-            <div class="card">
-                <div class="row no-gutters">
-                    <div class="col-md-3">
-                        <img src="~/Images/empty.jpg" class="card-img" height="100px;" alt="...">
-                    </div>
-                    <div class="badge card-body col-md-8 text-left ml-2">
-                        <h5 class="card-title">Badge 1</h5>
-                        <p class="card-text">Badge description</p>
+
+            @foreach (var badge in BadgesService.GetRecommendedBadges(profileId.Value))
+            {
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-3">
+                            <img src="~/Images/empty.jpg" class="card-img" height="100px;" alt="...">
+                        </div>
+                        <div class="badge card-body col-md-8 text-left ml-2">
+                            <h5 class="card-title">@badge.BadgeName</h5>
+                            <p class="card-text">@badge.Description</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <br /><br />
+            }
+
+
         </div>
     </div>
 </div>

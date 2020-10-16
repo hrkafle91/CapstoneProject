@@ -13,9 +13,14 @@ namespace Capstone.Business
     {
         private static IBadgesRepository Repository = new BadgesRepository();
 
-        public static List<BadgesModel> GetBadges(int profileId)
+        public static List<BadgesModel> GetEarnedBadges(int profileId)
         {
-            return Repository.GetBadges(profileId);
+            return Repository.GetEarnedBadges(profileId);
+        }
+
+        public static List<BadgesModel> GetRecommendedBadges(int profileId)
+        {
+            return Repository.GetRecommendedBadges(profileId);
         }
     }
 }

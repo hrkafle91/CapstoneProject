@@ -10,6 +10,7 @@ namespace DBModel.Interfaces
 {
     public interface IBadgesRepository : IDisposable
     {
-        List<BadgesModel> GetBadges(int profileId);
+        List<BadgesModel> GetEarnedBadges(int profileId);
+        List<BadgesModel> GetRecommendedBadges(int profileId);
     }
 }
