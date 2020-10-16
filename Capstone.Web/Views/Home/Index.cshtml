@@ -6,13 +6,17 @@
     ViewBag.Title = "Home";
 
     var user = Session["user"] as UserViewModel;
-    var profileID = "ID";
+    int? profileId = null;
+    List<BadgesModel> badges = new List<BadgesModel>();
+    
     if (user == null)
     {
         Response.Redirect("~/LoginAccount/Index");
     }
     else
     {
+        profileId = user.ProfileId;
+        badges = Capstone.Business.BadgesService.GetBadges(profileId.Value);
     }
 }
 
@@ -27,7 +31,7 @@
             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 Welcome @user.FirstName !
                 @{
-                    if (profileID == null)
+                    if (!profileId.HasValue)
                     {
                         <hr />
                         using (Html.BeginForm("CreateProfile", "Profile"))
@@ -64,19 +68,25 @@
                                 <td></td>
                             </tr>
                         </table>
-                        <div class="card col-6">
-                            <div class="row no-gutters">
-                                <div class="col-3">
-                                    <img src="~/Images/empty.jpg" class="card-img" alt="...">
-                                </div>
-                                <div class="badge card-body col-3 text-left ml-2">
-                                    <h5 class="card-title">Badge 1</h5>
-                                    <p class="card-text">Badge description</p>
+
+                        foreach (var badge in badges)
+                        {
+                            <div class="card col-6">
+                                <div class="row no-gutters">
+                                    <div class="col-3">
+                                        <img src="~/Images/empty.jpg" class="card-img" alt="...">
+                                    </div>
+                                    <div class="badge card-body col-3 text-left ml-2">
+                                        <h5 class="card-title">@badge.BadgeName</h5>
+                                        <p class="card-text">@badge.Description</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br /><br />
-                        <div class="card col-6">
+                            <br /><br />
+                        }
+
+
+                        @*<div class="card col-6">
                             <div class="row no-gutters">
                                 <div class="col-3 float-left">
                                     <img src="~/Images/empty.jpg" class="card-img" alt="...">
@@ -86,7 +96,7 @@
                                     <p class="card-text">Badge description</p>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     }
                 }
             </div>
