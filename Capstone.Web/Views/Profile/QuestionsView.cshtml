@@ -100,7 +100,7 @@
 
             $('#btnSubmit').click(function () {
                 var skillId = $(this).attr('skill-id');
-                var skillLevel = $('#skillLevel').val();
+                var skillLevel = $('#' + divId + " option:selected").text();
 
                 var skill = new Object();
                 skill.SkillId = skillId;

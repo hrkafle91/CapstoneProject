@@ -16,14 +16,9 @@ namespace Capstone.Business
 
         public static void SaveUserResponses(UserViewModel user, List<SkillsLevel> skills)
         {
-            //var replies = new List<SystemQuestions>();
-
-            foreach(var skill in skills)
+            foreach (var skill in skills)
             {
                 var sk = ProfileService.GetSkill(skill.SkillId);
-
-                LogService.Write("Skill Id: " + skill.SkillId + "; Skill Level: + " + skill.SkillLevel);
-                LogService.Write("Profile Id: " + user.ProfileId + "; path Id: " + user.PathId + "; Skill: " + sk.skillName + "; Badge Id: " + sk.Badge_badgeId);
 
                 var reply = new SystemQuestions()
                 {

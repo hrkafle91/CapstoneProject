@@ -4,280 +4,280 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EDM.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="EDMStoreContainer">
-    <EntitySet Name="Accounts" EntityType="EDM.Store.Accounts" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Profiles" EntityType="EDM.Store.Profiles" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Badges" EntityType="EDM.Store.Badges" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Paths" EntityType="EDM.Store.Paths" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="SystemQuestions" EntityType="EDM.Store.SystemQuestions" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Skills" EntityType="EDM.Store.Skills" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Accounts_PathAdmin" EntityType="EDM.Store.Accounts_PathAdmin" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="BadgePath" EntityType="EDM.Store.BadgePath" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PathSkill" EntityType="EDM.Store.PathSkill" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PathSystemQuestions" Association="EDM.Store.PathSystemQuestions">
-      <End Role="Path" EntitySet="Paths" />
-      <End Role="SystemQuestions" EntitySet="SystemQuestions" />
-    </AssociationSet>
-    <AssociationSet Name="ProfileSystemQuestions" Association="EDM.Store.ProfileSystemQuestions">
-      <End Role="Profile" EntitySet="Profiles" />
-      <End Role="SystemQuestions" EntitySet="SystemQuestions" />
-    </AssociationSet>
-    <AssociationSet Name="PathAdminPath" Association="EDM.Store.PathAdminPath">
-      <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
-      <End Role="Path" EntitySet="Paths" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BadgePath_Badge" Association="EDM.Store.FK_BadgePath_Badge">
-      <End Role="Badge" EntitySet="Badges" />
-      <End Role="BadgePath" EntitySet="BadgePath" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BadgePath_Path" Association="EDM.Store.FK_BadgePath_Path">
-      <End Role="Path" EntitySet="Paths" />
-      <End Role="BadgePath" EntitySet="BadgePath" />
-    </AssociationSet>
-    <AssociationSet Name="BadgeSystemQuestions" Association="EDM.Store.BadgeSystemQuestions">
-      <End Role="Badge" EntitySet="Badges" />
-      <End Role="SystemQuestions" EntitySet="SystemQuestions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BadgeSkills" Association="EDM.Store.FK_BadgeSkills">
-      <End Role="Badge" EntitySet="Badges" />
-      <End Role="Skill" EntitySet="Skills" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PathSkill_Path" Association="EDM.Store.FK_PathSkill_Path">
-      <End Role="Path" EntitySet="Paths" />
-      <End Role="PathSkill" EntitySet="PathSkill" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PathSkill_Skill" Association="EDM.Store.FK_PathSkill_Skill">
-      <End Role="Skill" EntitySet="Skills" />
-      <End Role="PathSkill" EntitySet="PathSkill" />
-    </AssociationSet>
-    <AssociationSet Name="AccountProfile" Association="EDM.Store.AccountProfile">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="Profile" EntitySet="Profiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="EDM.Store.FK_PathAdmin_inherits_Account">
-      <End Role="Account" EntitySet="Accounts" />
-      <End Role="PathAdmin" EntitySet="Accounts_PathAdmin" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Accounts">
-    <Key>
-      <PropertyRef Name="userID" />
-    </Key>
-    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Profiles">
-    <Key>
-      <PropertyRef Name="profileId" />
-    </Key>
-    <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="careerPath" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="careerPathCompletion" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="trailHeadUrl" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Account_userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Badges">
-    <Key>
-      <PropertyRef Name="badgeId" />
-    </Key>
-    <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="badgeTitle" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Paths">
-    <Key>
-      <PropertyRef Name="pathId" />
-    </Key>
-    <Property Name="pathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PathAdmin_userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="SystemQuestions">
-    <Key>
-      <PropertyRef Name="skill_id" />
-    </Key>
-    <Property Name="skill" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="userLevel" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Path_pathId" Type="int" Nullable="false" />
-    <Property Name="Profile_profileId" Type="int" Nullable="false" />
-    <Property Name="Badge_badgeId" Type="int" Nullable="false" />
-    <Property Name="skill_id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Skills">
-    <Key>
-      <PropertyRef Name="skillId" />
-    </Key>
-    <Property Name="skillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="skillName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Badge_badgeId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Accounts_PathAdmin">
-    <Key>
-      <PropertyRef Name="userID" />
-    </Key>
-    <Property Name="pathAdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="userID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="BadgePath">
-    <Key>
-      <PropertyRef Name="Badges_badgeId" />
-      <PropertyRef Name="Paths_pathId" />
-    </Key>
-    <Property Name="Badges_badgeId" Type="int" Nullable="false" />
-    <Property Name="Paths_pathId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PathSkill">
-    <Key>
-      <PropertyRef Name="Paths_pathId" />
-      <PropertyRef Name="Skills_skillId" />
-    </Key>
-    <Property Name="Paths_pathId" Type="int" Nullable="false" />
-    <Property Name="Skills_skillId" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="PathSystemQuestions">
-    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
-    <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Path">
-        <PropertyRef Name="pathId" />
-      </Principal>
-      <Dependent Role="SystemQuestions">
-        <PropertyRef Name="Path_pathId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ProfileSystemQuestions">
-    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="1" />
-    <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="profileId" />
-      </Principal>
-      <Dependent Role="SystemQuestions">
-        <PropertyRef Name="Profile_profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PathAdminPath">
-    <End Role="PathAdmin" Type="EDM.Store.Accounts_PathAdmin" Multiplicity="1" />
-    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PathAdmin">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="Path">
-        <PropertyRef Name="PathAdmin_userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="BadgeSystemQuestions">
-    <End Role="Badge" Type="EDM.Store.Badges" Multiplicity="1" />
-    <End Role="SystemQuestions" Type="EDM.Store.SystemQuestions" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Badge">
-        <PropertyRef Name="badgeId" />
-      </Principal>
-      <Dependent Role="SystemQuestions">
-        <PropertyRef Name="Badge_badgeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BadgeSkills">
-    <End Role="Badge" Type="EDM.Store.Badges" Multiplicity="1" />
-    <End Role="Skill" Type="EDM.Store.Skills" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Badge">
-        <PropertyRef Name="badgeId" />
-      </Principal>
-      <Dependent Role="Skill">
-        <PropertyRef Name="Badge_badgeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AccountProfile">
-    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1" />
-    <End Role="Profile" Type="EDM.Store.Profiles" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="Profile">
-        <PropertyRef Name="Account_userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BadgePath_Badge">
-    <End Role="Badge" Type="EDM.Store.Badges" Multiplicity="1" />
-    <End Role="BadgePath" Type="EDM.Store.BadgePath" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Badge">
-        <PropertyRef Name="badgeId" />
-      </Principal>
-      <Dependent Role="BadgePath">
-        <PropertyRef Name="Badges_badgeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BadgePath_Path">
-    <End Role="BadgePath" Type="EDM.Store.BadgePath" Multiplicity="*" />
-    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Path">
-        <PropertyRef Name="pathId" />
-      </Principal>
-      <Dependent Role="BadgePath">
-        <PropertyRef Name="Paths_pathId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PathSkill_Path">
-    <End Role="Path" Type="EDM.Store.Paths" Multiplicity="1" />
-    <End Role="PathSkill" Type="EDM.Store.PathSkill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Path">
-        <PropertyRef Name="pathId" />
-      </Principal>
-      <Dependent Role="PathSkill">
-        <PropertyRef Name="Paths_pathId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PathSkill_Skill">
-    <End Role="PathSkill" Type="EDM.Store.PathSkill" Multiplicity="*" />
-    <End Role="Skill" Type="EDM.Store.Skills" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Skill">
-        <PropertyRef Name="skillId" />
-      </Principal>
-      <Dependent Role="PathSkill">
-        <PropertyRef Name="Skills_skillId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PathAdmin_inherits_Account">
-    <End Role="Account" Type="EDM.Store.Accounts" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="PathAdmin" Type="EDM.Store.Accounts_PathAdmin" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Account">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="PathAdmin">
-        <PropertyRef Name="userID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="EDM.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="emailID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userType" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Accounts_PathAdmin">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="pathAdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BadgePath">
+          <Key>
+            <PropertyRef Name="Badges_badgeId" />
+            <PropertyRef Name="Paths_pathId" />
+          </Key>
+          <Property Name="Badges_badgeId" Type="int" Nullable="false" />
+          <Property Name="Paths_pathId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Badges">
+          <Key>
+            <PropertyRef Name="badgeId" />
+          </Key>
+          <Property Name="badgeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="badgeTitle" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Paths">
+          <Key>
+            <PropertyRef Name="pathId" />
+          </Key>
+          <Property Name="pathId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pathType" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PathAdmin_userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PathSkill">
+          <Key>
+            <PropertyRef Name="Paths_pathId" />
+            <PropertyRef Name="Skills_skillId" />
+          </Key>
+          <Property Name="Paths_pathId" Type="int" Nullable="false" />
+          <Property Name="Skills_skillId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="careerPath" Type="nvarchar(max)" />
+          <Property Name="careerPathCompletion" Type="nvarchar(max)" />
+          <Property Name="trailHeadUrl" Type="nvarchar(max)" />
+          <Property Name="Account_userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="skillId" />
+          </Key>
+          <Property Name="skillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="skillName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Badge_badgeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemQuestions">
+          <Key>
+            <PropertyRef Name="skill_id" />
+          </Key>
+          <Property Name="skill" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="userLevel" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Path_pathId" Type="int" Nullable="false" />
+          <Property Name="Profile_profileId" Type="int" Nullable="false" />
+          <Property Name="Badge_badgeId" Type="int" Nullable="false" />
+          <Property Name="skill_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccountProfile">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="Account_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgePath_Badge">
+          <End Role="Badges" Type="Self.Badges" Multiplicity="1" />
+          <End Role="BadgePath" Type="Self.BadgePath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badges">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="BadgePath">
+              <PropertyRef Name="Badges_badgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgePath_Path">
+          <End Role="Paths" Type="Self.Paths" Multiplicity="1" />
+          <End Role="BadgePath" Type="Self.BadgePath" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paths">
+              <PropertyRef Name="pathId" />
+            </Principal>
+            <Dependent Role="BadgePath">
+              <PropertyRef Name="Paths_pathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeSkills">
+          <End Role="Badges" Type="Self.Badges" Multiplicity="1" />
+          <End Role="Skills" Type="Self.Skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badges">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="Badge_badgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BadgeSystemQuestions">
+          <End Role="Badges" Type="Self.Badges" Multiplicity="1" />
+          <End Role="SystemQuestions" Type="Self.SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badges">
+              <PropertyRef Name="badgeId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Badge_badgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PathAdmin_inherits_Account">
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Accounts_PathAdmin" Type="Self.Accounts_PathAdmin" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Accounts_PathAdmin">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PathAdminPath">
+          <End Role="Accounts_PathAdmin" Type="Self.Accounts_PathAdmin" Multiplicity="1" />
+          <End Role="Paths" Type="Self.Paths" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accounts_PathAdmin">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Paths">
+              <PropertyRef Name="PathAdmin_userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PathSkill_Path">
+          <End Role="Paths" Type="Self.Paths" Multiplicity="1" />
+          <End Role="PathSkill" Type="Self.PathSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paths">
+              <PropertyRef Name="pathId" />
+            </Principal>
+            <Dependent Role="PathSkill">
+              <PropertyRef Name="Paths_pathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PathSkill_Skill">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
+          <End Role="PathSkill" Type="Self.PathSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="skillId" />
+            </Principal>
+            <Dependent Role="PathSkill">
+              <PropertyRef Name="Skills_skillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PathSystemQuestions">
+          <End Role="Paths" Type="Self.Paths" Multiplicity="1" />
+          <End Role="SystemQuestions" Type="Self.SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paths">
+              <PropertyRef Name="pathId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Path_pathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileSystemQuestions">
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="1" />
+          <End Role="SystemQuestions" Type="Self.SystemQuestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="profileId" />
+            </Principal>
+            <Dependent Role="SystemQuestions">
+              <PropertyRef Name="Profile_profileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EDMStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts_PathAdmin" EntityType="Self.Accounts_PathAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BadgePath" EntityType="Self.BadgePath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Badges" EntityType="Self.Badges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paths" EntityType="Self.Paths" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PathSkill" EntityType="Self.PathSkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemQuestions" EntityType="Self.SystemQuestions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccountProfile" Association="Self.FK_AccountProfile">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgePath_Badge" Association="Self.FK_BadgePath_Badge">
+            <End Role="Badges" EntitySet="Badges" />
+            <End Role="BadgePath" EntitySet="BadgePath" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgePath_Path" Association="Self.FK_BadgePath_Path">
+            <End Role="Paths" EntitySet="Paths" />
+            <End Role="BadgePath" EntitySet="BadgePath" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgeSkills" Association="Self.FK_BadgeSkills">
+            <End Role="Badges" EntitySet="Badges" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BadgeSystemQuestions" Association="Self.FK_BadgeSystemQuestions">
+            <End Role="Badges" EntitySet="Badges" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="Self.FK_PathAdmin_inherits_Account">
+            <End Role="Accounts" EntitySet="Accounts" />
+            <End Role="Accounts_PathAdmin" EntitySet="Accounts_PathAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PathAdminPath" Association="Self.FK_PathAdminPath">
+            <End Role="Accounts_PathAdmin" EntitySet="Accounts_PathAdmin" />
+            <End Role="Paths" EntitySet="Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PathSkill_Path" Association="Self.FK_PathSkill_Path">
+            <End Role="Paths" EntitySet="Paths" />
+            <End Role="PathSkill" EntitySet="PathSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PathSkill_Skill" Association="Self.FK_PathSkill_Skill">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="PathSkill" EntitySet="PathSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PathSystemQuestions" Association="Self.FK_PathSystemQuestions">
+            <End Role="Paths" EntitySet="Paths" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileSystemQuestions" Association="Self.FK_ProfileSystemQuestions">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EDM" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
