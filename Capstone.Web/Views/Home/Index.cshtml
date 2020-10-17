@@ -1,5 +1,6 @@
 ﻿@using DBModel
 @using Common.Model
+@using Capstone.Business
 @model Common.Model.UserViewModel
 
 @{
@@ -57,11 +58,7 @@
                             </tr>
                             <tr class="col-6">
                                 <th>Trailblazer Url:</th>
-                                <td>user.trailblazer.me</td>
-                            </tr>
-                            <tr>
-                                <th>Resume:</th>
-                                <td style="font-size: 14px;"><input type="file" /></td>
+                                <td>trailblazer.me/id/username</td>
                             </tr>
                             <tr class="col-6">
                                 <th>My Badges:</th>
@@ -84,49 +81,62 @@
                             </div>
                             <br /><br />
                         }
-
-
-                        @*<div class="card col-6">
-                            <div class="row no-gutters">
-                                <div class="col-3 float-left">
-                                    <img src="~/Images/empty.jpg" class="card-img" alt="...">
-                                </div>
-                                <div class="badge card-body col-3 text-left ml-2">
-                                    <h5 class="card-title">Badge 1</h5>
-                                    <p class="card-text">Badge description</p>
-                                </div>
-                            </div>
-                        </div>*@
                     }
                 }
             </div>
-
-                
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    Account Information<br /><br /><br />
-                    <table class="table">
-                        <tr>
-                            <th>First Name: </th>
-                            <td>@user.FirstName</td>
-                        </tr>
-                        <tr>
-                            <th>Last Name: </th>
-                            <td>@user.Lastname</td>
-                        </tr>
-                        <tr>
-                            <th>Email Address: </th>
-                            <td>@user.EmailId</td>
-                        </tr>
-                        <tr>
-                            <th>Password: </th>
-                            <td>*********</td>
-                        </tr>
-                    </table><br /><br /><br />
-                    @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
-                    @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+            <div class="tab-pane fade" id="v-pills-path" role="tabpanel" aria-labelledby="v-pills-path-tab">
+                <div class="d-flex">
+                    <h2>Career Path: @user.CareerPath</h2>
+                    <button type="button" class="btn btn-outline-primary ml-auto">Update</button>
+                </div>
+                <hr />
+                <h3>Badges Needed for Path Completion:</h3>
+                <div class="row">
+                    @foreach (var badge in BadgesService.GetRecommendedBadges(profileId.Value))
+                    {
+                        <div class="card col-3 m-3">
+                            <img class="card-img-top mx-auto mt-2" style="width:10rem; height:10rem;" src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@badge.BadgeName</h5>
+                                <p class="card-text" style="line-height:1.6">@badge.Description</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Status:<br /><br />
+                                <select class="form-control" id="slectStatus">
+                                    <option value="0" selected>Incomplete</option>
+                                    <option value="1">Complete</option>
+                                </select>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
-    </div>
+
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                Account Information<br /><br /><br />
+                <table class="table">
+                    <tr>
+                        <th>First Name: </th>
+                        <td>@user.FirstName</td>
+                    </tr>
+                    <tr>
+                        <th>Last Name: </th>
+                        <td>@user.Lastname</td>
+                    </tr>
+                    <tr>
+                        <th>Email Address: </th>
+                        <td>@user.EmailId</td>
+                    </tr>
+                    <tr>
+                        <th>Password: </th>
+                        <td>*********</td>
+                    </tr>
+                </table><br /><br /><br />
+                @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
+                @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
+            </div>
+        </div>
+        </div>
 
 </div>
 

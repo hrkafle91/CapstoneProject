@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2020 21:35:02
--- Generated from EDMX file: C:\Workspace\CapstoneProject\DBModel\EDM.edmx
+-- Date Created: 10/16/2020 16:06:24
+-- Generated from EDMX file: C:\Users\Elizabeth\source\repos\CapstoneProject\DBModel\EDM.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,14 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_PathSystemQuestions]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_PathSystemQuestions];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProfileSystemQuestions]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_ProfileSystemQuestions];
-GO
-IF OBJECT_ID(N'[dbo].[FK_PathAdminPath]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Paths] DROP CONSTRAINT [FK_PathAdminPath];
+IF OBJECT_ID(N'[dbo].[FK_AccountProfile]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Profiles] DROP CONSTRAINT [FK_AccountProfile];
 GO
 IF OBJECT_ID(N'[dbo].[FK_BadgePath_Badge]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BadgePath] DROP CONSTRAINT [FK_BadgePath_Badge];
@@ -32,11 +26,17 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_BadgePath_Path]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BadgePath] DROP CONSTRAINT [FK_BadgePath_Path];
 GO
+IF OBJECT_ID(N'[dbo].[FK_BadgeSkills]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Skills] DROP CONSTRAINT [FK_BadgeSkills];
+GO
 IF OBJECT_ID(N'[dbo].[FK_BadgeSystemQuestions]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_BadgeSystemQuestions];
 GO
-IF OBJECT_ID(N'[dbo].[FK_BadgeSkills]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Skills] DROP CONSTRAINT [FK_BadgeSkills];
+IF OBJECT_ID(N'[dbo].[FK_PathAdmin_inherits_Account]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Accounts_PathAdmin] DROP CONSTRAINT [FK_PathAdmin_inherits_Account];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PathAdminPath]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Paths] DROP CONSTRAINT [FK_PathAdminPath];
 GO
 IF OBJECT_ID(N'[dbo].[FK_PathSkill_Path]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Path];
@@ -44,11 +44,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PathSkill_Skill]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PathSkill] DROP CONSTRAINT [FK_PathSkill_Skill];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AccountProfile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Profiles] DROP CONSTRAINT [FK_AccountProfile];
+IF OBJECT_ID(N'[dbo].[FK_PathSystemQuestions]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_PathSystemQuestions];
 GO
-IF OBJECT_ID(N'[dbo].[FK_PathAdmin_inherits_Account]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Accounts_PathAdmin] DROP CONSTRAINT [FK_PathAdmin_inherits_Account];
+IF OBJECT_ID(N'[dbo].[FK_ProfileSystemQuestions]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[SystemQuestions] DROP CONSTRAINT [FK_ProfileSystemQuestions];
 GO
 
 -- --------------------------------------------------
@@ -58,8 +58,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Accounts]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Accounts];
 GO
-IF OBJECT_ID(N'[dbo].[Profiles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Profiles];
+IF OBJECT_ID(N'[dbo].[Accounts_PathAdmin]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Accounts_PathAdmin];
+GO
+IF OBJECT_ID(N'[dbo].[BadgePath]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BadgePath];
 GO
 IF OBJECT_ID(N'[dbo].[Badges]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Badges];
@@ -67,20 +70,17 @@ GO
 IF OBJECT_ID(N'[dbo].[Paths]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Paths];
 GO
-IF OBJECT_ID(N'[dbo].[SystemQuestions]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[SystemQuestions];
+IF OBJECT_ID(N'[dbo].[PathSkill]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PathSkill];
+GO
+IF OBJECT_ID(N'[dbo].[Profiles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Profiles];
 GO
 IF OBJECT_ID(N'[dbo].[Skills]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Skills];
 GO
-IF OBJECT_ID(N'[dbo].[Accounts_PathAdmin]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Accounts_PathAdmin];
-GO
-IF OBJECT_ID(N'[dbo].[BadgePath]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[BadgePath];
-GO
-IF OBJECT_ID(N'[dbo].[PathSkill]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PathSkill];
+IF OBJECT_ID(N'[dbo].[SystemQuestions]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SystemQuestions];
 GO
 
 -- --------------------------------------------------
