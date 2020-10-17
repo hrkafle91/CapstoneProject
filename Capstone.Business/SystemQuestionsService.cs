@@ -32,5 +32,13 @@ namespace Capstone.Business
                 Repository.AddSystemQuestion(reply);
             }
         }
+
+        public static void UpdateBadgeCompletionStatus(List<BadgeCompletionStatus> badges, UserViewModel user)
+        {
+            foreach (var badge in badges)
+            {
+                Repository.UpdateSystemQuestionByBadgeId(badge, user);
+            }
+        }
     }
 }

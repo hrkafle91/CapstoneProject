@@ -20,7 +20,9 @@ namespace Capstone.Business
                 UserType = account.userType,
                 FirstName = account.firstName,
                 Lastname = account.lastName,
-                ProfileId = account.Profile.profileId
+                ProfileId = account.Profile.profileId,
+                CareerPath = account.Profile.careerPath ?? "n/a",
+                TrailblazerUrl = account.Profile.trailHeadUrl ?? "n/a"
             };
         }
 

@@ -34,7 +34,7 @@ namespace Capstone.Business
         {
             Profile profile = new Profile()
             {
-                trailHeadUrl = "salesforce.com/" + account.userName,
+                trailHeadUrl = "trailhead.me/id/" + account.userID,
                 careerPath = "n/a",
                 careerPathCompletion = "0",
                 Account = account

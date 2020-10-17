@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,7 @@ namespace DBModel.Interfaces
         List<SystemQuestions> GetAllSystemQuestions();
         List<SystemQuestions> GetSystemQuestionsByProfileId(int profileId);
         SystemQuestions GetSystemQuestion(int sqId);
+
+        void UpdateSystemQuestionByBadgeId(BadgeCompletionStatus badge, UserViewModel user);
     }
 }

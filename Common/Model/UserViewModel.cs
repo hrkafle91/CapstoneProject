@@ -18,5 +18,6 @@ namespace Common.Model
 
         public int? ProfileId { get; set; }
         public int? PathId { get; set; }
+        public string TrailblazerUrl { get; set; }
     }
 }

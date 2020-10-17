@@ -1,4 +1,6 @@
-﻿using DBModel.Interfaces;
+﻿using Common.Enumerations;
+using Common.Model;
+using DBModel.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,5 +55,17 @@ namespace DBModel.Repositories
         {
             return db.SystemQuestions.Find(sqId);
         }
+
+        public void UpdateSystemQuestionByBadgeId(BadgeCompletionStatus badge, UserViewModel user)
+        {
+            var sysQuestions = db.SystemQuestions.Where(q => q.Profile_profileId == user.ProfileId && q.Badge_badgeId == badge.BadgeId).ToList();
+            foreach(var sys in sysQuestions)
+            {
+                if (badge.CompletionStatus == (int)CompletionStatus.Complete)
+                    sys.userLevel = UserSkillLevel.Intermediate.ToString();
+                Edit(sys);
+            }
+        }
+
     }
 }

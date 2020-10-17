@@ -46,6 +46,7 @@
     <Compile Include="Enumerations\CareerPath.cs" />
     <Compile Include="Enumerations\UserSkillLevel.cs" />
     <Compile Include="Enumerations\UserTypeEnum.cs" />
+    <Compile Include="Model\BadgeCompletionStatus.cs" />
     <Compile Include="Model\BadgesModel.cs" />
     <Compile Include="Model\UserViewModel.cs" />
     <Compile Include="Model\SkillsLevel.cs" />

@@ -13,8 +13,6 @@ namespace Capstone.Web.Controllers
 {
     public class ProfileController : Controller
     {
-        private ProfileRepository repo = new ProfileRepository();
-
         public UserViewModel GetUser()
         {
             return (UserViewModel) Session["user"];
@@ -59,6 +57,12 @@ namespace Capstone.Web.Controllers
         public ActionResult Recommendations()
         {
             return View();
+        }
+
+        public ActionResult UpdateBadgeCompletionStatus(List<BadgeCompletionStatus> badges)
+        {
+            SystemQuestionsService.UpdateBadgeCompletionStatus(badges, GetUser());
+            return Json(true);
         }
     }
 }
