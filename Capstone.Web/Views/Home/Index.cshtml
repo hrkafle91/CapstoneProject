@@ -9,6 +9,7 @@
     var user = Session["user"] as UserViewModel;
     int? profileId = null;
     List<BadgesModel> badges = new List<BadgesModel>();
+    Double? completionPercentage = null;
 
     if (user == null)
     {
@@ -18,6 +19,7 @@
     {
         profileId = user.ProfileId;
         badges = Capstone.Business.BadgesService.GetEarnedBadges(profileId.Value);
+        completionPercentage = BadgesService.GetCompletionPercentage(profileId.Value);
     }
 }
 
@@ -51,20 +53,24 @@
                     else
                     {
                         <br /><br /><br />
-                        <table class="table row">
-                            <tr class="col-6">
-                                <th>Career Path:</th>
-                                <td>@user.CareerPath</td>
-                            </tr>
-                            <tr class="col-6">
-                                <th>Trailblazer Url:</th>
-                                <td>@user.TrailblazerUrl</td>
-                            </tr>
-                            <tr class="col-6">
-                                <th>My Badges:</th>
-                                <td></td>
-                            </tr>
-                        </table>
+                                    <table class="table row">
+                                        <tr class="col-6">
+                                            <th>Career Path:</th>
+                                            <td>@user.CareerPath</td>
+                                        </tr>
+                                        <tr class="col-6">
+                                            <th>Trailblazer Url:</th>
+                                            <td>@user.TrailblazerUrl</td>
+                                        </tr>
+                                        <tr class="col-6">
+                                            <th>Percentage Completed:</th>
+                                            <td>@completionPercentage</td>
+                                        </tr>
+                                        <tr class="col-6">
+                                            <th>My Badges:</th>
+                                            <td></td>
+                                        </tr>
+                                    </table>
 
                         foreach (var badge in badges)
                         {

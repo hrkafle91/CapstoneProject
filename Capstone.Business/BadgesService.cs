@@ -22,5 +22,14 @@ namespace Capstone.Business
         {
             return Repository.GetRecommendedBadges(profileId);
         }
+
+        public static Double? GetCompletionPercentage(int profileId)
+        {
+            var earnedBadges = GetEarnedBadges(profileId).Count;
+            var recommendedBadges = GetRecommendedBadges(profileId).Count;
+            var totalBadges = earnedBadges + recommendedBadges;
+            var percentageCompleted = (((Double)earnedBadges / (Double)totalBadges) * 100);
+            return percentageCompleted;
+        }
     }
 }

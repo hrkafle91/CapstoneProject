@@ -53,5 +53,6 @@ namespace Capstone.Business
             profile.careerPath = path;
             Repository.Edit(profile);
         }
+
     }
 }
