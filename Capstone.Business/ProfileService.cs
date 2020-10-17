@@ -54,5 +54,11 @@ namespace Capstone.Business
             Repository.Edit(profile);
         }
 
+        public static bool CheckIfProfileExists(int profileId)
+        {
+            var profile = GetProfile(profileId);
+            var count = profile.SystemQuestions.Count;
+            return count == 0 ? false : true;
+        }
     }
 }
