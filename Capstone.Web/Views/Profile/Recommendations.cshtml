@@ -21,52 +21,69 @@
 
 <div class="text-center" style="margin-top:5%;">
 
-    <h2>Thank you for completing the skills assessment!</h2><br /><br />
+    <h2>Thank you for completing the skills assessment!</h2>
+    <button type="button" id="btnReturn" class="btn btn-outline-primary ml-auto">Return Home</button>
+    <br /><br />
     <img src="~/Images/complete.png" />
     <br /><br />
-    <h2>Here's our recommendation:</h2>
+    <h2>Here's our recommendation:</h2><hr />
     <br /><br />
     <div class="row mx-auto justify-content-center">
-        <div id="currentBadges" class="col-md-4 mr-4">
+        <div id="currentBadges" class="col-md-5 mr-4">
             <h3 class="text-left">Badges Earned:</h3>
-
-            @foreach (var badge in badges)
-            {
-                <div class="card">
-                    <div class="row no-gutters">
-                        <div class="col-md-3">
-                            <img src="~/Images/empty.jpg" class="card-img" height="100px;" alt="...">
-                        </div>
-                        <div class="badge card-body col-md-5 text-left ml-2">
-                            <h5 class="card-title">@badge.BadgeName</h5>
-                            <p class="card-text">@badge.Description</p>
+            <div style="height: 24rem; overflow:hidden; overflow-y: scroll">
+                @foreach (var badge in badges)
+                {
+                    <div class="card">
+                        <div class="row no-gutters">
+                            <div class="col-md-3">
+                                <img src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                            </div>
+                            <div class="badge card-body col-md-5 text-left ml-2">
+                                <h5 class="card-title">@badge.BadgeName</h5>
+                                <p class="card-text">@badge.Description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br /><br />
-            }
-
+                    <br /><br />
+                }
+            </div>
         </div>
-        <div id="neededBadges" class="col-md-4 ml-4">
+        <div id="neededBadges" class="col-md-5 ml-4">
             <h3 class="text-left">Badges Needed:</h3>
-
-            @foreach (var badge in BadgesService.GetRecommendedBadges(profileId.Value))
-            {
-                <div class="card">
-                    <div class="row no-gutters">
-                        <div class="col-md-3">
-                            <img src="~/Images/empty.jpg" class="card-img" height="100px;" alt="...">
-                        </div>
-                        <div class="badge card-body col-md-8 text-left ml-2">
-                            <h5 class="card-title">@badge.BadgeName</h5>
-                            <p class="card-text">@badge.Description</p>
+            <div style="height: 24rem; overflow:hidden; overflow-y: scroll">
+                @foreach (var badge in BadgesService.GetRecommendedBadges(profileId.Value))
+                {
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                            </div>
+                            <div class="badge card-body col-md-8 text-left">
+                                <h5 class="card-title">@badge.BadgeName</h5>
+                                <p class="card-text">@badge.Description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br /><br />
-            }
+                    <br /><br />
+                }
 
-
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#btnReturn").on('click', function () {
+
+               window.location.href = '@Url.Action("Index", "Home")';
+
+            });
+        })
+
+    </script>
+}

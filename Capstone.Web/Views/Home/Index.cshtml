@@ -23,7 +23,27 @@
         completionPercentage = BadgesService.GetCompletionPercentage(profileId.Value);
         hasProfile = ProfileService.CheckIfProfileExists(profileId.Value);
     }
+
 }
+
+<link rel="stylesheet" type="text/css" href="~/Styles/loading-bar.min.css" />
+<script type="text/javascript" src="~/Scripts/loading-bar.min.js"></script>
+<style type="text/css">
+    .ldBar-label {
+        font-size:1.5em;
+    }
+
+    .ldBar path.mainline {
+        stroke-width: 10;
+    stroke: #09f;
+    stroke-linecap: round;
+    }
+    .ldBar path.baseline {
+        stroke-width: 11;
+        stroke: #d3d3d3;
+        stroke-linecap: round;
+    }
+</style>
 
 <div class="row" style="margin-top:5%">
 
@@ -55,40 +75,45 @@
                     else
                     {
                         <br /><br /><br />
-                                    <table class="table row">
-                                        <tr class="col-6">
-                                            <th>Career Path:</th>
-                                            <td>@user.CareerPath</td>
-                                        </tr>
-                                        <tr class="col-6">
-                                            <th>Trailblazer Url:</th>
-                                            <td>@user.TrailblazerUrl</td>
-                                        </tr>
-                                        <tr class="col-6">
-                                            <th>Percentage Completed:</th>
-                                            <td>@completionPercentage</td>
-                                        </tr>
-                                        <tr class="col-6">
-                                            <th>My Badges:</th>
-                                            <td></td>
-                                        </tr>
-                                    </table>
+                        <table class="table row">
+                            <tr class="col-6">
+                                <th>Career Path:</th>
+                                <td>@user.CareerPath</td>
+                            </tr>
+                            <tr class="col-6">
+                                <th>Trailblazer Url:</th>
+                                <td>@user.TrailblazerUrl</td>
+                            </tr>
+                            <tr class="col-6">
+                                <th>My Badges:</th>
+                                <td></td>
+                            </tr>
+                        </table>
 
-                        foreach (var badge in badges)
-                        {
-                            <div class="card col-6">
-                                <div class="row no-gutters">
-                                    <div class="col-3">
-                                        <img src="~/Images/empty.jpg" class="card-img" alt="...">
-                                    </div>
-                                    <div class="badge card-body col-3 text-left ml-2">
-                                        <h5 class="card-title">@badge.BadgeName</h5>
-                                        <p class="card-text">@badge.Description</p>
+                        <div class="col-md-8" style="height: 24rem; overflow:hidden; overflow-y: scroll">
+                            @foreach (var badge in badges)
+                            {
+                                <div class="card">
+                                    <div class="row no-gutters">
+                                        <div class="col-2 mr-4">
+                                            <img src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                                        </div>
+                                        <div class="badge card-body col-5 text-left my-auto">
+                                            <h5 class="card-title">@badge.BadgeName</h5>
+                                            <p class="card-text text-muted">@badge.Description</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br /><br />
-                        }
+                                <br /><br />
+                            }
+                        </div>
+                        <div class="position-fixed" style="top: 5rem; right: 25rem;">
+                            <div class="ldBar label-center"                       
+                                 data-value="@completionPercentage"
+                                 data-preset="circle"
+                                 style="width:200px; height:160px;"></div>
+           
+                        </div>
                     }
                 }
             </div>
@@ -153,7 +178,10 @@
 
     <script type="text/javascript">
 
+
+
         $(document).ready(function () {
+
             $("#btnUpdate").on('click', function () {
                 var badgeArray = [];
 

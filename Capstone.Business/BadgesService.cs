@@ -29,7 +29,7 @@ namespace Capstone.Business
             var recommendedBadges = GetRecommendedBadges(profileId).Count;
             var totalBadges = earnedBadges + recommendedBadges;
             var percentageCompleted = (((Double)earnedBadges / (Double)totalBadges) * 100);
-            return percentageCompleted;
+            return Math.Round(percentageCompleted,2);
         }
     }
 }
