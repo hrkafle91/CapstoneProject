@@ -57,8 +57,8 @@ namespace Capstone.Business
         public static bool CheckIfProfileExists(int profileId)
         {
             var profile = GetProfile(profileId);
-            var count = profile.SystemQuestions.Count;
-            return count == 0 ? false : true;
+            var path = profile.careerPath;
+            return path.Equals("n/a") ? false : true;
         }
     }
 }
