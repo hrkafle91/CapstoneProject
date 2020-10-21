@@ -75,28 +75,36 @@
                     else
                     {
                         <br /><br /><br />
-                        <table class="table row h4">
-                            <tr class="col-6">
-                                <th>Career Path:</th>
-                                <td>@user.CareerPath</td>
-                            </tr>
-                            <tr class="col-6">
-                                <th>Trailblazer Url:</th>
-                                <td>@user.TrailblazerUrl</td>
-                            </tr>
-                            <tr class="col-6">
-                                <th>My Badges:</th>
-                                <td></td>
-                            </tr>
-                        </table>
+                                    <div class="row">
+                                        <table class="table col-8 h5">
+                                            <tr class="col-6">
+                                                <th>Career Path:</th>
+                                                <td>@user.CareerPath</td>
+                                            </tr>
+                                            <tr class="col-6">
+                                                <th>Trailblazer Url:</th>
+                                                <td>@user.TrailblazerUrl</td>
+                                            </tr>
+                                            <tr class="col-6 h4">
+                                                <th>My Badges:</th>
+                                                
+                                            </tr>
+                                        </table>
+                                        <div class="ml-2 col-3">
+                                            <div class="ldBar label-center"
+                                                 data-value="@completionPercentage"
+                                                 data-preset="circle"
+                                                 style="width:240px; height:200px;"></div>
 
+                                        </div>
+                                    </div>
                         <div class="col-md-8" style="height: 24rem; overflow:hidden; overflow-y: scroll">
                             @foreach (var badge in badges)
                             {
                                 <div class="card">
                                     <div class="row no-gutters">
                                         <div class="col-2 mr-4">
-                                            <img src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                                            <img src="~/Images/BadgeIcon/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
                                         </div>
                                         <div class="badge card-body col-5 text-left my-auto">
                                             <h5 class="card-title">@badge.BadgeName</h5>
@@ -107,13 +115,7 @@
                                 <br /><br />
                             }
                         </div>
-                        <div class="position-fixed" style="top: 6rem; right: 25rem;">
-                            <div class="ldBar label-center"                       
-                                 data-value="@completionPercentage"
-                                 data-preset="circle"
-                                 style="width:250px; height:210px;"></div>
-           
-                        </div>
+                        
                     }
                 }
             </div>
