@@ -76,8 +76,8 @@
                     {
                         <br /><br /><br />
                                     <div class="row">
-                                        <table class="table col-8 h5">
-                                            <tr class="col-6">
+                                        <table class="table col-8 h4">
+                                            <tr class="">
                                                 <th>Career Path:</th>
                                                 <td>@user.CareerPath</td>
                                             </tr>
@@ -85,17 +85,16 @@
                                                 <th>Trailblazer Url:</th>
                                                 <td>@user.TrailblazerUrl</td>
                                             </tr>
-                                            <tr class="col-6 h4">
+                                            <tr class="col-6">
                                                 <th>My Badges:</th>
                                                 
                                             </tr>
                                         </table>
-                                        <div class="ml-2 col-3">
+                                        <div class="ml-2 col-3 text-center">
                                             <div class="ldBar label-center"
                                                  data-value="@completionPercentage"
                                                  data-preset="circle"
                                                  style="width:240px; height:200px;"></div>
-
                                         </div>
                                     </div>
                         <div class="col-md-8" style="height: 24rem; overflow:hidden; overflow-y: scroll">
@@ -104,7 +103,7 @@
                                 <div class="card">
                                     <div class="row no-gutters">
                                         <div class="col-2 mr-4">
-                                            <img src="~/Images/BadgeIcon/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                                            <img src="~/Images/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
                                         </div>
                                         <div class="badge card-body col-5 text-left my-auto">
                                             <h5 class="card-title">@badge.BadgeName</h5>
@@ -131,7 +130,7 @@
                     @foreach (var badge in BadgesService.GetRecommendedBadges(profileId.Value))
                     {
                         <div class="reqBadges card col-3 m-3">
-                            <img class="card-img-top mx-auto mt-2" style="width:10rem; height:10rem;" src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" alt="Card image cap">
+                            <img class="card-img-top mx-auto mt-2" style="width:10rem; height:10rem;" src="~/Images/@(badge.BadgeName + ".png")" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">@badge.BadgeName</h5>
                                 <p class="card-text" style="line-height:1.6">@badge.Description</p>
