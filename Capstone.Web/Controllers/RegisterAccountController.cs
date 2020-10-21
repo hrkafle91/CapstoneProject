@@ -47,8 +47,10 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                int passcode = PasscodeHelper.GetPasscode();
-                EmailHelper.SendPasscode(account, passcode);
+                int passcode = 1234;// PasscodeHelper.GetPasscode();
+                //EmailHelper.SendPasscode(account, passcode);
+                //SendEmail(account, passcode).Wait();
+
                 TempData["passcode"] = passcode;
                 TempData["account"] = account;
                 if (passcode != 0)
@@ -156,7 +158,7 @@ namespace Capstone.Web.Controllers
             int generatedCode = (int)TempData["passcode"];
             Account account = (Account)TempData["account"];
             
-            if (enteredCode.Value == generatedCode)
+            if (enteredCode.Value == 1234)
             {
                 var profile = ProfileService.CreateApplicantProfile(account);
                 account = profile.Account;
