@@ -10,6 +10,7 @@ namespace Common.Enumerations
     {
         Applicant, 
         HiringManager, 
-        Employee
+        Employee,
+        Admin
     }
 }
