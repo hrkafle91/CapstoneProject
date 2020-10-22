@@ -28,7 +28,7 @@ namespace DBModel.Repositories
                               BadgeId = badge.badgeId,
                               BadgeName = badge.badgeTitle,
                               Description = badge.description
-                          }).ToList();
+                          }).Distinct().ToList();
             return badges;
         }
 
@@ -47,7 +47,7 @@ namespace DBModel.Repositories
                               BadgeId = badge.badgeId,
                               BadgeName = badge.badgeTitle,
                               Description = badge.description
-                          }).ToList();
+                          }).Distinct().ToList();
 
             return badges;
         }
