@@ -8,6 +8,18 @@
     }
 }
 
-<h2>Index</h2>
-<h1>This view is for the Administrators.</h1>
+    <div class="row" style="margin-top:5%">
 
+        @{
+            Html.RenderAction("SideMenu", "Admin");
+        }
+
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-leaderboards" role="tabpanel" aria-labelledby="v-pills-leaderboards-tab">
+                Welcome @user.FirstName !
+            </div>
+
+            <div class="tab-pane fade" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">
+                Search for things
+            </div>
+        </div>

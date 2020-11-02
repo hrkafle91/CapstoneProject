@@ -13,5 +13,10 @@ namespace Capstone.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult SideMenu()
+        {
+            return PartialView("SideMenu");
+        }
     }
 }
