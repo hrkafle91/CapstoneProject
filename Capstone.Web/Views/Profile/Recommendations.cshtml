@@ -8,7 +8,7 @@
     int? profileId = null;
     List<BadgesModel> badges = new List<BadgesModel>();
 
-    if (user == null)
+    if (user == null || user.UserType != "Applicant")
     {
         Response.Redirect("~/LoginAccount/Index");
     }

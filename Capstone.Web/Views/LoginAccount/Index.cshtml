@@ -52,7 +52,7 @@
                     async: false,
                     success: function (data) {
                         if (data == true) {
-                            window.location.href = '@Url.Action("Index", "Home")';
+                            window.location.href = '@Url.Action("VerifyAccountPost", "LoginAccount")';
                         } else {
                             $("#message").show();
                             $('#form-password').val('');

@@ -12,7 +12,7 @@
     Double? completionPercentage = null;
     var hasProfile = false;
 
-    if (user == null)
+    if (user == null || user.UserType != "Applicant")
     {
         Response.Redirect("~/LoginAccount/Index");
     }
