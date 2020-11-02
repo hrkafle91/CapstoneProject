@@ -113,12 +113,12 @@
                                 @Html.RadioButtonFor(model => model.userType, "Applicant", new { htmlAttributes = new { @class = "form-control" } })
                                 <span class="custom-control-description">Applicant</span>
                             </label>
-                            <label class="custom-control custom-radio single-line col-md-10 l float-left">
+                            @*<label class="custom-control custom-radio single-line col-md-10 l float-left">
                                 @Html.RadioButtonFor(model => model.userType, "HiringManager", new { htmlAttributes = new { @class = "form-control" } })
                                 <span class="custom-control-description">Hiring Manager</span>
-                            </label>
+                            </label>*@
                             <label class="custom-control custom-radio single-line col-md-10 float-left">
-                                @Html.RadioButtonFor(model => model.userType, "Employee", new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.RadioButtonFor(model => model.userType, "Admin", new { htmlAttributes = new { @class = "form-control" } })
                                 <span class="custom-control-description">Employee</span>
                             </label>
                         </div>

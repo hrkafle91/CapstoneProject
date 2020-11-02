@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var user = Session["user"] as Common.Model.UserViewModel;
+    if (user == null || user.UserType != "Admin")
+    {
+        Response.Redirect("~/LoginAccount/Index");
+    }
+}
+
+<h2>Index</h2>
+<h1>This view is for the Administrators.</h1>
+

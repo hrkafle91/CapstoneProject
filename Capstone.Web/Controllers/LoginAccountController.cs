@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Capstone.Web.ViewModels;
 using DBModel.Repositories;
 using Common.Model;
+using Common.Enumerations;
 using Capstone.Business;
 
 namespace Capstone.Web.Controllers
@@ -31,6 +32,17 @@ namespace Capstone.Web.Controllers
             {
                 return Json(false);
             }
+        }
+
+        public ActionResult VerifyAccountPost()
+        {
+            var user = (UserViewModel)Session["user"];
+            if (user.UserType == UserTypeEnum.Applicant.ToString())
+                return RedirectToAction("Index", "Home");
+            else if (user.UserType == UserTypeEnum.Admin.ToString())
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Index", "LoginAccount");
         }
     }
 }

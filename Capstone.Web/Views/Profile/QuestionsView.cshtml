@@ -5,7 +5,7 @@
     var user = Session["user"] as UserViewModel;
     var skills = new List<DBModel.Skill>();
 
-    if (user == null)
+    if (user == null || user.UserType != "Applicant")
     {
         Response.Redirect("~/LoginAccount/Index");
     }

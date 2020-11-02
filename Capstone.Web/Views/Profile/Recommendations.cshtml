@@ -8,7 +8,7 @@
     int? profileId = null;
     List<BadgesModel> badges = new List<BadgesModel>();
 
-    if (user == null)
+    if (user == null || user.UserType != "Applicant")
     {
         Response.Redirect("~/LoginAccount/Index");
     }
@@ -37,7 +37,7 @@
                     <div class="card">
                         <div class="row no-gutters">
                             <div class="col-md-3">
-                                <img src="~/Images/BadgeIcons/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                                <img src="~/Images/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
                             </div>
                             <div class="badge card-body col-md-5 text-left ml-2">
                                 <h5 class="card-title">@badge.BadgeName</h5>

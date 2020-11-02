@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Capstone.Business;
+using Common.Model;
+using Common.Enumerations;
 
 namespace Capstone.Web.Controllers
 {
@@ -167,6 +169,17 @@ namespace Capstone.Web.Controllers
             {
                 return Json(false);
             }
+        }
+
+        public ActionResult EmailValidationPost()
+        {
+            var user = (UserViewModel)Session["user"];
+            if (user.UserType == UserTypeEnum.Applicant.ToString())
+                return RedirectToAction("Index", "Home");
+            else if (user.UserType == UserTypeEnum.Admin.ToString())
+                return RedirectToAction("Index", "Admin");
+            else
+                return RedirectToAction("Index", "LoginAccount");
         }
 
         public ActionResult ResendPasscode()

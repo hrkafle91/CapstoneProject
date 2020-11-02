@@ -14,6 +14,7 @@ namespace Common.Model
         public string UserType { get; set; }
         public string FirstName { get; set; }
         public string Lastname { get; set; }
+        public string Role { get; set; }
         public bool? IsLoggedIn { get; set; }
 
         public int? ProfileId { get; set; }
