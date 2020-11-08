@@ -1,0 +1,34 @@
+﻿@model List<Common.Model.UserViewModel>
+<table class="table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Career Path</th>
+            <th scope="col">Completion(%)</th>
+        </tr>
+    </thead>
+
+    @{
+        
+        foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.Lastname</td>
+            <td>@item.EmailId</td>
+            <td>@item.CareerPath</td>
+            @if (double.IsNaN((Double)item.CompletionPercentage))
+            {
+                <td>0.0</td>
+            }
+            else
+            {
+                <td>@item.CompletionPercentage</td>
+            }
+
+        </tr>
+        }
+    }
+</table>

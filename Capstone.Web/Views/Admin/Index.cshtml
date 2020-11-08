@@ -1,4 +1,5 @@
-﻿
+﻿@using Common.Model
+@model List<Common.Model.UserViewModel>
 @{
     ViewBag.Title = "Index";
     var user = Session["user"] as Common.Model.UserViewModel;
@@ -7,19 +8,133 @@
         Response.Redirect("~/LoginAccount/Index");
     }
 }
+@Scripts.Render("~/bundles/jquery")
+<div class="row" style="margin-top:5%">
 
-    <div class="row" style="margin-top:5%">
+    @{
+        Html.RenderAction("SideMenu", "Admin");
+    }
 
-        @{
-            Html.RenderAction("SideMenu", "Admin");
-        }
+    <div class="tab-content mx-auto" style="width:65%" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-leaderboards" role="tabpanel" aria-labelledby="v-pills-leaderboards-tab">
+            <h3>Career Path Leaderboard</h3><hr />
+            <br />
+            <div class="row">
+                <div class="form-inline col input-group group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Filter By</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected value="0">Choose...</option>
+                        <option value="1">Administrator</option>
+                        <option value="2">Developer</option>
+                    </select>
+                </div>
 
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-leaderboards" role="tabpanel" aria-labelledby="v-pills-leaderboards-tab">
-                Welcome @user.FirstName !
+                <div class="form-inline col input-group group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect02">Sort By</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect02">
+                        <option selected value="0">Choose...</option>
+                        <option value="1">First Name</option>
+                        <option value="2">Last Name</option>
+                        <option value="3">Career Path</option>
+                        <option value="4">Completion(%)</option>
+                        <option value="5">Email Address</option>
+                    </select>
+                </div>
+
+                <div class="form-inline col">
+                    <inupt type="button" class="btn btn-outline-primary" id="filter">Update Table</inupt>
+                </div>
             </div>
-
-            <div class="tab-pane fade" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">
-                Search for things
-            </div>
+            <br /><br />
+            <div id="grdApplicants"></div>
+            
         </div>
+
+        <div class="tab-pane fade" id="v-pills-search" role="tabpanel" aria-labelledby="v-pills-search-tab">
+            <h3>Search Applicants</h3><hr />
+            <div class="row">
+                <div class="form-inline col input-group group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect">Search By</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect">
+                        <option selected value="1">First Name</option>
+                        <option value="2">Last Name</option>
+                        <option value="3">Completion(%)</option>
+                        <option value="4">Email Address</option>
+                    </select>
+                </div>
+
+                <div class="form-inline col input-group">
+                    <input type="text" class="form-control" placeholder="Enter text here" id="txtSearch" />
+                    <div class="input-group-append"><inupt type="button" class="btn btn-outline-primary" id="go">Search</inupt></div>
+                </div>
+            </div>
+
+            <br />
+
+            <div id="tblApplicants"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        filterAndSortApplicants();
+
+        $("#go").on('click', function () {
+            getApplicants();
+            
+        })
+
+        $("#filter").on('click', function () {
+            filterAndSortApplicants();
+            
+        })
+    })
+
+    function getApplicants() {
+        $.ajax({
+            url: '@Url.Action("SearchApplicants", "Admin")',
+            datatype: 'html',
+            method: 'GET',
+            data: { searchText: $("#txtSearch").val(), val: $("#inputGroupSelect").find("option:selected").val() },
+            success: function (res) {
+                $("#tblApplicants").html('').html(res);
+                
+            },
+            error: function (err) {
+                console.log(err);
+            }
+
+        })
+    }
+
+    function filterAndSortApplicants() {
+        console.log($("#inputGroupSelect01").find("option:selected").val());
+
+        $.ajax({
+            url: '@Url.Action("FilterApplicantsByCareerPathThenSort", "Admin")',
+            datatype: 'html',
+            method: 'GET',
+            data: {
+                filterVal: $("#inputGroupSelect01").find("option:selected").val(),
+                sortVal: $("#inputGroupSelect02").find("option:selected").val()
+            },
+            success: function (res) {
+                $("#grdApplicants").html('').html(res);
+                
+            },
+            error: function (err) {
+                console.log(err);
+            }
+
+        })
+    }
+
+</script>

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="ApplicantsService.cs" />
     <Compile Include="BadgesService.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Helpers\AuthenticationHelper.cs" />
