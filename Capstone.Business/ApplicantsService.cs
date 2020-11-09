@@ -35,8 +35,10 @@ namespace Capstone.Business
         public static UserViewModel GetApplicant(int id)
         {
             var account = Repository.GetAccount(id);
+            UserViewModel applicant = UserService.SetUser(account);
+            applicant.CompletionPercentage = BadgesService.GetCompletionPercentage(account.userID);
 
-            return UserService.SetUser(account);
+            return applicant;
         }
     }
 }

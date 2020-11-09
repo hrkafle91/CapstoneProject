@@ -358,6 +358,7 @@
     <Content Include="Views\Profile\Recommendations.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_TableView.cshtml" />
+    <Content Include="Views\Admin\ApplicantDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

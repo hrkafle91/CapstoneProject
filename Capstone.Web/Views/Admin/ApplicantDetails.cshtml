@@ -1,0 +1,49 @@
+﻿@using Capstone.Business
+@model Common.Model.UserViewModel
+
+@{
+    ViewBag.Title = "ApplicantDetails";
+}
+
+<h3 class="display-4" style="margin-top:2%">@Model.FirstName @Model.Lastname @Html.ActionLink("Back", "Index", new object { }, new { @class = "btn btn-outline-primary float-right h3" })</h3>
+
+<hr />
+<br />
+<div class="row">
+    <table class="col ml-2 h4" style="line-height: 1.6;">
+        <tr>
+            <th>Career Path:</th>
+            <td>@Model.CareerPath</td>
+        </tr>
+        <tr>
+            <th>Email Adress:</th>
+            <td>@Model.EmailId</td>
+        </tr>
+        <tr>
+            <th>Trailhead Url:</th>
+            <td>@Model.TrailblazerUrl</td>
+        </tr>
+        <tr>
+            <th>Completion:</th>
+            <td>@Model.CompletionPercentage %</td>
+        </tr>
+    </table>
+    <div class="col" style="height: 24rem; overflow:hidden; overflow-y: scroll">
+        @foreach (var badge in BadgesService.GetEarnedBadges((int)Model.ProfileId))
+        {
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-2 mr-4">
+                        <img src="~/Images/@(badge.BadgeName + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                    </div>
+                    <div class="badge card-body col-5 text-left my-auto">
+                        <h5 class="card-title">@badge.BadgeName</h5>
+                        <p class="card-text text-muted">@badge.Description</p>
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+        }
+    </div>
+</div>
+

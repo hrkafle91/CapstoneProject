@@ -92,5 +92,12 @@ namespace Capstone.Web.Controllers
         {
             return PartialView("SideMenu");
         }
+
+        public ActionResult ApplicantDetails(int id)
+        {
+            UserViewModel applicant = ApplicantsService.GetApplicant(id);
+
+            return View("ApplicantDetails", applicant);
+        }
     }
 }

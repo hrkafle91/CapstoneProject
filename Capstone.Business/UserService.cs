@@ -15,6 +15,7 @@ namespace Capstone.Business
         {
             return new UserViewModel()
             {
+                Id = account.userID,
                 EmailId = account.emailID,
                 UserId = account.userName,
                 UserType = account.userType,

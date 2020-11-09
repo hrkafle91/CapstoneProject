@@ -8,6 +8,7 @@ namespace Common.Model
 {
     public class UserViewModel
     {
+        public int Id { get; set; }
         public string CareerPath { get; set; }
         public string EmailId { get; set; }
         public string UserId { get; set; }
