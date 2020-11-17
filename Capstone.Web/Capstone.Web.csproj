@@ -270,6 +270,7 @@
     <Content Include="Scripts\src\modifiers\offset.js" />
     <Content Include="Scripts\src\modifiers\preventOverflow.js" />
     <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utilities.js" />
     <Content Include="Scripts\src\utils\clockwise.js" />
     <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
     <Content Include="Scripts\src\utils\debounce.js" />

@@ -49,11 +49,9 @@ namespace Capstone.Web.Controllers
             List<UserViewModel> model = ApplicantsService.GetAllApplicants();
             List<UserViewModel> result = null;
 
-            LogService.Write("FilterVal: " + filterVal);
             if (filterVal.Equals('1'))
             {
                 result = model.Where(x => x.CareerPath.Equals(CareerPath.Administrator.ToString()) && (x.CompletionPercentage > 0.0) ).ToList();
-                LogService.Write("Admin:" + result.Count.ToString());
             }
             else if (filterVal.Equals('2'))
             {
@@ -62,7 +60,6 @@ namespace Capstone.Web.Controllers
             else
             {
                 result = model.Where(x => x.CompletionPercentage > 0.0).ToList();
-                LogService.Write("Default:" + result.Count.ToString());
             }
 
             switch (sortVal)

@@ -25,6 +25,7 @@ namespace Capstone.Web.Controllers
             Account account = AccountService.GetAccountIfExists(emailId, password);
             if (account != null)
             {
+                Session.RemoveAll();
                 Session["user"] = UserService.SetUser(account);
                 return Json(true);
             }
@@ -43,6 +44,19 @@ namespace Capstone.Web.Controllers
                 return RedirectToAction("Index", "Admin");
             else
                 return RedirectToAction("Index", "LoginAccount");
+        }
+
+        public ActionResult LogOut()
+        {
+            try
+            {
+                Session.RemoveAll();
+                return Json(true);
+            }
+            catch
+            {
+                return Json(false);
+            }
         }
     }
 }
