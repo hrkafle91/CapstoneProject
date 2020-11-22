@@ -14,9 +14,7 @@
           <ConnectorPoint PointX="7.270833333333333" PointY="3.4321907552083331" />
           <ConnectorPoint PointX="7.875" PointY="3.4321907552083331" />
           <ConnectorPoint PointX="7.875" PointY="0.125" />
-          <ConnectorPoint PointX="3.75" PointY="0.125" />
-          <ConnectorPoint PointX="3.75" PointY="2.625" />
-          <ConnectorPoint PointX="4.875" PointY="2.625" />
+          <ConnectorPoint PointX="4.875" PointY="0.125" />
           <ConnectorPoint PointX="4.875" PointY="3" />
         </InheritanceConnector>
         <EntityTypeShape EntityType="EDM.Profile" Width="1.5" PointX="6.875" PointY="4.5" />
@@ -38,6 +36,8 @@
         <AssociationConnector Association="EDM.FK_BadgeSkills" />
         <AssociationConnector Association="EDM.PathSkill" />
         <AssociationConnector Association="EDM.AccountProfile" />
+        <EntityTypeShape EntityType="EDM.Job" Width="1.5" PointX="5.375" PointY="8" />
+        <AssociationConnector Association="EDM.JobSkill" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

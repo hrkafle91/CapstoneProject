@@ -42,6 +42,26 @@
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="link" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="jobTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="careerPath" Type="nvarchar" MaxLength="50" />
+          <Property Name="jobType" Type="nchar" MaxLength="10" />
+          <Property Name="jobId" Type="nchar" MaxLength="10" />
+          <Property Name="jobDesc" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="JobSkill">
+          <Key>
+            <PropertyRef Name="Jobs_jobId" />
+            <PropertyRef Name="Skills_skillId" />
+          </Key>
+          <Property Name="Jobs_jobId" Type="int" Nullable="false" />
+          <Property Name="Skills_skillId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Paths">
           <Key>
             <PropertyRef Name="pathId" />
@@ -148,6 +168,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobSkill_Job">
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="Jobs_jobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobSkill_Skill">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
+          <End Role="JobSkill" Type="Self.JobSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="skillId" />
+            </Principal>
+            <Dependent Role="JobSkill">
+              <PropertyRef Name="Skills_skillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PathAdmin_inherits_Account">
           <End Role="Accounts" Type="Self.Accounts" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -227,6 +271,8 @@
           <EntitySet Name="Accounts_PathAdmin" EntityType="Self.Accounts_PathAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BadgePath" EntityType="Self.BadgePath" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Badges" EntityType="Self.Badges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobSkill" EntityType="Self.JobSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paths" EntityType="Self.Paths" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PathSkill" EntityType="Self.PathSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
@@ -251,6 +297,14 @@
           <AssociationSet Name="FK_BadgeSystemQuestions" Association="Self.FK_BadgeSystemQuestions">
             <End Role="Badges" EntitySet="Badges" />
             <End Role="SystemQuestions" EntitySet="SystemQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Job" Association="Self.FK_JobSkill_Job">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="JobSkill" EntitySet="JobSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobSkill_Skill" Association="Self.FK_JobSkill_Skill">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="JobSkill" EntitySet="JobSkill" />
           </AssociationSet>
           <AssociationSet Name="FK_PathAdmin_inherits_Account" Association="Self.FK_PathAdmin_inherits_Account">
             <End Role="Accounts" EntitySet="Accounts" />
@@ -319,6 +373,11 @@
           <AssociationSet Name="AccountProfile" Association="EDM.AccountProfile">
             <End Role="Account" EntitySet="Accounts" />
             <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <EntitySet Name="Jobs" EntityType="EDM.Job" />
+          <AssociationSet Name="JobSkill" Association="EDM.JobSkill">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="Skill" EntitySet="Skills" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Account">
@@ -450,6 +509,7 @@
           <Property Name="Badge_badgeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Badge" Relationship="EDM.FK_BadgeSkills" FromRole="Skill" ToRole="Badge" />
           <NavigationProperty Name="Paths" Relationship="EDM.PathSkill" FromRole="Skill" ToRole="Path" />
+          <NavigationProperty Name="Jobs" Relationship="EDM.JobSkill" FromRole="Skill" ToRole="Job" />
         </EntityType>
         <Association Name="FK_BadgeSkills">
           <End Type="EDM.Badge" Role="Badge" Multiplicity="1" />
@@ -470,6 +530,23 @@
         <Association Name="AccountProfile">
           <End Type="EDM.Account" Role="Account" Multiplicity="1" />
           <End Type="EDM.Profile" Role="Profile" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="jobTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="company" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="careerPath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jobType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="jobId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="jobDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Skills" Relationship="EDM.JobSkill" FromRole="Job" ToRole="Skill" />
+        </EntityType>
+        <Association Name="JobSkill">
+          <End Type="EDM.Job" Role="Job" Multiplicity="*" />
+          <End Type="EDM.Skill" Role="Skill" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -572,6 +649,27 @@
         <ScalarProperty Name="profileId" ColumnName="profileId" />
       </EndProperty>
     </AssociationSetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="EDM.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="jobDesc" ColumnName="jobDesc" />
+                <ScalarProperty Name="jobId" ColumnName="jobId" />
+                <ScalarProperty Name="jobType" ColumnName="jobType" />
+                <ScalarProperty Name="careerPath" ColumnName="careerPath" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="JobSkill" TypeName="EDM.JobSkill" StoreEntitySet="JobSkill">
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="skillId" ColumnName="Skills_skillId" />
+            </EndProperty>
+            <EndProperty Name="Job">
+              <ScalarProperty Name="Id" ColumnName="Jobs_jobId" />
+            </EndProperty>
+          </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

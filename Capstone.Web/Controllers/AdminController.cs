@@ -19,6 +19,21 @@ namespace Capstone.Web.Controllers
             return View(applicants);
         }
 
+        public ActionResult JobCreate() //Not finished please complete Hemraj
+        {
+            return View();
+        }
+
+        public ActionResult JobEdit(int? id) //Not finished please complete Hemraj
+        {
+            return View();
+        }
+
+        public PartialViewResult JobPostings() //Not finished please complete Hemraj
+        {
+            return PartialView("_JobGridView" /*,List<Job> */);
+        }
+
         public PartialViewResult SearchApplicants(string searchText, char val)
         {
             List<UserViewModel> model = ApplicantsService.GetAllApplicants();

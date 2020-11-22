@@ -360,6 +360,10 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\_TableView.cshtml" />
     <Content Include="Views\Admin\ApplicantDetails.cshtml" />
+    <Content Include="Views\Shared\_JobsGridView.cshtml" />
+    <Content Include="Views\Admin\JobCreateView.cshtml" />
+    <Content Include="Views\Admin\JobEdit.cshtml" />
+    <Content Include="Views\Home\JobDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

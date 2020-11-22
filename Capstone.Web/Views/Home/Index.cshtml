@@ -80,28 +80,28 @@
                     else
                     {
                         <br /><br /><br />
-                                    <div class="row">
-                                        <table class="table col-8 h4">
-                                            <tr class="">
-                                                <th>Career Path:</th>
-                                                <td>@user.CareerPath</td>
-                                            </tr>
-                                            <tr class="col-6">
-                                                <th>Trailblazer Url:</th>
-                                                <td>@user.TrailblazerUrl</td>
-                                            </tr>
-                                            <tr class="col-6">
-                                                <th>My Badges:</th>
-                                                
-                                            </tr>
-                                        </table>
-                                        <div class="ml-2 col-3 text-center">
-                                            <div class="ldBar label-center"
-                                                 data-value="@completionPercentage"
-                                                 data-preset="circle"
-                                                 style="width:240px; height:200px;"></div>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <table class="table col-8 h4">
+                                <tr class="">
+                                    <th>Career Path:</th>
+                                    <td>@user.CareerPath</td>
+                                </tr>
+                                <tr class="col-6">
+                                    <th>Trailblazer Url:</th>
+                                    <td>@user.TrailblazerUrl</td>
+                                </tr>
+                                <tr class="col-6">
+                                    <th>My Badges:</th>
+
+                                </tr>
+                            </table>
+                            <div class="ml-2 col-3 text-center">
+                                <div class="ldBar label-center"
+                                     data-value="@completionPercentage"
+                                     data-preset="circle"
+                                     style="width:240px; height:200px;"></div>
+                            </div>
+                        </div>
                         <div class="col-md-8" style="height: 24rem; overflow:hidden; overflow-y: scroll">
                             @foreach (var badge in badges)
                             {
@@ -119,7 +119,7 @@
                                 <br /><br />
                             }
                         </div>
-                        
+
                     }
                 }
             </div>
@@ -175,6 +175,12 @@
                 @Html.ActionLink("Edit", "Edit", new { id = user.UserId }) <br /><br /><br />
                 @Html.ActionLink("Delete", "Delete", new { id = user.UserId })
             </div>
+
+            <div class="tab-pane fade" id="v-pills-jobs" role="tabpanel" aria-labelledby="v-pills-jobs-tab">
+                <h3>Job Postings</h3><hr />
+                <div id="tblJobs"></div> @*Table of Jobs Rendered through partial view*@
+            </div>
+
         </div>
     </div>
 

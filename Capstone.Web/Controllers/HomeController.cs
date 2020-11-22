@@ -26,6 +26,16 @@ namespace Capstone.Web.Controllers
             
         }
 
+        public ActionResult JobDetails(int? id) //Not finished please complete Hemraj
+        {
+            return View();
+        }
+
+        public PartialViewResult JobPostings() //Not finished please complete Hemraj
+        {
+            return PartialView("_JobsGridView" /*, List<Job>*/);
+        }
+
         public ActionResult SideMenu()
         {
             return PartialView("SideMenu");

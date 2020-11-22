@@ -80,6 +80,9 @@
     <Compile Include="Interfaces\IBadgesRepository.cs" />
     <Compile Include="Interfaces\IProfileRepository.cs" />
     <Compile Include="Interfaces\ISystemQuestionRepository.cs" />
+    <Compile Include="Job.cs">
+      <DependentUpon>EDM.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\BadgesRepository.cs" />
     <Compile Include="Repositories\ProfileRepository.cs" />
     <Compile Include="PartialClasses.cs" />
