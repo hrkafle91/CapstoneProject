@@ -53,6 +53,19 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
+        public ActionResult DeleteJob(int? jobId)
+        {
+            try
+            {
+                JobService.DeleteJob(jobId.Value);
+                return RedirectToAction("Index", "Admin");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+        }
+
         public PartialViewResult JobPostings() //Not finished please complete Hemraj
         {
             return PartialView("_JobGridView" /*,List<Job> */);
