@@ -360,7 +360,6 @@
     <Content Include="Views\Admin\_TableView.cshtml" />
     <Content Include="Views\Admin\ApplicantDetails.cshtml" />
     <Content Include="Views\Shared\_JobsGridView.cshtml" />
-    <Content Include="Views\Admin\JobEdit.cshtml" />
     <Content Include="Views\Home\JobDetails.cshtml" />
     <Content Include="Views\Admin\CreateJob.cshtml" />
     <Content Include="Views\Admin\UpdateJob.cshtml" />
