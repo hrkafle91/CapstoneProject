@@ -33,7 +33,7 @@ namespace Capstone.Web.Controllers
             {
                 JobService.AddJob(job);
             }
-            return View();
+            return RedirectToAction("Index", "Admin");
         }
 
         public ActionResult UpdateJob(int? id)
@@ -50,7 +50,7 @@ namespace Capstone.Web.Controllers
             {
                 JobService.UpdateJob(job);
             }
-            return View();
+            return RedirectToAction("Index", "Admin");
         }
 
         public PartialViewResult JobPostings() //Not finished please complete Hemraj
