@@ -54,6 +54,7 @@
     <Compile Include="Helpers\AuthenticationHelper.cs" />
     <Compile Include="Helpers\EncryptionHelper.cs" />
     <Compile Include="Helpers\PasscodeHelper.cs" />
+    <Compile Include="JobService.cs" />
     <Compile Include="LogService.cs" />
     <Compile Include="ProfileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

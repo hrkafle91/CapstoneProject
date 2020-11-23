@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DBModel;
 
 namespace Capstone.Web.Controllers
 {
@@ -19,8 +20,19 @@ namespace Capstone.Web.Controllers
             return View(applicants);
         }
 
-        public ActionResult JobCreate() //Not finished please complete Hemraj
+        public ActionResult CreateJob()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateJob([Bind(Include = "jobTitle,company,careerPath,jobType,jobId,jobDesc")] Job job)
+        {
+            if (ModelState.IsValid)
+            {
+                JobService.AddJob(job);
+            }
             return View();
         }
 
