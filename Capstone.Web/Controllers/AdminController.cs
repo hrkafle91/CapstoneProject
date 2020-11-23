@@ -36,8 +36,20 @@ namespace Capstone.Web.Controllers
             return View();
         }
 
-        public ActionResult JobEdit(int? id) //Not finished please complete Hemraj
+        public ActionResult UpdateJob(int? id)
         {
+            var job = JobService.GetJob(id.Value); 
+            return View(job);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateJob([Bind(Include = "Id,jobTitle,company,careerPath,jobType,jobId,jobDesc")] Job job)
+        {
+            if (ModelState.IsValid)
+            {
+                JobService.UpdateJob(job);
+            }
             return View();
         }
 

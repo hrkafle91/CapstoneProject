@@ -18,5 +18,27 @@ namespace Capstone.Business
             return Repository.AddJob(job);
         }
 
+        public static Job UpdateJob(Job job)
+        {
+            LogService.Write("Id: " + job.Id);
+            LogService.Write(job.company);
+            LogService.Write(job.jobDesc);
+            return Repository.UpdateJob(job);
+        }
+
+        public static Job GetJob(int jobId)
+        {
+            return Repository.GetJob(jobId);
+        }
+
+        public static void DeleteJob(int jobId)
+        {
+            Repository.DeleteJob(jobId);
+        }
+
+        public static List<Job> GetAllJobs()
+        {
+            return Repository.GetAllJobs();
+        }
     }
 }

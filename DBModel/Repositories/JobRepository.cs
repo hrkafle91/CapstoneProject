@@ -20,10 +20,48 @@ namespace DBModel.Repositories
             return job;
         }
 
+        public Job UpdateJob(Job job)
+        {
+            Job nJob = GetJob(job.Id);
+            if(nJob != null)
+            {
+                nJob.careerPath = job.careerPath;
+                nJob.company = job.company;
+                nJob.jobDesc = job.jobDesc;
+                nJob.jobId = job.jobId;
+                nJob.jobTitle = job.jobTitle;
+                nJob.jobType = job.jobType;
+            }
+            else
+            {
+                AddJob(job);
+            }
+
+            db.SaveChanges();
+            return nJob;
+        }
+
+        public Job GetJob(int jobId)
+        {
+            return db.Jobs.Where(x => x.Id == jobId).FirstOrDefault();
+        }
+
+        public void DeleteJob(int jobId)
+        {
+            var job = db.Jobs.Find(jobId);
+            db.Jobs.Remove(job);
+        }
+
+        public List<Job> GetAllJobs()
+        {
+            return db.Jobs.ToList();
+        }
 
         public void Dispose()
         {
             db.Dispose();
         }
+
+        
     }
 }
