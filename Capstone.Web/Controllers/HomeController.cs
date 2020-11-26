@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Mvc;
 using Common.Model;
+using Capstone.Business;
 using DBModel;
 
 namespace Capstone.Web.Controllers
@@ -26,9 +27,11 @@ namespace Capstone.Web.Controllers
             
         }
 
-        public ActionResult JobDetails(int? id) //Not finished please complete Hemraj
+        public ActionResult JobDetails(int id) //Not finished please complete Hemraj
         {
-            return View();
+            Job jobPosting = JobService.GetJob(id);
+
+            return View(jobPosting);
         }
 
         public PartialViewResult JobPostings() //Not finished please complete Hemraj

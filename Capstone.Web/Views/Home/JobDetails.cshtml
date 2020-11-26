@@ -2,65 +2,50 @@
 
 @{
     ViewBag.Title = "JobDetails";
+    var user = Session["user"] as Common.Model.UserViewModel;
+    
 }
 
-<h2>JobDetails</h2>
+<div class="ml-2" style="line-height: 1.6;">
 
-<div>
-    <h4>Job</h4>
+    <h3 class="" style="margin-top:2%">
+        Job Details for Ref#: @Model.jobId
+    </h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.jobTitle)
-        </dt>
+    <table class="h4">
+        <tr>
+            <th>Job Title:</th>
+            <td>@Model.jobTitle</td>
+        </tr>
+        <tr>
+            <th>Company:</th>
+            <td>@Model.company</td>
+        </tr>
+        <tr>
+            <th>Career Path:</th>
+            <td>@Model.careerPath</td>
+        </tr>
+        <tr>
+            <th>Type:</th>
+            <td>@Model.jobType</td>
+        </tr>
+    </table> 
+    <h4>Description:</h4>
+    <p class="w-50">@Model.jobDesc</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.jobTitle)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.company)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.company)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.careerPath)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.careerPath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.jobType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.jobType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.jobId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.jobId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.jobDesc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.jobDesc)
-        </dd>
-
-    </dl>
+    <div>
+        Badges / Skills Section
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (user.UserType == "Admin")
+    {
+        @Html.ActionLink("Edit", "Edit")
+        @Html.ActionLink("Back to List", "Index", "Admin")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+
 </p>

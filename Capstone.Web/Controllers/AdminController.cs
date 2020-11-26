@@ -66,9 +66,11 @@ namespace Capstone.Web.Controllers
             }
         }
 
-        public PartialViewResult JobPostings() //Not finished please complete Hemraj
+        public PartialViewResult JobPostings() 
         {
-            return PartialView("_JobGridView" /*,List<Job> */);
+            List<Job> model = JobService.GetAllJobs();
+
+            return PartialView("_JobsGridView", model);
         }
 
         public PartialViewResult SearchApplicants(string searchText, char val)

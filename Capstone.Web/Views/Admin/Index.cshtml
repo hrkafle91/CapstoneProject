@@ -80,8 +80,11 @@
             <div id="tblApplicants"></div>
         </div>
         <div class="tab-pane fade" id="v-pills-jobs" role="tabpanel" aria-labelledby="v-pills-jobs-tab">
-            <h3>Job Postings</h3><hr />
-            <div id="tblJobs"></div> @*Table of Jobs Rendered through partial view*@ 
+            <div class="row">
+                <h3 class="col-10">Job Postings</h3>
+                <input type="button" class="btn btn-outline-primary col-2" value="Add Posting" onclick="window.location.href='@Url.Action("CreateJob","Admin")'" />
+            </div><hr />
+            <div id="tblJobs"></div>  
         </div>
     </div>
 
@@ -89,6 +92,7 @@
 
     $(document).ready(function () {
         filterAndSortApplicants();
+        getJobPostings();
 
         $("#go").on('click', function () {
             getApplicants();
@@ -117,6 +121,14 @@
             }
 
         })
+    }
+
+    function getJobPostings() {
+        $.get('@Url.Action("JobPostings","Admin")', function (res) {
+            $("#tblJobs").html('').html(res);
+        }).fail(function (err) {
+            console.log(err);
+        });
     }
 
     function filterAndSortApplicants() {

@@ -233,3 +233,8 @@
 [ 10/14/2020 11:37:53 PM ] Skill Id: 2; Skill Level: + None
 [ 10/14/2020 11:37:53 PM ] Profile Id: 3; path Id: ; Skill: Data modelling (ex. Objects, fields, relationships)
 ; Badge Id: 2
+[ 2020-11-26 3:28:04 PM ] 1
+[ 2020-11-26 3:28:04 PM ] 2
+[ 2020-11-26 3:28:04 PM ] 3
+[ 2020-11-26 3:28:04 PM ] 4
+[ 2020-11-26 3:28:04 PM ] 5

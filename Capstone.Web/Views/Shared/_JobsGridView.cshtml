@@ -19,11 +19,11 @@ else
         </thead>
 
         @{
-
+            
             foreach (var item in Model)
             {
                 <tr>
-                    <td> @Html.ActionLink(item.jobId, "JobDetails", new { id = item.Id })</td>
+                    <td> @Html.ActionLink(item.jobId, "JobDetails", "Home", new { id = item.Id }, null)</td>
                     <td>@item.jobTitle</td>
                     <td>@item.company</td>
                     <td>@item.careerPath</td>
@@ -33,3 +33,4 @@ else
             }
         }
     </table>
+ }
