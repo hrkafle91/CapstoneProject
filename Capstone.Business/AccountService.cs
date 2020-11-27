@@ -50,5 +50,10 @@ namespace Capstone.Business
                 return null;
             }
         }
+
+        public static List<string> GetAllExistingEmails()
+        {
+            return GetAccounts().Select(x => x.emailID).ToList();
+        }
     }
 }
