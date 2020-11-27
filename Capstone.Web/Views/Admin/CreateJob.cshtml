@@ -1,13 +1,21 @@
-﻿@model DBModel.Job
+﻿@using Capstone.Business
+@model DBModel.Job
 
 @{
     ViewBag.Title = "Create a New Job";
     var user = Session["user"] as Common.Model.UserViewModel;
+    var skills = ProfileService.GetAllSkills();
+
     if (user == null || user.UserType != "Admin")
     {
         Response.Redirect("~/LoginAccount/Index");
     }
 }
+<style>
+    textarea{
+        max-width: 100%;
+    }
+</style>
     <div style="margin-top:2%">
         <h2>Add New Job Posting</h2>
 
@@ -19,57 +27,82 @@
                 <h4>Job</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.jobTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.jobTitle, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.jobTitle, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Job Title</label>
+                            @Html.EditorFor(model => model.jobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.jobTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Company</label>
+                            @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.company, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Career Path</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1" onselect="">Administrator</option>
+                                    <option value="2">Developer</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.careerPath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Job Type</label>
+                            @Html.EditorFor(model => model.jobType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.jobType, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Reference #</label>
+                            @Html.EditorFor(model => model.jobId, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.jobId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col" style="line-height: 1.6;">
+                            <label>Description</label><br />
+                            @Html.TextAreaFor(model => model.jobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.ValidationMessageFor(model => model.jobDesc, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.company, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.company, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+                    <label>Required Skills</label><br />
+                    <ul class="list-group flex-column flex-wrap w-50" style="height:28%; line-height:1.6">
+                        
+                        @foreach (var skill in skills)
+                        {
+                            <li class="list-group-item m-1"><input type="checkbox" value="@skill.skillId" /> @skill.skillName</li>
+                        }
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.careerPath, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.careerPath, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.careerPath, "", new { @class = "text-danger" })
-                    </div>
+                    </ul>
                 </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.jobType, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.jobType, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.jobType, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.jobId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.jobId, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.jobId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.jobDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.jobDesc, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.jobDesc, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+            </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Submit" class="btn btn-default" />
+                        <input type="submit" value="Submit" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -79,3 +112,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
