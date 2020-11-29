@@ -24,7 +24,7 @@ namespace Capstone.Business
             return GetAllSkills().Where(x => x.skillId == skillId).FirstOrDefault();
         }
 
-        public static List<Skill> GetSkillsFByPath(string path)
+        public static List<Skill> GetSkillsByPath(string path)
         {
             var skills =  Repository.GetSkillsByPath(path);
             return skills;

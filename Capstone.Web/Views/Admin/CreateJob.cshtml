@@ -29,6 +29,24 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
                 <div class="col-4">
+
+                    <div class="form-group">
+                        <div class="col">
+                            <label>Career Path</label>
+                            <div class="input-group mb-3">
+                                <select class="custom-select" id="inputGroupSelect01">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="0">Administrator</option>
+                                    <option value="1">Developer</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                                </div>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.careerPath, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="col">
                             <label>Job Title</label>
@@ -42,23 +60,6 @@
                             <label>Company</label>
                             @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.company, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col">
-                            <label>Career Path</label>
-                            <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>Choose...</option>
-                                    <option value="1" onselect="">Administrator</option>
-                                    <option value="2">Developer</option>
-                                </select>
-                                <div class="input-group-append">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div>
-                            </div>
-                            @Html.ValidationMessageFor(model => model.careerPath, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -81,7 +82,7 @@
                     <div class="form-group">
                         <div class="col" style="line-height: 1.6;">
                             <label>Description</label><br />
-                            @Html.TextAreaFor(model => model.jobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control"} })
+                            @Html.TextAreaFor(model => model.jobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.jobDesc, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -89,7 +90,7 @@
 
                 <div class="form-group">
                     <label>Required Skills</label><br />
-                    <ul class="list-group flex-column flex-wrap w-50" style="height:28%; line-height:1.6">
+                    <ul id ="skills" class="list-group flex-column flex-wrap w-50" style="height:28%; line-height:1.6">
                         
                         @foreach (var skill in skills)
                         {
@@ -112,4 +113,37 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts{ 
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#inputGroupSelect01').change(function () {
+            var path = $('#inputGroupSelect01').val();
+            $('#skills').empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetSkillsByPath", "Admin")',
+                contentType: 'application/json',
+                data: JSON.stringify({ path: path }),
+                dataType: "json",
+                success: function (data) {
+                    if (data != null) {
+                        $.each(data, function (i, skill) {
+                            $('#skills').append('<li class="list-group-item m-1"><input type="checkbox" value="'+ skill.SkillId + '"/>' + skill.Skill + '</li>');
+                        });
+                    }
+                },
+                error: function (m) { },
+            });
+        })
+    });
+
+
+
+    </script>
+}
+
 

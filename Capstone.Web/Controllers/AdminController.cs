@@ -150,5 +150,15 @@ namespace Capstone.Web.Controllers
 
             return View("ApplicantDetails", applicant);
         }
+
+        public ActionResult GetSkillsByPath(int? path)
+        {
+            return Json((from skill in ProfileService.GetSkillsByPath(((CareerPath)path).ToString())
+                        select new
+                        {
+                            SkillId = skill.skillId,
+                            Skill = skill.skillName
+                        }).ToList(), JsonRequestBehavior.AllowGet);
+        }
     }
 }
