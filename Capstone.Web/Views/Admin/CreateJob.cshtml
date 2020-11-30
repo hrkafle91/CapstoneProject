@@ -15,6 +15,7 @@
     textarea{
         max-width: 100%;
     }
+
 </style>
     <div style="margin-top:2%">
         <h2>Add New Job Posting</h2>
@@ -26,8 +27,8 @@
             <div class="form-horizontal">
                 <h4>Job</h4>
                 <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row justify-content-center">
                 <div class="col-4">
 
                     <div class="form-group">
@@ -43,7 +44,7 @@
                                     <label class="input-group-text" for="inputGroupSelect01">Options</label>
                                 </div>
                             </div>
-                            @Html.ValidationMessageFor(model => model.careerPath, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.careerPath, "Please select a career path", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -51,7 +52,7 @@
                         <div class="col">
                             <label>Job Title</label>
                             @Html.EditorFor(model => model.jobTitle, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobTitle, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.jobTitle, "Please enter a job title", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -59,7 +60,7 @@
                         <div class="col">
                             <label>Company</label>
                             @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.company, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.company, "Please enter company", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -67,7 +68,7 @@
                         <div class="col">
                             <label>Job Type</label>
                             @Html.EditorFor(model => model.jobType, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobType, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.jobType, "Please enter the job type", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -75,7 +76,7 @@
                         <div class="col">
                             <label>Reference #</label>
                             @Html.EditorFor(model => model.jobId, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobId, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.jobId, "Please enter the reference number", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -83,14 +84,14 @@
                         <div class="col" style="line-height: 1.6;">
                             <label>Description</label><br />
                             @Html.TextAreaFor(model => model.jobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobDesc, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.jobDesc, "Please enter a description", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Required Skills</label><br />
-                    <ul id ="skills" class="list-group flex-column flex-wrap w-50" style="height:28%; line-height:1.6">
+                    <ul id ="skills" class="list-group w-75" style="height: 600px; line-height:1.6; overflow:scroll;">
                         
                         @foreach (var skill in skills)
                         {
@@ -101,8 +102,8 @@
                 </div>
             </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                <div class="form-group" style="margin-left:45%;">
+                    <div class="col-md-10">
                         <input type="submit" value="Submit" class="btn btn-primary" />
                     </div>
                 </div>
@@ -110,7 +111,7 @@
         }
     </div>
 
-<div>
+<div style="margin-left:46%">
     @Html.ActionLink("Back to List", "Index")
 </div>
 
