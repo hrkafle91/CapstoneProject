@@ -49,7 +49,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                int passcode = PasscodeHelper.GetPasscode();
+                int passcode = 1234; //PasscodeHelper.GetPasscode();
                 EmailHelper.SendPasscode(account, passcode);
                 TempData["passcode"] = passcode;
                 TempData["account"] = account;
