@@ -29,11 +29,18 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateJob([Bind(Include = "jobTitle,company,careerPath,jobType,jobId,jobDesc")] Job job)
         {
+            int? jobId = null;
             if (ModelState.IsValid)
             {
-                JobService.AddJob(job);
+                jobId = JobService.AddJob(job).Id;
             }
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("JobSkills/"+jobId, "Admin");
+        }
+
+        public ActionResult JobSkills(int? id)
+        {
+            var job = JobService.GetJob(id.Value);
+            return View(job);
         }
 
         public ActionResult UpdateJob(int? id)
@@ -159,6 +166,17 @@ namespace Capstone.Web.Controllers
                             SkillId = skill.skillId,
                             Skill = skill.skillName
                         }).ToList(), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult AddSkillsToJob(int jobId, List<int> skills)
+        {
+            LogService.Clear();
+            LogService.Write("Job Id: " + jobId);
+            skills.ForEach(a => LogService.Write("Skill: " + a));
+
+            var result = JobService.AddSkillsToJob(jobId, skills);
+            LogService.Write("Succeeded: " + result);
+            return Json(result);
         }
     }
 }

@@ -1,0 +1,81 @@
+﻿@using Capstone.Business
+@model DBModel.Job
+
+@{
+    ViewBag.Title = "Assign Job Skills";
+    var user = Session["user"] as Common.Model.UserViewModel;
+    var skills = ProfileService.GetSkillsByPath(Model.careerPath);
+
+    if (user == null || user.UserType != "Admin")
+    {
+        Response.Redirect("~/LoginAccount/Index");
+    }
+}
+<style>
+    textarea {
+        max-width: 100%;
+    }
+</style>
+<div style="margin-top:2%">
+    <h2>Add New Job Posting</h2>
+
+    <div class="form-horizontal">
+        <h4>Job</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row justify-content-center">
+
+            <div class="form-group">
+                <label>Required Skills</label><br />
+                <ul class="list-group w-75" style="height: 600px; line-height:1.6; overflow:scroll;">
+
+                    @foreach (var skill in skills)
+                    {
+                        <li class="list-group-item m-1"><input type="checkbox" name ="skills" value="@skill.skillId" /> @skill.skillName</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-left:45%;">
+            <div class="col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary" onclick="SubmitSkills()"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-left:46%">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function SubmitSkills() {
+            var skills = []
+
+            $("input[name='skills']:checked").each(function () {
+                skills.push($(this).val())
+            })
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("AddSkillsToJob", "Admin")',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    jobId: '@Model.Id',
+                    skills: skills
+                }),
+                dataType: "json",
+                success: function (data) {
+                    window.location.href = '@Url.Action("Index", "Admin")';
+                },
+                error: function (m) { },
+            });
+
+        }
+    </script>
+}
+
+

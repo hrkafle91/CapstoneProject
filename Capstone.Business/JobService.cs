@@ -40,5 +40,11 @@ namespace Capstone.Business
         {
             return Repository.GetAllJobs();
         }
+
+        public static bool AddSkillsToJob(int jobId, List<int> skills)
+        {
+            LogService.Write("Job Id is  " + jobId);
+            return Repository.AddSkillsToJob(jobId, skills);
+        }
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="Enumerations\UserTypeEnum.cs" />
     <Compile Include="Model\BadgeCompletionStatus.cs" />
     <Compile Include="Model\BadgesModel.cs" />
+    <Compile Include="Model\JobSkillsVM.cs" />
     <Compile Include="Model\UserViewModel.cs" />
     <Compile Include="Model\SkillsLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

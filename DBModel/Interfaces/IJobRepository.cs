@@ -14,6 +14,7 @@ namespace DBModel.Interfaces
         Job UpdateJob(Job job);
         void DeleteJob(int jobId);
         List<Job> GetAllJobs();
+        bool AddSkillsToJob(int jobId, List<int> skills);
 
     }
 }

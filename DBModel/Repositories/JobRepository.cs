@@ -62,6 +62,22 @@ namespace DBModel.Repositories
             db.Dispose();
         }
 
-        
+        public bool AddSkillsToJob(int jobId, List<int> skillIds)
+        {
+            try
+            {
+                var job = GetJob(jobId);
+                var skills = (new ProfileRepository()).GetAllSkills();
+                skillIds.ForEach(s => job.Skills.Add(skills.FirstOrDefault(x => x.skillId == s)));
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
+        }
+
     }
 }
