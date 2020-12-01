@@ -57,6 +57,11 @@ namespace DBModel.Repositories
             return db.Jobs.ToList();
         }
 
+        public Skill GetSkill(int id)
+        {
+            return db.Skills.Where(x => x.skillId == id).FirstOrDefault();
+        }
+
         public void Dispose()
         {
             db.Dispose();

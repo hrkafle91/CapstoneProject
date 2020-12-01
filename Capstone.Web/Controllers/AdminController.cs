@@ -22,18 +22,51 @@ namespace Capstone.Web.Controllers
 
         public ActionResult CreateJob()
         {
-            return View();
+            JobSkillsVM jobSkillVM = new JobSkillsVM();
+
+            List<Skill> skills = ProfileService.GetAllSkills();
+
+            foreach (var skill in skills)
+            {
+                ReqSkill reqSkill = new ReqSkill();
+                reqSkill.SkillId = skill.skillId;
+                reqSkill.SkillName = skill.skillName;
+                reqSkill.isChecked = false;
+
+                jobSkillVM.RequiredSkills.Add(reqSkill);
+            }
+
+            return View(jobSkillVM);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateJob([Bind(Include = "jobTitle,company,careerPath,jobType,jobId,jobDesc")] Job job)
+        public ActionResult CreateJob(JobSkillsVM jobSkillVM)
         {
             if (ModelState.IsValid)
             {
-                JobService.AddJob(job);
+                Job jb = new Job();
+                jb.careerPath = ((CareerPath)(Int32.Parse(jobSkillVM.CareerPath))).ToString();
+                jb.company = jobSkillVM.Company;
+                jb.jobDesc = jobSkillVM.JobDesc;
+                jb.jobId = jobSkillVM.JobRef;
+                jb.jobTitle = jobSkillVM.JobTitle;
+                jb.jobType = jobSkillVM.JobType;
+
+                foreach (var skill in jobSkillVM.RequiredSkills)
+                {
+                    if (skill.isChecked)
+                    {
+                        Skill sk = JobService.GetSkill(skill.SkillId);
+                        jb.Skills.Add(sk);
+                    }
+                }
+                JobService.AddJob(jb);
+                return RedirectToAction("Index", "Admin");
             }
-            return RedirectToAction("Index", "Admin");
+            else
+                return View(jobSkillVM);
+            
         }
 
         public ActionResult UpdateJob(int? id)

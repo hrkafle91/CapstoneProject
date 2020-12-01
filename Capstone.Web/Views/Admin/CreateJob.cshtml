@@ -1,10 +1,12 @@
 ﻿@using Capstone.Business
-@model DBModel.Job
+@using Common.Enumerations
+@model Common.Model.JobSkillsVM
 
 @{
     ViewBag.Title = "Create a New Job";
     var user = Session["user"] as Common.Model.UserViewModel;
     var skills = ProfileService.GetAllSkills();
+    
 
     if (user == null || user.UserType != "Admin")
     {
@@ -33,58 +35,49 @@
 
                     <div class="form-group">
                         <div class="col">
-                            <label>Career Path</label>
-                            <div class="input-group mb-3">
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected disabled>Choose...</option>
-                                    <option value="0">Administrator</option>
-                                    <option value="1">Developer</option>
-                                </select>
-                                <div class="input-group-append">
-                                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                                </div>
-                            </div>
-                            @Html.ValidationMessageFor(model => model.careerPath, "Please select a career path", new { @class = "text-danger" })
+                            <label>Career Path</label>                 
+                            &nbsp;@Html.DropDownListFor(model => model.CareerPath, EnumHelper.GetSelectList(typeof(CareerPath)), "Choose...",new { htmlAttributes = new { @class = "form-control" } })
+                            <br /> @Html.ValidationMessageFor(model => model.CareerPath, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col">
                             <label>Job Title</label>
-                            @Html.EditorFor(model => model.jobTitle, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobTitle, "Please enter a job title", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col">
                             <label>Company</label>
-                            @Html.EditorFor(model => model.company, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.company, "Please enter company", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col">
                             <label>Job Type</label>
-                            @Html.EditorFor(model => model.jobType, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobType, "Please enter the job type", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.JobType, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col">
                             <label>Reference #</label>
-                            @Html.EditorFor(model => model.jobId, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobId, "Please enter the reference number", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.JobRef, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.JobRef, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col" style="line-height: 1.6;">
                             <label>Description</label><br />
-                            @Html.TextAreaFor(model => model.jobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.jobDesc, "Please enter a description", new { @class = "text-danger" })
+                            @Html.TextAreaFor(model => model.JobDesc, 8, 60, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.JobDesc, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -93,9 +86,13 @@
                     <label>Required Skills</label><br />
                     <ul id ="skills" class="list-group w-75" style="height: 600px; line-height:1.6; overflow:scroll;">
                         
-                        @foreach (var skill in skills)
-                        {
-                            <li class="list-group-item m-1"><input type="checkbox" value="@skill.skillId" /> @skill.skillName</li>
+                        @for (int i = 0; i < Model.RequiredSkills.Count; i++)
+                        {                            
+                            <li class="list-group-item m-1">
+                                @Html.HiddenFor(m => m.RequiredSkills[i].SkillId)
+                                @Html.EditorFor(m => m.RequiredSkills[i].isChecked)
+                                &nbsp;@Html.DisplayFor(m => m.RequiredSkills[i].SkillName)
+                            </li>
                         }
 
                     </ul>
@@ -118,7 +115,7 @@
 @section Scripts{ 
     <script type="text/javascript">
 
-    $(document).ready(function () {
+    @*$(document).ready(function () {
 
         $('#inputGroupSelect01').change(function () {
             var path = $('#inputGroupSelect01').val();
@@ -133,14 +130,14 @@
                 success: function (data) {
                     if (data != null) {
                         $.each(data, function (i, skill) {
-                            $('#skills').append('<li class="list-group-item m-1"><input type="checkbox" value="'+ skill.SkillId + '"/>' + skill.Skill + '</li>');
+                            $('#skills').append('<li class="list-group-item m-1"><input type="checkbox" value="' + skill.SkillId + '"/>' + skill.Skill + '</li>');
                         });
                     }
                 },
                 error: function (m) { },
             });
         })
-    });
+    });*@
 
 
 

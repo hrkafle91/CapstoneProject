@@ -11,7 +11,7 @@ namespace Capstone.Business
 {
     public static class JobService
     {
-        private static IJobRepository Repository = new JobRepository();
+        private static JobRepository Repository = new JobRepository();
 
         public static Job AddJob(Job job)
         {
@@ -39,6 +39,11 @@ namespace Capstone.Business
         public static List<Job> GetAllJobs()
         {
             return Repository.GetAllJobs();
+        }
+
+        public static Skill GetSkill(int id)
+        {
+            return Repository.GetSkill(id);
         }
     }
 }
