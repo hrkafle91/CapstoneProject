@@ -203,6 +203,7 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Images\Org Development Model.png" />
+    <Content Include="Images\PathFinder Logo.png" />
     <Content Include="Images\Picklist Administration.png" />
     <Content Include="Images\Platform Cache Basics.png" />
     <Content Include="Images\Platform Dev Basics.png" />
