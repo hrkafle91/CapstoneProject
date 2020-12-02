@@ -46,5 +46,10 @@ namespace Capstone.Business
             return Repository.GetSkill(id);
         }
 
+        public static List<Badge> GetBadges(List<Skill> skills)
+        {
+            return Repository.GetBadgesBySkills(skills);
+        }
+
     }
 }

@@ -1,52 +1,72 @@
-﻿@model DBModel.Job
+﻿@using Capstone.Business
+@model DBModel.Job
 
 @{
     ViewBag.Title = "JobDetails";
     var user = Session["user"] as Common.Model.UserViewModel;
-    
+    var badges = JobService.GetBadges(Model.Skills.ToList());
 }
-
-<div class="ml-2" style="line-height: 1.6;">
 
     <h3 class="" style="margin-top:2%">
         Job Details for Ref#: @Model.jobId
     </h3>
-    <hr />
-    <table class="h4">
-        <tr>
-            <th>Job Title:</th>
-            <td>@Model.jobTitle</td>
-        </tr>
-        <tr>
-            <th>Company:</th>
-            <td>@Model.company</td>
-        </tr>
-        <tr>
-            <th>Career Path:</th>
-            <td>@Model.careerPath</td>
-        </tr>
-        <tr>
-            <th>Type:</th>
-            <td>@Model.jobType</td>
-        </tr>
-    </table> 
-    <h4>Description:</h4>
-    <p class="w-50">@Model.jobDesc</p>
+    <p>
+        @if (user.UserType == "Admin")
+        {
+            @Html.ActionLink("Edit", "UpdateJob", "Admin", new { id = Model.Id }, null) <span> | </span>
+            @Html.ActionLink("Delete", "DeleteJob", "Admin", new { id = Model.Id }, null) <span> | </span>
+            @Html.ActionLink("Back to List", "Index", "Admin")
+        }
+        else
+        {
+            @Html.ActionLink("Back to List", "Index")
+        }
 
-    <div>
-        Badges / Skills Section
+    </p>
+    <hr />
+<div class="ml-2 row" style="line-height: 1.6;">
+    <div class="col">
+        <table class="h4 table">
+            <tr>
+                <th>Job Title:</th>
+                <td>@Model.jobTitle</td>
+            </tr>
+            <tr>
+                <th>Company:</th>
+                <td>@Model.company</td>
+            </tr>
+            <tr>
+                <th>Career Path:</th>
+                <td>@Model.careerPath</td>
+            </tr>
+            <tr>
+                <th>Type:</th>
+                <td>@Model.jobType</td>
+            </tr>
+        </table>
+
+        <h4>Description:</h4><br />
+        <p class="border border-secondary rounded p-2" style="height:15rem; line-height: 1.6; overflow:hidden; overflow-y: scroll">@Model.jobDesc</p>
+    </div>
+    <div class="col">
+        <h4>Required Badges:</h4><br /><br />
+        <div class="col" style="height: 28rem; overflow:hidden; overflow-y: scroll">
+            @foreach (var badge in badges)
+            {
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-2 mr-4">
+                            <img src="~/Images/@(badge.badgeTitle + ".png")" class="card-img" style="height:7rem; width: auto;" alt="...">
+                        </div>
+                        <div class="badge card-body col-5 text-left my-auto">
+                            <h5 class="card-title">@badge.badgeTitle</h5>
+                            <p class="card-text text-muted">@badge.description</p>
+                        </div>
+                    </div>
+                </div>
+                <br /><br />
+            }
+        </div>
     </div>
 </div><br />
-<p>
-    @if (user.UserType == "Admin")
-    {
-        @Html.ActionLink("Edit", "UpdateJob", "Admin", new { id = Model.Id }, null )
-        @Html.ActionLink("Delete", "DeleteJob", "Admin", new { id = Model.Id }, null)
-        @Html.ActionLink("Back to List", "Index", "Admin")
-    }
-    else
-    {
-        @Html.ActionLink("Back to List", "Index")
-    }
 
-</p>

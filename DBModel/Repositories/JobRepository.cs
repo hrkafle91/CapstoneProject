@@ -51,11 +51,33 @@ namespace DBModel.Repositories
             return db.Skills.Where(x => x.skillId == id).FirstOrDefault();
         }
 
+        public List<Badge> GetBadgesBySkills(List<Skill> skills)
+        {
+            List<Badge> badges = new List<Badge>();
+
+            foreach(var skill in skills)
+            {
+                var sk = badges.Find(x => x.badgeId == skill.Badge.badgeId);
+                if (sk == null)
+                {
+                    Badge bd = new Badge();
+                    bd.badgeId = skill.Badge.badgeId;
+                    bd.badgeTitle = skill.Badge.badgeTitle;
+                    bd.description = skill.Badge.description;
+                    bd.link = skill.Badge.link;
+                    badges.Add(bd);
+                }
+            }
+
+            return badges.Distinct().ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();
         }
 
-        
+       
     }
+
 }
