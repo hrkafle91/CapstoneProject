@@ -11,7 +11,7 @@ namespace DBModel.Interfaces
     {
         Account AddAccount(Account account);
         void DeleteAccount(int accountId);
-        void EditAccount(Account account);
+        Account EditAccount(Account account);
         List<Account> GetAllAccounts();
         Account GetAccount(int accountId);
     }

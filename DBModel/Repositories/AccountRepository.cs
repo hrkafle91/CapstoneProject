@@ -20,10 +20,24 @@ namespace DBModel.Repositories
             return account;
         }
 
-        public void EditAccount(Account account)
+        public Account EditAccount(Account account)
         {
-            db.Entry(account).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            var acc = GetAccount(account.userID);
+            
+            if (acc != null)
+            {
+                acc.emailID = account.emailID;
+                acc.firstName = account.firstName;
+                acc.lastName = account.lastName;
+                acc.password = account.password;
+
+                db.SaveChanges();
+                return acc;
+            }
+            else
+            {
+                return AddAccount(account);
+            }
         }
 
         public void DeleteAccount(int accountId)

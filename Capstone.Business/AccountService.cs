@@ -23,9 +23,9 @@ namespace Capstone.Business
             return Repository.GetAccount(accountId);
         }
 
-        public static void EditAccount(Account account)
+        public static Account EditAccount(Account account)
         {
-            Repository.EditAccount(account);
+            return Repository.EditAccount(account);
         }
 
         public static void DeleteAccount(int accountId)
