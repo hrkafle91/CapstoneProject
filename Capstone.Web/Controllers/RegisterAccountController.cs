@@ -120,12 +120,14 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                AccountService.EditAccount(account);
-                Session.Clear();
-                Session["user"] = UserService.SetUser(account);
+                var acc= AccountService.EditAccount(account);
+                Session["user"] = UserService.SetUser(acc);
                 return RedirectToAction("Index", "Home");
             }
-            return View(account);
+            else
+            {
+                return View(account);
+            }
         }
 
         // GET: RegisterAccount/Delete/5
