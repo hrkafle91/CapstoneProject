@@ -82,7 +82,6 @@
                         <li class="list-group-item m-1">
                             @Html.HiddenFor(m => m.RequiredSkills[i].SkillId)
                             @Html.EditorFor(m => m.RequiredSkills[i].isChecked)
-                            @Model.RequiredSkills[i].isChecked
                             &nbsp;@Html.DisplayFor(m => m.RequiredSkills[i].SkillName)
                         </li>
                     }
