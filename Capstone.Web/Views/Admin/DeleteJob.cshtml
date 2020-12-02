@@ -1,0 +1,65 @@
+﻿@model DBModel.Job
+
+@{
+    ViewBag.Title = "DeleteJob";
+}
+
+<h2>DeleteJob</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Job</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @Html.HiddenFor(model => model.Id)
+        <dt>
+            @Html.DisplayNameFor(model => model.jobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.company)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.company)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.careerPath)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobId)
+        </dd>
+
+        <dt>
+            @Html.HiddenFor(model => model.jobDesc)
+        </dt>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Cancel", "Index")
+        </div>
+    }
+</div>

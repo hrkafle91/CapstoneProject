@@ -10,7 +10,7 @@ namespace DBModel.Interfaces
     public interface IJobRepository : IDisposable
     {
         Job AddJob(Job job);
-        Job GetJob(int jobId);
+        Job GetJob(int? jobId);
         Job UpdateJob(Job job);
         void DeleteJob(int jobId);
         List<Job> GetAllJobs();

@@ -120,7 +120,7 @@ namespace Capstone.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var acc= AccountService.EditAccount(account);
+                var acc = AccountService.EditAccount(account);
                 Session["user"] = UserService.SetUser(acc);
                 return RedirectToAction("Index", "Home");
             }

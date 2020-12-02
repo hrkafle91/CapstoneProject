@@ -36,11 +36,12 @@
     <div>
         Badges / Skills Section
     </div>
-</div>
+</div><br />
 <p>
     @if (user.UserType == "Admin")
     {
-        @Html.ActionLink("Edit", "Edit")
+        @Html.ActionLink("Edit", "UpdateJob", "Admin", new { id = Model.Id }, null )
+        @Html.ActionLink("Delete", "DeleteJob", "Admin", new { id = Model.Id }, null)
         @Html.ActionLink("Back to List", "Index", "Admin")
     }
     else

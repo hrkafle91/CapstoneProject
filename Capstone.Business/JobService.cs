@@ -26,7 +26,7 @@ namespace Capstone.Business
             return Repository.UpdateJob(job);
         }
 
-        public static Job GetJob(int jobId)
+        public static Job GetJob(int? jobId)
         {
             return Repository.GetJob(jobId);
         }
@@ -45,5 +45,6 @@ namespace Capstone.Business
         {
             return Repository.GetSkill(id);
         }
+
     }
 }

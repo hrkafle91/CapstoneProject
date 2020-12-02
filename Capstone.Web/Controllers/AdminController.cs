@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DBModel;
+using System.Net;
 
 namespace Capstone.Web.Controllers
 {
@@ -71,32 +72,97 @@ namespace Capstone.Web.Controllers
 
         public ActionResult UpdateJob(int? id)
         {
-            var job = JobService.GetJob(id.Value); 
-            return View(job);
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Job job = JobService.GetJob(id); 
+
+            if(job == null)
+            {
+                return HttpNotFound();
+            }
+
+            JobSkillsVM jobSkillsVM = new JobSkillsVM(job.jobTitle, job.jobDesc, job.jobId, (Enum.Parse(typeof(CareerPath),job.careerPath)).ToString(), job.company, job.jobType, job.Id);
+            List<Skill> skills = ProfileService.GetAllSkills();
+            
+            foreach(var skill in skills)
+            {
+                ReqSkill reqSkill = new ReqSkill();
+                reqSkill.SkillId = skill.skillId;
+                reqSkill.SkillName = skill.skillName;
+
+                var sk = job.Skills.ToList().Find(x => x.skillId == skill.skillId);
+                if (sk == null)
+                {
+                    reqSkill.isChecked = false;
+                }
+                else
+                    reqSkill.isChecked = true;
+
+                jobSkillsVM.RequiredSkills.Add(reqSkill);
+            }
+            return View(jobSkillsVM);
+
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateJob([Bind(Include = "Id,jobTitle,company,careerPath,jobType,jobId,jobDesc")] Job job)
+        public ActionResult UpdateJob(JobSkillsVM jobSkillVM)
         {
             if (ModelState.IsValid)
             {
-                JobService.UpdateJob(job);
+                Job jb = JobService.GetJob(jobSkillVM.Id);
+                jb.careerPath = jobSkillVM.CareerPath;
+                jb.company = jobSkillVM.Company;
+                jb.jobDesc = jobSkillVM.JobDesc;
+                jb.jobId = jobSkillVM.JobRef;
+                jb.jobTitle = jobSkillVM.JobTitle;
+                jb.jobType = jobSkillVM.JobType;
+
+                jb.Skills.Clear();
+
+                foreach (var skill in jobSkillVM.RequiredSkills)
+                {
+                    if (skill.isChecked)
+                    {
+                        Skill sk = JobService.GetSkill(skill.SkillId);
+                        jb.Skills.Add(sk);
+                    }
+                }
+
+                JobService.UpdateJob(jb);
+                return RedirectToAction("Index", "Admin");
             }
-            return RedirectToAction("Index", "Admin");
+            else
+                return View(jobSkillVM);
+            
         }
 
-        public ActionResult DeleteJob(int? jobId)
+        
+        public ActionResult DeleteJob(int? id)
         {
-            try
+            if (id == null)
             {
-                JobService.DeleteJob(jobId.Value);
-                return RedirectToAction("Index", "Admin");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch
+
+            Job job = JobService.GetJob(id);
+
+            if (job == null)
             {
-                return RedirectToAction("Index", "Admin");
+                return HttpNotFound();
             }
+            return View(job);
+        }
+ 
+        [HttpPost, ActionName("DeleteJob")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed([Bind(Include = "Id, jobTitle, company, careerPath, jobType, jobId, jobDesc")] Job job)
+        {
+            JobService.DeleteJob(job.Id);
+            return RedirectToAction("Index", "Admin");
         }
 
         public PartialViewResult JobPostings() 

@@ -22,26 +22,13 @@ namespace DBModel.Repositories
 
         public Job UpdateJob(Job job)
         {
-            Job nJob = GetJob(job.Id);
-            if(nJob != null)
-            {
-                nJob.careerPath = job.careerPath;
-                nJob.company = job.company;
-                nJob.jobDesc = job.jobDesc;
-                nJob.jobId = job.jobId;
-                nJob.jobTitle = job.jobTitle;
-                nJob.jobType = job.jobType;
-            }
-            else
-            {
-                AddJob(job);
-            }
-
+            db.Entry(job).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
-            return nJob;
+            return job;
+
         }
 
-        public Job GetJob(int jobId)
+        public Job GetJob(int? jobId)
         {
             return db.Jobs.Where(x => x.Id == jobId).FirstOrDefault();
         }
@@ -49,7 +36,9 @@ namespace DBModel.Repositories
         public void DeleteJob(int jobId)
         {
             var job = db.Jobs.Find(jobId);
+            job.Skills.Clear();
             db.Jobs.Remove(job);
+            db.SaveChanges();
         }
 
         public List<Job> GetAllJobs()
