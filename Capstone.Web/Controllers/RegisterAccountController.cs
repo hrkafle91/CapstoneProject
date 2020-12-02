@@ -124,7 +124,10 @@ namespace Capstone.Web.Controllers
                 Session["user"] = UserService.SetUser(acc);
                 return RedirectToAction("Index", "Home");
             }
-            return View(account);
+            else
+            {
+                return View(account);
+            }
         }
 
         // GET: RegisterAccount/Delete/5
